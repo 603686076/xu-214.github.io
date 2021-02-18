@@ -651,6 +651,31 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'c0bdd6e5ea22d43998f5',
+        clientSecret: 'a4a920808890340fac8ff7010701a63ffdb0cfd0',
+        repo: 'xu-214.github.io',
+        owner: 'xu-214',
+        admin: "xu-214",
+        id: '2021-02-16T21-12-22',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
 
     
 
@@ -663,57 +688,6 @@
     
 
     
-        
-    <div id="SOHUCS"></div>
-    <script type="text/javascript">
-        window.onload = function () {
-            var loadChangYan = function () {
-                var appid = 'cyvjwCYRV';
-                var conf = 'prod_77d9d27db88e39a1438b745ac9a1d4d5&#39;';
-                var width = window.innerWidth || document.documentElement.clientWidth;
-                if (width < 960) {
-                    var head = document.getElementsByTagName('head')[0] || document.head || document.documentElement;
-                    var script = document.createElement('script');
-                    script.type = 'text/javascript';
-                    script.charset = 'utf-8';
-                    script.id = 'changyan_mobile_js';
-                    script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid +
-                        '&conf=' + conf;
-                    head.appendChild(script);
-                } else {
-                    var loadJs = function (d, a) {
-                        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-                        var b = document.createElement("script");
-                        b.setAttribute("type", "text/javascript");
-                        b.setAttribute("charset", "UTF-8");
-                        b.setAttribute("src", d);
-                        if (typeof a === "function") {
-                            if (window.attachEvent) {
-                                b.onreadystatechange = function () {
-                                    var e = b.readyState;
-                                    if (e === "loaded" || e === "complete") {
-                                        b.onreadystatechange = null;
-                                        a()
-                                    }
-                                }
-                            } else {
-                                b.onload = a
-                            }
-                        }
-                        c.appendChild(b)
-                    };
-                    loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js", function () {
-                        window.changyan.api.config({
-                            appid: appid,
-                            conf: conf
-                        })
-                    });
-                }
-            }
-
-            loadChangYan();
-        }
-    </script>
 
     
 
@@ -956,15 +930,7 @@
     
 
 </main>
-<!--PC版-->
-<div id="SOHUCS" ></div>
-<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: 'cyvjwCYRV',
-        conf: 'prod_77d9d27db88e39a1438b745ac9a1d4d5'
-    });
-</script>
+
 
 
 
