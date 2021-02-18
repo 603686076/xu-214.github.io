@@ -390,7 +390,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-16
+                    2021-02-18
                 </div>
                 
 
@@ -432,7 +432,7 @@
 </code></pre>
 <h3 id="1-2、命名空间"><a href="#1-2、命名空间" class="headerlink" title="1.2、命名空间"></a>1.2、命名空间</h3><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>th</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.thymeleaf.org<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 </code></pre>
-<h2 id="2、shiro"><a href="#2、shiro" class="headerlink" title="2、shiro"></a>2、shiro</h2><h3 id="2-1、三大对象"><a href="#2-1、三大对象" class="headerlink" title="2.1、三大对象"></a>2.1、三大对象</h3><p><img src="C:\Users\a\AppData\Roaming\Typora\typora-user-images\image-20210208144829559.png" alt="image-20210208144829559"></p>
+<h2 id="2、shiro"><a href="#2、shiro" class="headerlink" title="2、shiro"></a>2、shiro</h2><h3 id="2-1、三大对象"><a href="#2-1、三大对象" class="headerlink" title="2.1、三大对象"></a>2.1、三大对象</h3><p><img src="img%5Cimage-20210208144829559.png" alt="image-20210208144829559"></p>
 <h3 id="2-2、导入依赖"><a href="#2-2、导入依赖" class="headerlink" title="2.2、导入依赖"></a>2.2、导入依赖</h3><pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--        shiro整合spring--></span>
         <span class="token comment" spellcheck="true">&lt;!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring --></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -780,6 +780,43 @@
 
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('20')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: xustudy的博客<br />'
+            + '文章作者: xustudy<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
 <!-- 代码块功能依赖 -->
