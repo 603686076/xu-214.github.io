@@ -110,6 +110,7 @@ pre {
     tab-size: 4;
 }
 
+
 .code-area::after {
     content: " ";
     position: absolute;
