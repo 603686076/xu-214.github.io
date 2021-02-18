@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-02-18T14:27:29.774Z</updated>
+  <updated>2021-02-18T16:14:34.402Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -17,23 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>image-test</title>
-    <link href="https://xustudy.com/2021/02/18/image-test/"/>
-    <id>https://xustudy.com/2021/02/18/image-test/</id>
-    <published>2021-02-18T13:39:18.000Z</published>
-    <updated>2021-02-18T14:27:29.774Z</updated>
+    <title>Gitalk 评论登录 403 问题解决</title>
+    <link href="https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/"/>
+    <id>https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/</id>
+    <published>2021-02-18T16:08:26.000Z</published>
+    <updated>2021-02-18T16:14:34.402Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/02/18/image-test/%E5%A4%B4%E5%83%8F.png&quot;</summary>
+    <summary type="html">&lt;p&gt;原文地址：&lt;/p&gt;
+&lt;p&gt;[]: &lt;a</summary>
         
       
     
     
     
+    <category term="转载" scheme="https://xustudy.com/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+    <category term="问题解决" scheme="https://xustudy.com/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
   </entry>
   
