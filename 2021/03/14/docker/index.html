@@ -434,7 +434,7 @@ docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/
 
 #2.查看容器的信息 docker inspect 容器id 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2021/03/14/docker/G:image-20210314200223048.png" alt="image-20210314200223048"></p>
+<p><img src="/2021/03/14/docker/image-20210314200223048.png" alt="image-20210314200223048"></p>
 <pre class="line-numbers language-shell"><code class="language-shell">-v /home/mysql/conf:/etc/mysql/conf.d     #':'前面是主机内地址， ':'后面是docker容器内地址
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre class="line-numbers language-shell"><code class="language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载
