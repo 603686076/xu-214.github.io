@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-02-21T13:14:17.501Z</updated>
+  <updated>2021-03-14T12:31:35.624Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker的学习使用记录</title>
+    <link href="https://xustudy.com/2021/03/14/docker/"/>
+    <id>https://xustudy.com/2021/03/14/docker/</id>
+    <published>2021-03-14T12:30:48.000Z</published>
+    <updated>2021-03-14T12:31:35.624Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;容器数据卷使用&quot;&gt;&lt;a href=&quot;#容器数据卷使用&quot; class=&quot;headerlink&quot; title=&quot;容器数据卷使用&quot;&gt;&lt;/a&gt;容器数据卷使用&lt;/h2&gt;&lt;h3 id=&quot;什么是容器数据卷&quot;&gt;&lt;a href=&quot;#什么是容器数据卷&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="docker" scheme="https://xustudy.com/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Gitalk 评论登录 403 问题解决</title>
@@ -48,7 +73,7 @@
     <link href="https://xustudy.com/2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/"/>
     <id>https://xustudy.com/2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/</id>
     <published>2021-02-18T08:13:48.000Z</published>
-    <updated>2021-02-18T15:13:36.188Z</updated>
+    <updated>2021-03-01T06:00:49.116Z</updated>
     
     
       

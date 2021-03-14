@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>docker的学习使用记录</title>
+      <link href="2021/03/14/docker/"/>
+      <url>2021/03/14/docker/</url>
+      
+        <content type="html"><![CDATA[<h2 id="容器数据卷使用"><a href="#容器数据卷使用" class="headerlink" title="容器数据卷使用"></a>容器数据卷使用</h2><h3 id="什么是容器数据卷"><a href="#什么是容器数据卷" class="headerlink" title="什么是容器数据卷"></a>什么是容器数据卷</h3><p>将应用和环境打包成一个镜像！</p><p>数据？如果数据都在容器中，那么我们容器删除，数据就会丢失！需求：数据可以持久化</p><p>MySQL，容器删除了，删库跑路！需求：MySQL数据可以存储在本地！</p><p>容器之间可以有一个数据共享的技术！Docker容器中产生的数据，同步到本地！</p><p>这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面！</p><p><strong>总结一句话：容器的持久化和同步操作！容器间也是可以数据共享的！</strong></p><h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><pre class="line-numbers language-shell"><code class="language-shell">#1.启动容器mysqldocker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=密码 --name mysql mysql:8.0.23#命令-d 后台运行-p 端口映射-v 卷挂载-e 环境配置-- name 容器名字#2.查看容器的信息 docker inspect 容器id <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="/2021/03/14/docker/G:image-20210314200223048.png" alt="image-20210314200223048"></p><pre class="line-numbers language-shell"><code class="language-shell">-v /home/mysql/conf:/etc/mysql/conf.d     #':'前面是主机内地址， ':'后面是docker容器内地址<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre class="line-numbers language-shell"><code class="language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载-v 容器内路径            #匿名挂载-v 卷名：容器内路径          #具名挂载-v /宿主机路径：容器内路径 #指定路径挂载 docker volume ls 是查看不到的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>拓展</p><pre class="line-numbers language-shell"><code class="language-shell"># 通过 -v 容器内路径： ro rw 改变读写权限ro #readonly 只读rw #readwrite 可读可写$ docker run -d -P --name nginx05 -v juming:/etc/nginx:ro nginx$ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx# ro 只要看到ro就说明这个路径只能通过宿主机来操作，容器内部是无法操作！<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Gitalk 评论登录 403 问题解决</title>
       <link href="2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/"/>
       <url>2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/</url>
@@ -33,7 +58,7 @@
       <link href="2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/"/>
       <url>2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/</url>
       
-        <content type="html"><![CDATA[<p>​        </p><p><img src="/2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85%E5%B0%81%E7%9A%AE.jpg" alt="牧羊少年奇幻之旅封皮"></p><p>​        我是一个牧羊人，重复做着同一个梦。梦里告诉我有宝藏。在撒冷之王的指引下，我踏上了寻宝之旅。</p><p>​        第一天，我的钱就全部被我信任的人骗去。我决定不再相信任何人，我疲惫至极，当我将要放弃的时候，撒冷之王的话语回荡在我的耳边：当你想要得到某种东西的时候，整个宇宙都会助你实现愿望。我已不再悲伤，我怀着一个念头沉重睡去——我是一个寻宝人，明天我将开始新的旅途。</p><p>​        我遇见了水晶店的主人，我助他的水晶店焕然一新，他付我报酬使我得以继续寻宝，“命中注定”，水晶店的主人送我离开时这样说。<br>我又遇见了一个英国人，我本不想与他打交道，“一切都有预兆”，他从口中吐出这几个字，我改变了想法，我决定和他一起开始这趟沙漠之旅，因为撒冷之王说过同样的话。这位英国人和我一样有使命，他一生的一半光阴都花在了炼金术上，他要去寻找一位炼金术士。<br>沙漠之旅并不容易，一路的艰苦跋涉终使我们到达了绿洲，我为绿洲带来了战争的征兆，他们将封我为顾问，我已厌倦了这趟旅途，至高的待遇诱使我留在这里。开玩笑般的我再次遇见了一个人，他使我明白，当我老之将至，站在梧桐树下回首自己度过的虚无的一生，遥想被深埋在地下的宝藏已为时晚矣。</p><p>​        他正是炼金术士。</p><p>​        我再次开启这趟征途，种种经历让我开始尝试倾听内心的声音，我弄懂了心所耍的各种手段和花招。被逼无奈之下我开始领悟世界的语言，感悟到了爱的力量，觉悟到了这一切皆由我的双手写就。我抵达了金字塔，奋力挖掘，然而一无所获。</p><p>​        一个经过的难民在知道我挖掘的原因之后开始耻笑我说：“你真愚蠢，我也和你一样做过这样的梦，我梦到与此地有一个沙漠之隔的教堂，一个牧羊人经常在那里过夜，如果我在那里挖掘，我会找到宝藏，可我不会像你这么蠢。”</p><p>​        我感谢这个不相信梦的家伙，我找到我的宝藏了。我站起来拍拍身上的沙子，金字塔正朝我笑呢。</p><p>​        我回到了教堂，在无果树下挖掘。“老巫师”我自言自语，“你什么都知道，甚至还为我留了回来的钱，看到我衣衫褴褛的跑回来，他们都笑了，你就不能让我免遭这一切？”</p><p>​        “不能，”我听到有个声音说，“如果我告诉你这一切，那你就看不到金字塔了，它很壮美，不是吗？”</p><p>​        那分明是炼金术士的声音。<br>​                                                                    ——《牧羊少年的奇幻之旅》</p>]]></content>
+        <content type="html"><![CDATA[<p>​        </p><p><img src="/2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85%E5%B0%81%E7%9A%AE.jpg" alt="牧羊少年奇幻之旅封皮"></p><p>​        我是一个牧羊人，重复做着同一个梦。梦里告诉我有宝藏。在撒冷之王的指引下，我踏上了寻宝之旅。</p><p>​        第一天，我的钱就全部被我信任的人骗去。我决定不再相信任何人，我疲惫至极，当我将要放弃的时候，撒冷之王的话语回荡在我的耳边：当你想要得到某种东西的时候，整个宇宙都会合力助你实现愿望。我已不再悲伤，我怀着一个念头沉重睡去——我是一个寻宝人，明天我将开始新的旅途。</p><p>​        我遇见了水晶店的主人，我助他的水晶店焕然一新，他付我报酬使我得以继续寻宝，“命中注定”，水晶店的主人送我离开时这样说。</p><p>​        我又遇见了一个英国人，我本不想与他打交道，“一切都有预兆”，他从口中吐出这几个字，我改变了想法，我决定和他一起开始这趟沙漠之旅，因为撒冷之王说过同样的话。这位英国人和我一样有使命，他一生的一半光阴都花在了炼金术上，他要去寻找一位炼金术士。</p><p>​        沙漠之旅并不容易，一路的艰苦跋涉终使我们到达了绿洲，我为绿洲带来了战争的预兆，他们将封我为顾问，我已厌倦了这趟旅途，至高的待遇诱使我留在这里。开玩笑般的我再次遇见了一个人，他使我明白，当我老之将至，站在梧桐树下回首自己度过的虚无的一生，遥想被深埋在地下的宝藏时已为时晚矣。</p><p>​        他正是炼金术士。</p><p>​        我再次开启这趟征途，种种经历让我开始尝试倾听内心的声音，我弄懂了心所耍的各种手段和花招。被逼无奈之下我开始领悟世界的语言，感悟到了爱的力量，觉悟到了这一切皆由我的双手写就。我抵达了金字塔，奋力挖掘，然而一无所获。</p><p>​        一个经过的难民在知道我挖掘的原因之后开始耻笑我说：“你真愚蠢，我也和你一样做过同样的梦，我梦到与此地有一个沙漠之隔的教堂，一个牧羊人经常在那里过夜，如果我在那里挖掘，我会找到宝藏，可我不会像你这么蠢。”</p><p>​        我感谢这个不相信梦的家伙，我找到我的宝藏了。我站起来拍拍身上的沙子，金字塔正朝我笑呢。</p><p>​        我回到了教堂，在无果树下挖掘。“老巫师”我自言自语，“你什么都知道，甚至还为我留了回来的钱，看到我衣衫褴褛的跑回来，他们都笑了，你就不能让我免遭这一切？”</p><p>​        “不能，”我听到有个声音说，“如果我告诉你这一切，那你就看不到金字塔了，它很壮美，不是吗？”</p><p>​        那分明是炼金术士的声音。<br>​                                                                    ——《牧羊少年的奇幻之旅》</p>]]></content>
       
       
       <categories>
