@@ -3,7 +3,7 @@
 
 
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
+    <meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
     <meta name="keywords" content="docker的学习使用记录, xustudy">
@@ -31,7 +31,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="xustudy" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="xustudy" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -39,7 +39,7 @@
 
 
 <body>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -422,7 +422,7 @@
 <p>容器之间可以有一个数据共享的技术！Docker容器中产生的数据，同步到本地！</p>
 <p>这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面！</p>
 <p><strong>总结一句话：容器的持久化和同步操作！容器间也是可以数据共享的！</strong></p>
-<h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><pre class=" language-shell"><code class="language-shell">#1.启动容器mysql
+<h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><pre class="line-numbers language-shell"><code class="language-shell">#1.启动容器mysql
 docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=密码 --name mysql mysql:8.0.23
 
 #命令
@@ -433,24 +433,24 @@ docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/
 -- name 容器名字
 
 #2.查看容器的信息 docker inspect 容器id 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/2021/03/14/docker/image-20210314200223048.png" alt="image-20210314200223048"></p>
-<pre class=" language-shell"><code class="language-shell">-v /home/mysql/conf:/etc/mysql/conf.d     #':'前面是主机内地址， ':'后面是docker容器内地址
-</code></pre>
-<h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre class=" language-shell"><code class="language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载
+<pre class="line-numbers language-shell"><code class="language-shell">-v /home/mysql/conf:/etc/mysql/conf.d     #':'前面是主机内地址， ':'后面是docker容器内地址
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre class="line-numbers language-shell"><code class="language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载
 -v 容器内路径            #匿名挂载
 -v 卷名：容器内路径          #具名挂载
 -v /宿主机路径：容器内路径 #指定路径挂载 docker volume ls 是查看不到的
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>拓展</p>
-<pre class=" language-shell"><code class="language-shell"># 通过 -v 容器内路径： ro rw 改变读写权限
+<pre class="line-numbers language-shell"><code class="language-shell"># 通过 -v 容器内路径： ro rw 改变读写权限
 ro #readonly 只读
 rw #readwrite 可读可写
 $ docker run -d -P --name nginx05 -v juming:/etc/nginx:ro nginx
 $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
 
 # ro 只要看到ro就说明这个路径只能通过宿主机来操作，容器内部是无法操作！
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1302,7 +1302,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
 </body>
