@@ -6,7 +6,7 @@
     <meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="Gitalk 评论登录 403 问题解决, xustudy">
+    <meta name="keywords" content="xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Gitalk 评论登录 403 问题解决 | xustudy</title>
+    <title>xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -229,12 +229,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/45.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Gitalk 评论登录 403 问题解决</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -348,25 +348,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">
-                                <span class="chip bg-color">问题解决</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E8%BD%AC%E8%BD%BD/" class="post-category">
-                                转载
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -375,28 +362,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-19
+                    2021-03-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-21
+                    2021-03-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21
+                    665
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -416,9 +403,90 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://cuiqingcai.com/30010.html">https://cuiqingcai.com/30010.html</a></p>
-<p>博主解决问题的思路很清晰，值得学习!</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yfzGSe"><img src="https://s3.ax1x.com/2021/02/19/yfzGSe.jpg" alt="yfzGSe.jpg"></a></p>
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h4 id="126-单词接龙-II"><a href="#126-单词接龙-II" class="headerlink" title="126. 单词接龙 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-ladder-ii/">126. 单词接龙 II</a></h4><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个起始字符串和一个终止字符串，以及一个单词表，求是否可以将起始字符串每次改<br>一个字符，直到改成终止字符串，且所有中间的修改过程表示的字符串都可以在单词表里找到。<br>若存在，输出需要修改次数最少的所有更改方式。</p>
+<h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入是两个字符串，输出是一个二维字符串数组，表示每种字符串修改方式。</p>
+<pre class="line-numbers language-c++"><code class="language-c++">Input:
+beginWord = "hit", endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+Output:
+[["hit","hot","dot","dog","cog"],
+["hit","hot","lot","log","cog"]]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>​    我们可以把起始字符串、终止字符串、以及单词表里所有的字符串想象成节点。若两个字符串只有一个字符不同，那么它们相连。因为题目需要输出修改次数最少的所有修改方式，因此我们可以使用广度优先搜索，求得起始节点到终止节点的最短距离。<br>​    我们同时还使用了一个小技巧：我们并不是直接从起始节点进行广度优先搜索，直到找到终止节点为止；而是从起始节点和终止节点分别进行广度优先搜索，每次只延展当前层节点数最少<br>的那一端，这样我们可以减少搜索的总结点数。举例来说，假设最短距离为 4，如果我们只从一端搜索 4 层，总遍历节点数最多是 1 + 2 + 4 + 8 + 16 = 31；而如果我们从两端各搜索两层，总遍<br>历节点数最多只有 2 × (1 + 2 + 4) = 14。<br>​    在搜索结束后，我们还需要通过回溯法来重建所有可能的路径。</p>
+<pre class="line-numbers language-c++"><code class="language-c++">class Solution &#123;
+public:
+    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) &#123;
+        //ans用来存放最后的输出结果
+        vector<vector<string>> ans;
+        //dict用来以set的形式存放字典wordList
+        unordered_set<string> dict;
+        for (const auto& w: wordList) &#123;
+            dict.insert(w);
+        &#125;
+        //如果字典里没有endList，直接返回结果
+        if (!dict.count(endWord)) &#123;
+            return ans;
+        &#125;
+        //删除字典里的beginWord和endWord
+        dict.erase(beginWord);
+        dict.erase(endWord);
+        unordered_set<string> q1&#123;beginWord&#125;, q2&#123;endWord&#125;;
+        unordered_map<string, vector<string>> next;
+        bool reversed = false, found = false;
+        while (!q1.empty()) &#123;
+                unordered_set <string> q;
+                for (const auto& w: q1) &#123;
+                    string s = w;
+                    for (size_t i = 0; i < s.size(); i++) &#123;
+                        char ch = s[i]; 
+                        for (int j = 0; j < 26; j++) &#123;
+                            s[i] = j + 'a';
+                            if (q2.count(s)) &#123;
+                                reversed ? next[s].push_back(w) : next[w].push_back(s); 
+                                found = true;
+                            &#125;
+                            if (dict.count(s)) &#123;
+                                reversed ? next[s].push_back(w) : next[w].push_back(s);
+                                q.insert(s);
+                            &#125;
+                        &#125;
+                        s[i] = ch;
+                    &#125;
+                &#125;
+                if (found) &#123; 
+                    break;
+                &#125;
+                for (const auto& w: q) &#123;
+                    dict.erase(w);
+                &#125;
+                if (q.size() <= q2.size()) &#123;
+                    q1 = q;
+                &#125; else &#123; 
+                    reversed = !reversed;
+                    q1 = q2;
+                    q2 = q;
+                &#125;
+        &#125;
+        if (found) &#123;
+            vector<string> path = &#123;beginWord&#125;;
+            backtracking(beginWord, endWord, next, path, ans);
+        &#125;
+        return ans;
+    &#125;
+
+    void backtracking(const string& src, const string& dst, unordered_map<string, vector<string>>& next, vector<string>& path,vector<vector<string>>& ans) &#123;
+        if (src == dst) &#123;
+            ans.push_back(path);
+            return;
+        &#125;
+        for (const auto& s : next[src]) &#123;
+            path.push_back(s);
+            backtracking(s, dst, next, path, ans);
+            path.pop_back();
+        &#125;
+    &#125;
+&#125;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -445,7 +513,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/">https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/</a>
+                    <a href="https://xustudy.com/2021/03/14/126-dan-ci-jie-long-ii-hard/">https://xustudy.com/2021/03/14/126-dan-ci-jie-long-ii-hard/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -482,11 +550,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">
-                                    <span class="chip bg-color">问题解决</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -655,7 +719,7 @@
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-02-19-00-08-26',
+        id: '2021-03-14-21-40-13',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -684,9 +748,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/03/14/126-dan-ci-jie-long-ii-hard/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            xustudy
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/03/14/docker/">
                     <div class="card-image">
@@ -704,9 +807,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -724,55 +827,6 @@
                     
                     <a href="/tags/docker/">
                         <span class="chip bg-color">docker</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="牧羊少年的奇幻之旅">
-                        
-                        <span class="card-title">牧羊少年的奇幻之旅</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-18
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%84%9F%E6%82%9F/" class="post-category">
-                                    感悟
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%96%87%E5%AD%A6/">
-                        <span class="chip bg-color">文学</span>
                     </a>
                     
                 </div>
