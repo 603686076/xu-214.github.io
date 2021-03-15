@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-15T04:45:16.629Z</updated>
+  <updated>2021-03-15T10:55:03.506Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker进阶</title>
+    <link href="https://xustudy.com/2021/03/15/docker-jin-jie/"/>
+    <id>https://xustudy.com/2021/03/15/docker-jin-jie/</id>
+    <published>2021-03-15T10:28:15.000Z</published>
+    <updated>2021-03-15T10:55:03.506Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Docker-Compose&quot;&gt;&lt;a href=&quot;#Docker-Compose&quot; class=&quot;headerlink&quot; title=&quot;Docker Compose&quot;&gt;&lt;/a&gt;Docker Compose&lt;/h2&gt;&lt;h3 id=&quot;1-概述（官方文档）&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Docker" scheme="https://xustudy.com/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo代码高亮问题解决</title>
