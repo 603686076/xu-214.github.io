@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-15T04:21:16.401Z</updated>
+  <updated>2021-03-15T04:25:19.143Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://xustudy.com/2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/"/>
     <id>https://xustudy.com/2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/</id>
     <published>2021-03-15T03:36:30.000Z</published>
-    <updated>2021-03-15T04:21:16.401Z</updated>
+    <updated>2021-03-15T04:25:19.143Z</updated>
     
     
       
@@ -34,10 +34,10 @@
     
     
     
-    <category term="hexo" scheme="https://xustudy.com/categories/hexo/"/>
+    <category term="问题解决" scheme="https://xustudy.com/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
     
-    <category term="问题解决" scheme="https://xustudy.com/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    <category term="hexo" scheme="https://xustudy.com/tags/hexo/"/>
     
   </entry>
   
@@ -96,7 +96,7 @@
     <link href="https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/"/>
     <id>https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/</id>
     <published>2021-02-18T16:08:26.000Z</published>
-    <updated>2021-02-21T13:14:17.501Z</updated>
+    <updated>2021-03-15T04:27:14.156Z</updated>
     
     
       
@@ -111,10 +111,12 @@
     
     
     
-    <category term="转载" scheme="https://xustudy.com/categories/%E8%BD%AC%E8%BD%BD/"/>
+    <category term="问题解决" scheme="https://xustudy.com/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
     
-    <category term="问题解决" scheme="https://xustudy.com/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    <category term="hexo" scheme="https://xustudy.com/tags/hexo/"/>
+    
+    <category term="转载" scheme="https://xustudy.com/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   
