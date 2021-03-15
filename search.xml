@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>hexo代码高亮问题解决</title>
+      <link href="2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/"/>
+      <url>2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我的个人博客采用的是闪烁之狐大佬的主题<a href="https://github.com/blinkfox/hexo-theme-matery">Matery</a></p><p>最近发现我的文章代码无法高亮，寻找原因许久，终于解决！</p><p>闪烁之狐大佬采用的代码高亮插件是<a href="https://github.com/ele828/hexo-prism-plugin">hexo-prism-plugin</a>，我按照教程一步步来，但无法高亮，网上很多解决方案也试了，都没有解决问题。</p><p>最后找到一篇博客<a href="https://www.jianshu.com/p/f395d92a1110">Hexo博客：六、prism代码高亮</a>，终于解决了我的问题。</p><p>本博客主题为<a href="https://github.com/blinkfox/hexo-theme-matery">Matery</a>，上边解决问题的主题为next，不过问题不大，照葫芦画瓢，无非是文件位置和代码写法不一样。</p><p>开动！！！</p><h3 id="1-清除hexo-prism-plugin插件"><a href="#1-清除hexo-prism-plugin插件" class="headerlink" title="1. 清除hexo-prism-plugin插件"></a>1. 清除<a href="https://github.com/ele828/hexo-prism-plugin">hexo-prism-plugin</a>插件</h3><ol><li><p>打开根目录下的<code>package.json</code>文件，删除</p><pre><code class="shell">hexo-prism-plugin: &quot;^2.3.0&quot;,</code></pre></li><li><p>打开根目录下的<code>_config.yml</code>文件，删除</p><pre><code class="shell">prism_plugin:  mode: &#39;preprocess&#39;    # realtime/preprocess  theme: &#39;tomorrow&#39;  line_number: false    # default false  custom_css:</code></pre></li><li><p>删除<code>node_modules</code>文件中的<code>hexo-prism-plugin</code>文件夹</p></li></ol><h3 id="2-禁用highlight"><a href="#2-禁用highlight" class="headerlink" title="2.  禁用highlight"></a>2.  禁用highlight</h3><p>打开根目录下的<code>_config.yml</code>文件，修改配置</p><pre><code class="yml">highlight:  enable: false  line_number: false  auto_detect: false  tab_replace: &#39;&#39;  wrap: false  hljs: false</code></pre><h3 id="3-获取prism"><a href="#3-获取prism" class="headerlink" title="3.  获取prism"></a>3.  获取prism</h3><p>下载页面：<a href="https://links.jianshu.com/go?to=https://prismjs.com/download.html">https://prismjs.com/download.html</a>；选择 theme 主题、language 支持的语言（不要选太多，够用就好）、plugin 插件（我选的是Line Numbers、Highlight Keywords，其他的看自己需求）；然后点击下载按钮就行了；下载到本地。将他们移动到对应的的位置，它们的路径分别是：</p><pre><code class="txt">项目根目录\themes\hexo-theme-matery\source\css\prism.css项目根目录\themes\hexo-theme-matery\source\js\prism.js</code></pre><h3 id="4-配置-prism"><a href="#4-配置-prism" class="headerlink" title="4.  配置 prism"></a>4.  配置 prism</h3><ol><li><p>修改\themes\hexo-theme-matery\layout_partial\footer.ejs`， 在尾部添加以下代码：</p><pre><code class="ejs">&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/prism.css&quot;&gt;</code></pre></li><li><p>修改 <code>\themes\hexo-theme-matery\layout\_partial\footer.ejs</code>，在尾部添加以下代码</p><pre><code class="ejs">&lt;script src=&quot;/js/prism.js&quot; async&gt;&lt;/script&gt;    </code></pre></li></ol><h3 id="5-测试prism"><a href="#5-测试prism" class="headerlink" title="5.  测试prism"></a>5.  测试prism</h3><pre><code class="git">hexo cleanhexo ghexo s</code></pre><p>大功告成！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 问题解决 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>126. 单词接龙 II(Hard)</title>
       <link href="2021/03/14/126-dan-ci-jie-long-ii-hard/"/>
       <url>2021/03/14/126-dan-ci-jie-long-ii-hard/</url>
