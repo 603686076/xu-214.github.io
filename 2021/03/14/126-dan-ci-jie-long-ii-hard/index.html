@@ -32,8 +32,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="xustudy" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+</head>
 
 <link rel="stylesheet" href="/css/prism.css">
 
@@ -390,14 +389,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    663
+                    871
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -412,6 +411,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -420,90 +422,88 @@
                 <h3 id="126-单词接龙-II"><a href="#126-单词接龙-II" class="headerlink" title="126. 单词接龙 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-ladder-ii/">126. 单词接龙 II</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个起始字符串和一个终止字符串，以及一个单词表，求是否可以将起始字符串每次改一个字符，直到改成终止字符串，且所有中间的修改过程表示的字符串都可以在单词表里找到。</p>
 <p>若存在，输出需要修改次数最少的所有更改方式。</p>
 <h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入是两个字符串，输出是一个二维字符串数组，表示每种字符串修改方式。</p>
-<pre class="line-numbers language-C++"><code class="language-C++">Input:
-beginWord = "hit", endWord = "cog",
-wordList = ["hot","dot","dog","lot","log","cog"]
+<pre class="language-C++" data-language="C++"><code class="language-C++">Input:
+beginWord &#x3D; &quot;hit&quot;, endWord &#x3D; &quot;cog&quot;,
+wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]
 Output:
-[["hit","hot","dot","dog","cog"],
-["hit","hot","lot","log","cog"]]
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+[[&quot;hit&quot;,&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;cog&quot;],
+[&quot;hit&quot;,&quot;hot&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]]</code></pre>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>我们可以把起始字符串、终止字符串、以及单词表里所有的字符串想象成节点。若两个字符串只有一个字符不同，那么它们相连。因为题目需要输出修改次数最少的所有修改方式，因此我们可以使用广度优先搜索，求得起始节点到终止节点的最短距离。</p>
 <p>我们同时还使用了一个小技巧：我们并不是直接从起始节点进行广度优先搜索，直到找到终止节点为止；而是从起始节点和终止节点分别进行广度优先搜索，每次只延展当前层节点数最少的那一端，这样我们可以减少搜索的总结点数。举例来说，假设最短距离为 4，如果我们只从一端搜索 4 层，总遍历节点数最多是 1 + 2 + 4 + 8 + 16 = 31；而如果我们从两端各搜索两层，总遍历节点数最多只有 2 × (1 + 2 + 4) = 14。</p>
 <p>在搜索结束后，我们还需要通过回溯法来重建所有可能的路径。</p>
-<pre class="line-numbers language-C++"><code class="language-C++">class Solution &#123;
+<pre class="language-C++" data-language="C++"><code class="language-C++">class Solution &#123;
 public:
-    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) &#123;
-        //ans用来存放最后的输出结果
-        vector<vector<string>> ans;
-        //dict用来以set的形式存放字典wordList
-        unordered_set<string> dict;
-        for (const auto& w: wordList) &#123;
+    vector&lt;vector&lt;string&gt;&gt; findLadders(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) &#123;
+        &#x2F;&#x2F;ans用来存放最后的输出结果
+        vector&lt;vector&lt;string&gt;&gt; ans;
+        &#x2F;&#x2F;dict用来以set的形式存放字典wordList
+        unordered_set&lt;string&gt; dict;
+        for (const auto&amp; w: wordList) &#123;
             dict.insert(w);
         &#125;
-        //如果字典里没有endList，直接返回结果
+        &#x2F;&#x2F;如果字典里没有endList，直接返回结果
         if (!dict.count(endWord)) &#123;
             return ans;
         &#125;
-        //删除字典里的beginWord和endWord
+        &#x2F;&#x2F;删除字典里的beginWord和endWord
         dict.erase(beginWord);
         dict.erase(endWord);
-        unordered_set<string> q1&#123;beginWord&#125;, q2&#123;endWord&#125;;
-        unordered_map<string, vector<string>> next;
-        bool reversed = false, found = false;
+        unordered_set&lt;string&gt; q1&#123;beginWord&#125;, q2&#123;endWord&#125;;
+        unordered_map&lt;string, vector&lt;string&gt;&gt; next;
+        bool reversed &#x3D; false, found &#x3D; false;
         while (!q1.empty()) &#123;
-                unordered_set <string> q;
-                for (const auto& w: q1) &#123;
-                    string s = w;
-                    for (size_t i = 0; i < s.size(); i++) &#123;
-                        char ch = s[i]; 
-                        for (int j = 0; j < 26; j++) &#123;
-                            s[i] = j + 'a';
+                unordered_set &lt;string&gt; q;
+                for (const auto&amp; w: q1) &#123;
+                    string s &#x3D; w;
+                    for (size_t i &#x3D; 0; i &lt; s.size(); i++) &#123;
+                        char ch &#x3D; s[i]; 
+                        for (int j &#x3D; 0; j &lt; 26; j++) &#123;
+                            s[i] &#x3D; j + &#39;a&#39;;
                             if (q2.count(s)) &#123;
                                 reversed ? next[s].push_back(w) : next[w].push_back(s); 
-                                found = true;
+                                found &#x3D; true;
                             &#125;
                             if (dict.count(s)) &#123;
                                 reversed ? next[s].push_back(w) : next[w].push_back(s);
                                 q.insert(s);
                             &#125;
                         &#125;
-                        s[i] = ch;
+                        s[i] &#x3D; ch;
                     &#125;
                 &#125;
                 if (found) &#123; 
                     break;
                 &#125;
-                for (const auto& w: q) &#123;
+                for (const auto&amp; w: q) &#123;
                     dict.erase(w);
                 &#125;
-                if (q.size() <= q2.size()) &#123;
-                    q1 = q;
+                if (q.size() &lt;&#x3D; q2.size()) &#123;
+                    q1 &#x3D; q;
                 &#125; else &#123; 
-                    reversed = !reversed;
-                    q1 = q2;
-                    q2 = q;
+                    reversed &#x3D; !reversed;
+                    q1 &#x3D; q2;
+                    q2 &#x3D; q;
                 &#125;
         &#125;
         if (found) &#123;
-            vector<string> path = &#123;beginWord&#125;;
+            vector&lt;string&gt; path &#x3D; &#123;beginWord&#125;;
             backtracking(beginWord, endWord, next, path, ans);
         &#125;
         return ans;
     &#125;
 
-    void backtracking(const string& src, const string& dst, unordered_map<string, vector<string>>& next, vector<string>& path,vector<vector<string>>& ans) &#123;
-        if (src == dst) &#123;
+    void backtracking(const string&amp; src, const string&amp; dst, unordered_map&lt;string, vector&lt;string&gt;&gt;&amp; next, vector&lt;string&gt;&amp; path,vector&lt;vector&lt;string&gt;&gt;&amp; ans) &#123;
+        if (src &#x3D;&#x3D; dst) &#123;
             ans.push_back(path);
             return;
         &#125;
-        for (const auto& s : next[src]) &#123;
+        for (const auto&amp; s : next[src]) &#123;
             path.push_back(s);
             backtracking(s, dst, next, path, ans);
             path.pop_back();
         &#125;
     &#125;
-&#125;;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;;</code></pre>
 
                 
             </div>
@@ -1095,7 +1095,7 @@ public:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.9k</span>&nbsp;字
+                class="white-color">2.1k</span>&nbsp;字
             
             
             
