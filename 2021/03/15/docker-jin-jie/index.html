@@ -382,21 +382,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-03-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    377
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    14 分
                 </div>
                 
 
@@ -416,7 +416,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><h3 id="1-概述（官方文档）"><a href="#1-概述（官方文档）" class="headerlink" title="1.概述（官方文档）"></a>1.概述（官方文档）</h3><blockquote>
+                <h1 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h1><h2 id="1-概述（官方文档）"><a href="#1-概述（官方文档）" class="headerlink" title="1.概述（官方文档）"></a>1.概述（官方文档）</h2><blockquote>
 <p><strong>Looking for Compose file reference?</strong> <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/compose-file/">Find the latest version here</a>.</p>
 </blockquote>
 <p>Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration. To learn more about all the features of Compose, see <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/#features">the list of features</a>.</p>
@@ -462,7 +462,7 @@ volumes:
 </li>
 </ul>
 <p>概括：使用yml文件通过单个命令执行多个服务、容器、应用。</p>
-<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><ol>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h2><ol>
 <li><p>官网地址 </p>
 <pre><code class="line-numbers language-shell">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.28.5/docker-        compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
 </code></pre>
@@ -483,7 +483,249 @@ volumes:
 </code></pre>
 </li>
 </ol>
-<p>​      </p>
+<h2 id="3-Get-started-with-Docker-Compose"><a href="#3-Get-started-with-Docker-Compose" class="headerlink" title="3.Get started with Docker Compose"></a>3.Get started with Docker Compose</h2><p><strong>官网很详细，直接跟着官网走</strong></p>
+<p><em>Estimated reading time: 11 minutes</em></p>
+<p>On this page you build a simple Python web application running on Docker Compose. The application uses the Flask framework and maintains a hit counter in Redis. While the sample uses Python, the concepts demonstrated here should be understandable even if you’re not familiar with it.</p>
+<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p>Make sure you have already installed both <a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">Docker Engine</a> and <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/install/">Docker Compose</a>. You don’t need to install Python or Redis, as both are provided by Docker images.</p>
+<h4 id="Step-1-Setup"><a href="#Step-1-Setup" class="headerlink" title="Step 1: Setup"></a>Step 1: Setup</h4><p>Define the application dependencies.</p>
+<ol>
+<li><p>Create a directory for the project:</p>
+<pre><code class="line-numbers language-shell">$ mkdir composetest
+$ cd composetest
+</code></pre>
+</li>
+<li><p>Create a file called <code>app.py</code> in your project directory and paste this in:</p>
+<pre><code class="line-numbers language-shell">import time
+
+import redis
+from flask import Flask
+
+app = Flask(__name__)
+cache = redis.Redis(host=&#39;redis&#39;, port=6379)
+
+def get_hit_count():
+    retries = 5
+    while True:
+        try:
+            return cache.incr(&#39;hits&#39;)
+        except redis.exceptions.ConnectionError as exc:
+            if retries == 0:
+                raise exc
+            retries -= 1
+            time.sleep(0.5)
+
+@app.route(&#39;/&#39;)
+def hello():
+    count = get_hit_count()
+    return &#39;Hello World! I have been seen &#123;&#125; times.\n&#39;.format(count)
+</code></pre>
+<p>In this example, <code>redis</code> is the hostname of the redis container on the application’s network. We use the default port for Redis, <code>6379</code>.</p>
+<blockquote>
+<p>Handling transient errors</p>
+<p>Note the way the <code>get_hit_count</code> function is written. This basic retry loop lets us attempt our request multiple times if the redis service is not available. This is useful at startup while the application comes online, but also makes our application more resilient if the Redis service needs to be restarted anytime during the app’s lifetime. In a cluster, this also helps handling momentary connection drops between nodes.</p>
+</blockquote>
+</li>
+<li><p>Create another file called <code>requirements.txt</code> in your project directory and paste this in:</p>
+<pre><code class="line-numbers language-shell">flask
+redis
+</code></pre>
+</li>
+</ol>
+<h4 id="Step-2-Create-a-Dockerfile"><a href="#Step-2-Create-a-Dockerfile" class="headerlink" title="Step 2: Create a Dockerfile"></a>Step 2: Create a Dockerfile</h4><p>In this step, you write a Dockerfile that builds a Docker image. The image contains all the dependencies the Python application requires, including Python itself.</p>
+<p>In your project directory, create a file named <code>Dockerfile</code> and paste the following:</p>
+<pre><code class="line-numbers language-shell">FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD [&quot;flask&quot;, &quot;run&quot;]
+</code></pre>
+<p>This tells Docker to:</p>
+<ul>
+<li>Build an image starting with the Python 3.7 image.</li>
+<li>Set the working directory to <code>/code</code>.</li>
+<li>Set environment variables used by the <code>flask</code> command.</li>
+<li>Install gcc and other dependencies</li>
+<li>Copy <code>requirements.txt</code> and install the Python dependencies.</li>
+<li>Add metadata to the image to describe that the container is listening on port 5000</li>
+<li>Copy the current directory <code>.</code> in the project to the workdir <code>.</code> in the image.</li>
+<li>Set the default command for the container to <code>flask run</code>.</li>
+</ul>
+<p>For more information on how to write Dockerfiles, see the <a target="_blank" rel="noopener" href="https://docs.docker.com/develop/">Docker user guide</a> and the <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a>.</p>
+<h4 id="Step-3-Define-services-in-a-Compose-file"><a href="#Step-3-Define-services-in-a-Compose-file" class="headerlink" title="Step 3: Define services in a Compose file"></a>Step 3: Define services in a Compose file</h4><p>Create a file called <code>docker-compose.yml</code> in your project directory and paste the following:</p>
+<pre><code class="line-numbers language-shell">version: &quot;3.3&quot; #官方写的3.9，但是会报错，改成3.3。
+services:
+  web:
+    build: .
+    ports:
+      - &quot;5000:5000&quot;
+  redis:
+    image: &quot;redis:alpine&quot;
+</code></pre>
+<p>This Compose file defines two services: <code>web</code> and <code>redis</code>.</p>
+<h4 id="Web-service"><a href="#Web-service" class="headerlink" title="Web service"></a>Web service</h4><p>The <code>web</code> service uses an image that’s built from the <code>Dockerfile</code> in the current directory. It then binds the container and the host machine to the exposed port, <code>5000</code>. This example service uses the default port for the Flask web server, <code>5000</code>.</p>
+<h4 id="Redis-service"><a href="#Redis-service" class="headerlink" title="Redis service"></a>Redis service</h4><p>The <code>redis</code> service uses a public <a target="_blank" rel="noopener" href="https://registry.hub.docker.com/_/redis/">Redis</a> image pulled from the Docker Hub registry.</p>
+<h4 id="Step-4-Build-and-run-your-app-with-Compose"><a href="#Step-4-Build-and-run-your-app-with-Compose" class="headerlink" title="Step 4: Build and run your app with Compose"></a>Step 4: Build and run your app with Compose</h4><ol>
+<li><p>From your project directory, start up your application by running <code>docker-compose up</code>.</p>
+<pre><code class="line-numbers language-shell">$ docker-compose up
+
+Creating network &quot;composetest_default&quot; with the default driver
+Creating composetest_web_1 ...
+Creating composetest_redis_1 ...
+Creating composetest_web_1
+Creating composetest_redis_1 ... done
+Attaching to composetest_web_1, composetest_redis_1
+web_1    |  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+redis_1  | 1:C 17 Aug 22:11:10.480 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis_1  | 1:C 17 Aug 22:11:10.480 # Redis version=4.0.1, bits=64, commit=00000000, modified=0, pid=1, just started
+redis_1  | 1:C 17 Aug 22:11:10.480 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+web_1    |  * Restarting with stat
+redis_1  | 1:M 17 Aug 22:11:10.483 * Running mode=standalone, port=6379.
+redis_1  | 1:M 17 Aug 22:11:10.483 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+web_1    |  * Debugger is active!
+redis_1  | 1:M 17 Aug 22:11:10.483 # Server initialized
+redis_1  | 1:M 17 Aug 22:11:10.483 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command &#39;echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled&#39; as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+web_1    |  * Debugger PIN: 330-787-903
+redis_1  | 1:M 17 Aug 22:11:10.483 * Ready to accept connections
+</code></pre>
+<p>Compose pulls a Redis image, builds an image for your code, and starts the services you defined. In this case, the code is statically copied into the image at build time.</p>
+<p><img src="/2021/03/15/docker-jin-jie/image-20210316001054382.png" alt="image-20210316001054382"></p>
+</li>
+<li><p>Enter <a target="_blank" rel="noopener" href="http://localhost:5000/">http://localhost:5000/</a> in a browser to see the application running.</p>
+<p>If you’re using Docker natively on Linux, Docker Desktop for Mac, or Docker Desktop for Windows, then the web app should now be listening on port 5000 on your Docker daemon host. Point your web browser to <a target="_blank" rel="noopener" href="http://localhost:5000/">http://localhost:5000</a> to find the <code>Hello World</code> message. If this doesn’t resolve, you can also try <a target="_blank" rel="noopener" href="http://127.0.0.1:5000/">http://127.0.0.1:5000</a>.</p>
+<p>If you’re using Docker Machine on a Mac or Windows, use <code>docker-machine ip MACHINE_VM</code> to get the IP address of your Docker host. Then, open <code>http://MACHINE_VM_IP:5000</code> in a browser.</p>
+<p>You should see a message in your browser saying:</p>
+<pre><code class="line-numbers language-shell">Hello World! I have been seen 1 times.
+</code></pre>
+<p><img src="/2021/03/15/docker-jin-jie/quick-hello-world-1.png" alt="hello world in browser"></p>
+</li>
+<li><p>Refresh the page.</p>
+<p>The number should increment.</p>
+<pre><code class="line-numbers language-shell">Hello World! I have been seen 2 times.
+</code></pre>
+<p><img src="/2021/03/15/docker-jin-jie/quick-hello-world-2.png" alt="hello world in browser"></p>
+<p><img src="/2021/03/15/docker-jin-jie/image-20210316001224217.png" alt="image-20210316001224217"></p>
+</li>
+<li><p>Switch to another terminal window, and type <code>docker image ls</code> to list local images.</p>
+<p>Listing images at this point should return <code>redis</code> and <code>web</code>.</p>
+<pre><code class="line-numbers language-shell">$ docker image ls
+
+REPOSITORY        TAG           IMAGE ID      CREATED        SIZE
+composetest_web   latest        e2c21aa48cc1  4 minutes ago  93.8MB
+python            3.4-alpine    84e6077c7ab6  7 days ago     82.5MB
+redis             alpine        9d8fa9aa0e5b  3 weeks ago    27.5MB
+</code></pre>
+<p>You can inspect images with <code>docker inspect &lt;tag or id&gt;</code>.</p>
+</li>
+<li><p>Stop the application, either by running <code>docker-compose down</code> from within your project directory in the second terminal, or by hitting CTRL+C in the original terminal where you started the app.</p>
+</li>
+</ol>
+<h4 id="Step-5-Edit-the-Compose-file-to-add-a-bind-mount"><a href="#Step-5-Edit-the-Compose-file-to-add-a-bind-mount" class="headerlink" title="Step 5: Edit the Compose file to add a bind mount"></a>Step 5: Edit the Compose file to add a bind mount</h4><p>Edit <code>docker-compose.yml</code> in your project directory to add a <a target="_blank" rel="noopener" href="https://docs.docker.com/storage/bind-mounts/">bind mount</a> for the <code>web</code> service:</p>
+<pre><code class="line-numbers language-shell">version: &quot;3.9&quot;
+services:
+  web:
+    build: .
+    ports:
+      - &quot;5000:5000&quot;
+    volumes:
+      - .:/code
+    environment:
+      FLASK_ENV: development
+  redis:
+    image: &quot;redis:alpine&quot;
+</code></pre>
+<p>The new <code>volumes</code> key mounts the project directory (current directory) on the host to <code>/code</code> inside the container, allowing you to modify the code on the fly, without having to rebuild the image. The <code>environment</code> key sets the <code>FLASK_ENV</code> environment variable, which tells <code>flask run</code> to run in development mode and reload the code on change. This mode should only be used in development.</p>
+<h4 id="Step-6-Re-build-and-run-the-app-with-Compose"><a href="#Step-6-Re-build-and-run-the-app-with-Compose" class="headerlink" title="Step 6: Re-build and run the app with Compose"></a>Step 6: Re-build and run the app with Compose</h4><p>From your project directory, type <code>docker-compose up</code> to build the app with the updated Compose file, and run it.</p>
+<pre><code class="line-numbers language-shell">$ docker-compose up
+
+Creating network &quot;composetest_default&quot; with the default driver
+Creating composetest_web_1 ...
+Creating composetest_redis_1 ...
+Creating composetest_web_1
+Creating composetest_redis_1 ... done
+Attaching to composetest_web_1, composetest_redis_1
+web_1    |  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+...
+</code></pre>
+<p>Check the <code>Hello World</code> message in a web browser again, and refresh to see the count increment.</p>
+<blockquote>
+<p>Shared folders, volumes, and bind mounts</p>
+<ul>
+<li>If your project is outside of the <code>Users</code> directory (<code>cd ~</code>), then you need to share the drive or location of the Dockerfile and volume you are using. If you get runtime errors indicating an application file is not found, a volume mount is denied, or a service cannot start, try enabling file or drive sharing. Volume mounting requires shared drives for projects that live outside of <code>C:\Users</code> (Windows) or <code>/Users</code> (Mac), and is required for <em>any</em> project on Docker Desktop for Windows that uses <a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers">Linux containers</a>. For more information, see <a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-mac/#file-sharing">File sharing</a> on Docker for Mac, and the general examples on how to <a target="_blank" rel="noopener" href="https://docs.docker.com/storage/volumes/">Manage data in containers</a>.</li>
+<li>If you are using Oracle VirtualBox on an older Windows OS, you might encounter an issue with shared folders as described in this <a target="_blank" rel="noopener" href="https://www.virtualbox.org/ticket/14920">VB trouble ticket</a>. Newer Windows systems meet the requirements for <a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/install/">Docker Desktop for Windows</a> and do not need VirtualBox.</li>
+</ul>
+</blockquote>
+<h4 id="Step-7-Update-the-application"><a href="#Step-7-Update-the-application" class="headerlink" title="Step 7: Update the application"></a>Step 7: Update the application</h4><p>Because the application code is now mounted into the container using a volume, you can make changes to its code and see the changes instantly, without having to rebuild the image.</p>
+<p>Change the greeting in <code>app.py</code> and save it. For example, change the <code>Hello World!</code> message to <code>Hello from Docker!</code>:</p>
+<pre><code class="line-numbers language-shell">return &#39;Hello from Docker! I have been seen &#123;&#125; times.\n&#39;.format(count)
+</code></pre>
+<p>Refresh the app in your browser. The greeting should be updated, and the counter should still be incrementing.</p>
+<p><img src="/2021/03/15/docker-jin-jie/quick-hello-world-3.png" alt="hello world in browser"></p>
+<h4 id="Step-8-Experiment-with-some-other-commands"><a href="#Step-8-Experiment-with-some-other-commands" class="headerlink" title="Step 8: Experiment with some other commands"></a>Step 8: Experiment with some other commands</h4><p>If you want to run your services in the background, you can pass the <code>-d</code> flag (for “detached” mode) to <code>docker-compose up</code> and use <code>docker-compose ps</code> to see what is currently running:</p>
+<pre><code class="line-numbers language-shell">$ docker-compose up -d
+
+Starting composetest_redis_1...
+Starting composetest_web_1...
+
+$ docker-compose ps
+
+       Name                      Command               State           Ports         
+-------------------------------------------------------------------------------------
+composetest_redis_1   docker-entrypoint.sh redis ...   Up      6379/tcp              
+composetest_web_1     flask run                        Up      0.0.0.0:5000-&gt;5000/tcp
+</code></pre>
+<p>The <code>docker-compose run</code> command allows you to run one-off commands for your services. For example, to see what environment variables are available to the <code>web</code> service:</p>
+<pre><code class="line-numbers language-shell">$ docker-compose run web env
+</code></pre>
+<p>See <code>docker-compose --help</code> to see other available commands. You can also install <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/completion/">command completion</a> for the bash and zsh shell, which also shows you available commands.</p>
+<p>If you started Compose with <code>docker-compose up -d</code>, stop your services once you’ve finished with them:</p>
+<pre><code class="line-numbers language-shell">$ docker-compose stop
+</code></pre>
+<p>You can bring everything down, removing the containers entirely, with the <code>down</code> command. Pass <code>--volumes</code> to also remove the data volume used by the Redis container:</p>
+<pre><code class="line-numbers language-shell">$ docker-compose down --volumes
+</code></pre>
+<p>At this point, you have seen the basics of how Compose works.</p>
+<h3 id="Where-to-go-next"><a href="#Where-to-go-next" class="headerlink" title="Where to go next"></a>Where to go next</h3><ul>
+<li>Next, try the <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/samples-for-compose/">Sample apps with Compose</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/compose/reference/">Explore the full list of Compose commands</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/compose/compose-file/">Compose configuration file reference</a></li>
+<li>To learn more about volumes and bind mounts, see <a target="_blank" rel="noopener" href="https://docs.docker.com/storage/">Manage data in Docker</a></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/search/?q=documentation">documentation</a>, <a target="_blank" rel="noopener" href="https://docs.docker.com/search/?q=docs">docs</a>, <a target="_blank" rel="noopener" href="https://docs.docker.com/search/?q=docker">docker</a>, <a target="_blank" rel="noopener" href="https://docs.docker.com/search/?q=compose">compose</a>, <a target="_blank" rel="noopener" href="https://docs.docker.com/search/?q=orchestration">orchestration</a>, <a target="_blank" rel="noopener" href="https://docs.docker.com/search/?q=containers">containers</a></p>
+<h2 id="4-整个过程的理解："><a href="#4-整个过程的理解：" class="headerlink" title="4.整个过程的理解："></a>4.整个过程的理解：</h2><p>1、应用app.py<br>2、Dockerfile应用打包为镜像<br>3、Docker-compose yaml文件 (定义整个服务，需要的环境。web、redis)完整的上线服务!</p>
+<p>4、启动compose 项目(docker-compose up)<br>流程:</p>
+<p>1、创建网络<br>2、执行Docker-compose yaml</p>
+<p>3、启动服务。<br>Docker-compose yaml<br>Creating composetest_web_1 … done    </p>
+<p>Creating composetest_redis_1 … done</p>
+<p>1、文件名composetest</p>
+<p>2、服务</p>
+<pre><code class="line-numbers language-shell">version: &quot;3.9&quot;
+services:
+  web:
+    build: .
+    ports:
+      - &quot;5000:5000&quot;
+  redis:
+    image: &quot;redis:alpine&quot;
+</code></pre>
+<p> 自动的默认规则?</p>
+<pre><code class="line-numbers language-shell">docker images
+</code></pre>
+<p>帮我们自动下载了</p>
+<p><img src="/2021/03/15/docker-jin-jie/image-20210316001522283.png" alt="image-20210316001522283"></p>
+<p>默认的服务名    文件名_服务名__num</p>
+<p>多个服务器。集群。A B _num    副本数量</p>
+<p>服务redis服务=&gt;4个副本。<br>集群状态。服务都不可能只有一个运行实例。弹性、10 HA高并发。kubectl service负载均衡。</p>
+<p>3、网络规则</p>
+<p><img src="/2021/03/15/docker-jin-jie/image-20210316001653394.png" alt="image-20210316001653394"></p>
+<p>10个服务=&gt;项目(项目中的内容都在同个网络下。域名访问)</p>
+<p><img src="/2021/03/15/docker-jin-jie/image-20210316001908298.png" alt="image-20210316001908298"></p>
+<p>如果在同一个网络下，我们可以直接通过域名访问。</p>
+<p>HA!(高可用)</p>
 
                 
             </div>
@@ -1075,7 +1317,7 @@ volumes:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3k</span>&nbsp;字
+                class="white-color">5.1k</span>&nbsp;字
             
             
             
