@@ -382,7 +382,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-14
+                    2021-03-15
                 </div>
                 
 
@@ -419,7 +419,7 @@
                 <h3 id="126-单词接龙-II"><a href="#126-单词接龙-II" class="headerlink" title="126. 单词接龙 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-ladder-ii/">126. 单词接龙 II</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个起始字符串和一个终止字符串，以及一个单词表，求是否可以将起始字符串每次改一个字符，直到改成终止字符串，且所有中间的修改过程表示的字符串都可以在单词表里找到。</p>
 <p>若存在，输出需要修改次数最少的所有更改方式。</p>
 <h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入是两个字符串，输出是一个二维字符串数组，表示每种字符串修改方式。</p>
-<pre class="line-numbers language-c++"><code class="language-c++">Input:
+<pre class="line-numbers language-C++"><code class="language-C++">Input:
 beginWord = "hit", endWord = "cog",
 wordList = ["hot","dot","dog","lot","log","cog"]
 Output:
@@ -429,7 +429,7 @@ Output:
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>我们可以把起始字符串、终止字符串、以及单词表里所有的字符串想象成节点。若两个字符串只有一个字符不同，那么它们相连。因为题目需要输出修改次数最少的所有修改方式，因此我们可以使用广度优先搜索，求得起始节点到终止节点的最短距离。</p>
 <p>我们同时还使用了一个小技巧：我们并不是直接从起始节点进行广度优先搜索，直到找到终止节点为止；而是从起始节点和终止节点分别进行广度优先搜索，每次只延展当前层节点数最少的那一端，这样我们可以减少搜索的总结点数。举例来说，假设最短距离为 4，如果我们只从一端搜索 4 层，总遍历节点数最多是 1 + 2 + 4 + 8 + 16 = 31；而如果我们从两端各搜索两层，总遍历节点数最多只有 2 × (1 + 2 + 4) = 14。</p>
 <p>在搜索结束后，我们还需要通过回溯法来重建所有可能的路径。</p>
-<pre class="line-numbers language-c++"><code class="language-c++">class Solution &#123;
+<pre class="line-numbers language-C++"><code class="language-C++">class Solution &#123;
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) &#123;
         //ans用来存放最后的输出结果
