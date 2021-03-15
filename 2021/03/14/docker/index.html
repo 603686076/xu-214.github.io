@@ -411,9 +411,6 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -425,7 +422,7 @@
 <p>容器之间可以有一个数据共享的技术！Docker容器中产生的数据，同步到本地！</p>
 <p>这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面！</p>
 <p><strong>总结一句话：容器的持久化和同步操作！容器间也是可以数据共享的！</strong></p>
-<h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><pre class="language-Shell" data-language="Shell"><code class="language-Shell">#1.启动容器mysql
+<h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">#1.启动容器mysql
 docker run -d -p 3310:3306 -v &#x2F;home&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d -v &#x2F;home&#x2F;mysql&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql -e MYSQL_ROOT_PASSWORD&#x3D;密码 --name mysql mysql:8.0.23
 
 #命令
@@ -437,13 +434,13 @@ docker run -d -p 3310:3306 -v &#x2F;home&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mys
 
 #2.查看容器的信息 docker inspect 容器id </code></pre>
 <p><img src="/2021/03/14/docker/image-20210314200223048.png" alt="image-20210314200223048"></p>
-<pre class="language-shell" data-language="shell"><code class="language-shell">-v &#x2F;home&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d 	#&#39;:&#39;前面是主机内地址， &#39;:&#39;后面是docker容器内地址</code></pre>
-<h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre class="language-shell" data-language="shell"><code class="language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">-v &#x2F;home&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d 	#&#39;:&#39;前面是主机内地址， &#39;:&#39;后面是docker容器内地址</code></pre>
+<h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载
 -v 容器内路径			#匿名挂载
 -v 卷名：容器内路径		  #具名挂载
 -v &#x2F;宿主机路径：容器内路径 #指定路径挂载 docker volume ls 是查看不到的</code></pre>
 <p>拓展</p>
-<pre class="language-shell" data-language="shell"><code class="language-shell"># 通过 -v 容器内路径： ro rw 改变读写权限
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 通过 -v 容器内路径： ro rw 改变读写权限
 ro #readonly 只读
 rw #readwrite 可读可写
 $ docker run -d -P --name nginx05 -v juming:&#x2F;etc&#x2F;nginx:ro nginx
