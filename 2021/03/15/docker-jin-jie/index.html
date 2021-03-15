@@ -389,7 +389,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    378
+                    377
                 </div>
                 
 
@@ -464,14 +464,15 @@ volumes:
 <p>概括：使用yml文件通过单个命令执行多个服务、容器、应用。</p>
 <h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h3><ol>
 <li><p>官网地址 </p>
-<pre><code class="line-numbers language-shell">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+<pre><code class="line-numbers language-shell">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.28.5/docker-        compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+</code></pre>
+</li>
+<li><p>国内镜像</p>
+<pre><code class="line-numbers language-shell">curl -L https://get.daocloud.io/docker/compose/releases/download/1.24.0/docker-        compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
 </code></pre>
 </li>
 </ol>
-<p>​    2.国内镜像</p>
-<pre><code class="line-numbers language-shell">  curl -L https://get.daocloud.io/docker/compose/releases/download/1.24.0/docker-        compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
-</code></pre>
-<p><img src="/2021/03/15/docker-jin-jie/study\blog\source_posts\Docker进阶\image-20210315185018091.png" alt="image-20210315185018091"></p>
+<p><img src="/2021/03/15/docker-jin-jie/Docker%E8%BF%9B%E9%98%B6%5Cimage-20210315185018091.png" alt="image-20210315185018091"></p>
 <ol start="3">
 <li><p>授权</p>
 <pre><code class="line-numbers language-shell">chmod +x /usr/local/bin/docker-compose
@@ -482,6 +483,7 @@ volumes:
 </code></pre>
 </li>
 </ol>
+<p>​      </p>
 
                 
             </div>
