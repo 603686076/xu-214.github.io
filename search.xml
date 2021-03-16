@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>打家劫舍-中等</title>
+      <link href="2021/03/16/da-jia-jie-she-zhong-deng/"/>
+      <url>2021/03/16/da-jia-jie-she-zhong-deng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="198-打家劫舍"><a href="#198-打家劫舍" class="headerlink" title="198. 打家劫舍"></a><a href="https://leetcode-cn.com/problems/house-robber/">198. 打家劫舍</a></h2><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol><li><p>动态规划 <code>dp[i] = max(dp[i-1], nums[i-1] + dp[i-2])。</code></p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int rob(vector&lt;int&gt;&amp; nums) &#123;        //  dp ---0, 1, 2, 3, 4, 5 ... ---        //nums ---   0, 1, 2, 3, 4 ... ---        if (nums.empty()) return 0;        int n = nums.size();        vector&lt;int&gt; dp(n + 1, 0);        dp[1] = nums[0];        for (int i = 2; i &lt;= n; ++i) &#123;            dp[i] = max(dp[i-1], nums[i-1] + dp[i-2]);        &#125;        return dp[n];    &#125;&#125;;</code></pre></li><li><p>进行空间压缩</p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int rob(vector&lt;int&gt;&amp; nums) &#123;        // cur ---0, 1, 2, 3, 4, 5 ... ---        //nums ---   0, 1, 2, 3, 4 ... ---        if (nums.empty()) return 0;        int n = nums.size();        int pre1 = 0, pre2 = nums[0], cur;        for (int i = 1; i &lt; n; ++i) &#123;            cur = max(pre2, pre1 + nums[i]);            pre1 = pre2;            pre2 = cur;        &#125;        return cur;    &#125;&#125;;</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>爬楼梯-简单</title>
+      <link href="2021/03/16/pa-lou-ti-jian-dan/"/>
+      <url>2021/03/16/pa-lou-ti-jian-dan/</url>
+      
+        <content type="html"><![CDATA[<h2 id="70-爬楼梯"><a href="#70-爬楼梯" class="headerlink" title="70. 爬楼梯"></a><a href="https://leetcode-cn.com/problems/climbing-stairs/">70. 爬楼梯</a></h2><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><h4 id="斐波那契数列百度百科："><a href="#斐波那契数列百度百科：" class="headerlink" title="斐波那契数列百度百科："></a>斐波那契数列百度百科：</h4><p>斐波那契数列（Fibonacci sequence），又称黄金分割数列，因数学家莱昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：<code>0、1、1、2、3、5、8、13、21、34、……</code>在数学上，斐波那契数列以如下被以递推的方法定义：<code>F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）</code>在现代物理、准晶体结构、化学等领域，斐波纳契数列都有直接的应用，为此，美国数学会从 1963 年起出版了以《斐波纳契数列季刊》为名的一份数学杂志，用于专门刊载这方面的研究成果。</p><h4 id="典型的斐波那契数列，采用动态规划"><a href="#典型的斐波那契数列，采用动态规划" class="headerlink" title="典型的斐波那契数列，采用动态规划"></a>典型的斐波那契数列，采用动态规划</h4><ol><li><p>数组，空间复杂度为 O(n）</p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int climbStairs(int n) &#123;        //从F(0)=1，F(1)=1，开始        // n---0、1、2、3、4、5、 6、 7、 8---        //dp---1、1、2、3、5、8、13、21、34---        if (n &lt;= 2) return n;        vector&lt;int&gt; dp(n+1, 1);        for (int i = 2; i &lt;= n; ++i) &#123;            dp[i] = dp[i-1] + dp[i-2];        &#125;        return dp[n];    &#125;&#125;;</code></pre></li><li><p>空间压缩，空间复杂度优化为 O(1) </p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int climbStairs(int n) &#123;        //典型的斐波那契数列        //  n---0、1、2、3、4、5、 6、 7、 8---        //cur---1、1、2、3、5、8、13、21、34---        if (n &lt;= 2) return n;        int pre2 = 1, pre1 = 1, cur;        for (int i = 2; i &lt;= n; ++i) &#123;            cur = pre1 + pre2;            pre1 = pre2;            pre2 = cur;         &#125;        return cur;    &#125;&#125;;</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux常用命令</title>
       <link href="2021/03/16/linux-chang-yong-ming-ling/"/>
       <url>2021/03/16/linux-chang-yong-ming-ling/</url>
