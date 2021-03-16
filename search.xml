@@ -8,7 +8,7 @@
       <link href="2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/"/>
       <url>2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/</url>
       
-        <content type="html"><![CDATA[<h2 id="413-等差数列划分"><a href="#413-等差数列划分" class="headerlink" title="413. 等差数列划分"></a><a href="https://leetcode-cn.com/problems/arithmetic-slices/">413. 等差数列划分</a></h2><p>引用题解：<a href="https://github.com/changgyhub/leetcode_101">https://github.com/changgyhub/leetcode_101</a></p><pre><code>1234123 234  1   2            1+2 = 312345123 234 345   1      2   3        1 + 2 + 3 = 6</code></pre><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个数组，求这个数组中连续且等差的子数组一共有多少个。</p><h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p>输入是一个一维数组，输出是满足等差条件的连续字数组个数。<br>Input: nums = [1,2,3,4]<br>Output: 3<br>在这个样例中，等差数列有 [1,2,3]、[2,3,4] 和 [1,2,3,4]。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这道题略微特殊，因为要求是等差数列，可以很自然的想到子数组必定满足 num[i] - num[i-1]<br>= num[i-1] - num[i-2]。然而由于我们对于 dp 数组的定义通常为以 i 结尾的，满足某些条件的子数<br>组数量，而等差子数组可以在任意一个位置终结，因此此题在最后需要对 dp 数组求和。</p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size();        if (n &lt; 3) return 0;        vector&lt;int&gt; dp(n, 0);        for (int i = 2; i &lt; n; ++i) &#123;            if (nums[i] - nums[i-1] == nums[i-1] - nums[i-2]) &#123;                dp[i] = dp[i-1] + 1;            &#125;        &#125;        return accumulate(dp.begin(), dp.end(), 0);    &#125;&#125;;</code></pre>]]></content>
+        <content type="html"><![CDATA[<h2 id="413-等差数列划分"><a href="#413-等差数列划分" class="headerlink" title="413. 等差数列划分"></a><a href="https://leetcode-cn.com/problems/arithmetic-slices/">413. 等差数列划分</a></h2><p>引用题解：<a href="https://github.com/changgyhub/leetcode_101">https://github.com/changgyhub/leetcode_101</a></p><pre><code class="line-numbers language-c++">1234123 234  1   2            1+2 = 312345123 234 345   1      2   3        1 + 2 + 3 = 6</code></pre><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个数组，求这个数组中连续且等差的子数组一共有多少个。</p><h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p>输入是一个一维数组，输出是满足等差条件的连续字数组个数。</p><pre><code class="line-numbers language-c++">Input: nums = [1,2,3,4]Output: 3</code></pre><p>在这个样例中，等差数列有 [1,2,3]、[2,3,4] 和 [1,2,3,4]。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这道题略微特殊，因为要求是等差数列，可以很自然的想到子数组必定满足 num[i] - num[i-1] = num[i-1] - num[i-2]。然而由于我们对于 dp 数组的定义通常为以 i 结尾的，满足某些条件的子数组数量，而等差子数组可以在任意一个位置终结，因此此题在最后需要对 dp 数组求和。</p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size();        if (n &lt; 3) return 0;        vector&lt;int&gt; dp(n, 0);        for (int i = 2; i &lt; n; ++i) &#123;            if (nums[i] - nums[i-1] == nums[i-1] - nums[i-2]) &#123;                dp[i] = dp[i-1] + 1;            &#125;        &#125;        return accumulate(dp.begin(), dp.end(), 0);    &#125;&#125;;</code></pre>]]></content>
       
       
       <categories>
@@ -29,7 +29,7 @@
     
     
     <entry>
-      <title>70.打家劫舍-中等</title>
+      <title>198.打家劫舍-中等</title>
       <link href="2021/03/16/198-da-jia-jie-she-zhong-deng/"/>
       <url>2021/03/16/198-da-jia-jie-she-zhong-deng/</url>
       
