@@ -389,14 +389,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    16 分
                 </div>
                 
 
@@ -726,6 +726,68 @@ services:
 <p><img src="/2021/03/15/docker-jin-jie/image-20210316001908298.png" alt="image-20210316001908298"></p>
 <p>如果在同一个网络下，我们可以直接通过域名访问。</p>
 <p>HA!(高可用)</p>
+<h2 id="5-yaml规则"><a href="#5-yaml规则" class="headerlink" title="5.yaml规则"></a>5.yaml规则</h2><h3 id="docker-compose-yaml-核心！"><a href="#docker-compose-yaml-核心！" class="headerlink" title="docker-compose.yaml 核心！"></a>docker-compose.yaml 核心！</h3><pre><code class="line-numbers language-yaml"># 3层！
+
+version: &#39;&#39; # 版本
+service: # 服务
+    服务1: web
+        # 服务配置
+        images
+        build
+        network
+        ...
+    服务2: redis
+        # 服务配置
+        images
+        build
+        network
+        ...
+    ...
+# 其他配置 卷、网络、全局规则
+volumes:
+networks:
+config:
+</code></pre>
+<h3 id="depends-on"><a href="#depends-on" class="headerlink" title="depends_on"></a>depends_on</h3><p>一个容器可能会依赖另一个容器， 通过depends_on可以配置启动顺序</p>
+<p><strong>即使设置了<code>depends_on</code>，那也只是控制容器开始启动的时间，不能控制容器启动完成的时间</strong></p>
+<pre><code class="line-numbers language-yaml">version: &quot;3.9&quot;
+services:
+  web:
+    build: .
+    depends_on:
+      - db
+      - redis
+  redis:
+    image: redis
+  db:
+    image: postgres
+</code></pre>
+<p>其他详情见官网：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/compose/compose-file/compose-file-v3/">https://docs.docker.com/compose/compose-file/compose-file-v3/</a></p>
+<h2 id="6-DockerFile构建过程"><a href="#6-DockerFile构建过程" class="headerlink" title="6.DockerFile构建过程"></a>6.DockerFile构建过程</h2><p>基础知识：</p>
+<p>1、每个保留关键字(指令）都是必须是大写字母</p>
+<p>2、执行从上到下顺序</p>
+<p>3、#表示注释</p>
+<p>4、每一个指令都会创建提交一个新的镜像曾，并提交！</p>
+<p><img src="/2021/03/15/docker-jin-jie/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEzMTc1Njk5Ny5wbmc" alt="img"></p>
+<p>Dockerfile是面向开发的，我们以后要发布项目，做镜像，就需要编写dockerfile文件，这个文件十分简单！</p>
+<p>Docker镜像逐渐成企业交付的标准，必须要掌握！</p>
+<p>DockerFile：构建文件，定义了一切的步骤，源代码</p>
+<p>DockerImages：通过DockerFile构建生成的镜像，最终发布和运行产品。</p>
+<h2 id="7-DockerFire的指令"><a href="#7-DockerFire的指令" class="headerlink" title="7.DockerFire的指令"></a>7.DockerFire的指令</h2><p><img src="/2021/03/15/docker-jin-jie/u=1722217816,1097532442&fm=11&gp=0.jpg" alt="img"></p>
+<pre><code class="line-numbers language-dockerfile">FROM                # 基础镜像，一切从这里开始构建
+MAINTAINER            # 镜像是谁写的， 姓名+邮箱
+RUN                    # 镜像构建的时候需要运行的命令
+ADD                    # 步骤，例如tomcat镜像，这个tomcat压缩包！添加内容 添加同目录
+WORKDIR                # 镜像的工作目录
+VOLUME                # 挂载的目录
+EXPOSE                # 保留端口配置
+CMD                    # 指定这个容器启动的时候要运行的命令，只有最后一个会生效，可被替代。
+ENTRYPOINT            # 指定这个容器启动的时候要运行的命令，可以追加命令
+ONBUILD                # 当构建一个被继承 DockerFile 这个时候就会运行ONBUILD的指令，触发指令。
+COPY                # 类似ADD，将我们文件拷贝到镜像中
+ENV                    # 构建的时候设置环境变量！
+</code></pre>
 
                 
             </div>
@@ -1317,7 +1379,7 @@ services:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.1k</span>&nbsp;字
+                class="white-color">5.6k</span>&nbsp;字
             
             
             
