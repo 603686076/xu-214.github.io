@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="爬楼梯-简单, xustudy">
+    <meta name="keywords" content="413. 等差数列划分-中等, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>爬楼梯-简单 | xustudy</title>
+    <title>413. 等差数列划分-中等 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -229,12 +229,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/46.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">爬楼梯-简单</h1>
+                    <h1 class="description center-align post-title">413. 等差数列划分-中等</h1>
                 </div>
             </div>
         </div>
@@ -382,14 +382,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-16
+                    2021-03-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    383
+                    307
                 </div>
                 
 
@@ -416,45 +416,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="70-爬楼梯"><a href="#70-爬楼梯" class="headerlink" title="70. 爬楼梯"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">70. 爬楼梯</a></h2><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><h4 id="斐波那契数列百度百科："><a href="#斐波那契数列百度百科：" class="headerlink" title="斐波那契数列百度百科："></a>斐波那契数列百度百科：</h4><p>斐波那契数列（Fibonacci sequence），又称黄金分割数列，因数学家莱昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：<code>0、1、1、2、3、5、8、13、21、34、……</code>在数学上，斐波那契数列以如下被以递推的方法定义：<code>F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）</code>在现代物理、准晶体结构、化学等领域，斐波纳契数列都有直接的应用，为此，美国数学会从 1963 年起出版了以《斐波纳契数列季刊》为名的一份数学杂志，用于专门刊载这方面的研究成果。</p>
-<h4 id="典型的斐波那契数列，采用动态规划"><a href="#典型的斐波那契数列，采用动态规划" class="headerlink" title="典型的斐波那契数列，采用动态规划"></a>典型的斐波那契数列，采用动态规划</h4><ol>
-<li><p>数组，空间复杂度为 O(n）</p>
+                <h2 id="413-等差数列划分"><a href="#413-等差数列划分" class="headerlink" title="413. 等差数列划分"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/arithmetic-slices/">413. 等差数列划分</a></h2><p>引用题解：<a target="_blank" rel="noopener" href="https://github.com/changgyhub/leetcode_101">https://github.com/changgyhub/leetcode_101</a></p>
+<pre><code>1234
+
+123 234
+  1   2            1+2 = 3
+
+12345
+
+123 234 345 
+
+  1      2   3        1 + 2 + 3 = 6
+</code></pre>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个数组，求这个数组中连续且等差的子数组一共有多少个。</p>
+<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p>输入是一个一维数组，输出是满足等差条件的连续字数组个数。<br>Input: nums = [1,2,3,4]<br>Output: 3<br>在这个样例中，等差数列有 [1,2,3]、[2,3,4] 和 [1,2,3,4]。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这道题略微特殊，因为要求是等差数列，可以很自然的想到子数组必定满足 num[i] - num[i-1]<br>= num[i-1] - num[i-2]。然而由于我们对于 dp 数组的定义通常为以 i 结尾的，满足某些条件的子数<br>组数量，而等差子数组可以在任意一个位置终结，因此此题在最后需要对 dp 数组求和。</p>
 <pre><code class="line-numbers language-c++">class Solution &#123;
 public:
-    int climbStairs(int n) &#123;
-        //从F(0)=1，F(1)=1，开始
-        // n---0、1、2、3、4、5、 6、 7、 8---
-        //dp---1、1、2、3、5、8、13、21、34---
-        if (n &lt;= 2) return n;
-        vector&lt;int&gt; dp(n+1, 1);
-        for (int i = 2; i &lt;= n; ++i) &#123;
-            dp[i] = dp[i-1] + dp[i-2];
+    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; nums) &#123;
+        int n = nums.size();
+        if (n &lt; 3) return 0;
+        vector&lt;int&gt; dp(n, 0);
+        for (int i = 2; i &lt; n; ++i) &#123;
+            if (nums[i] - nums[i-1] == nums[i-1] - nums[i-2]) &#123;
+                dp[i] = dp[i-1] + 1;
+            &#125;
         &#125;
-        return dp[n];
+        return accumulate(dp.begin(), dp.end(), 0);
     &#125;
 &#125;;
 </code></pre>
-</li>
-<li><p>空间压缩，空间复杂度优化为 O(1) </p>
-<pre><code class="line-numbers language-c++">class Solution &#123;
-public:
-    int climbStairs(int n) &#123;
-        //典型的斐波那契数列
-        //  n---0、1、2、3、4、5、 6、 7、 8---
-        //cur---1、1、2、3、5、8、13、21、34---
-        if (n &lt;= 2) return n;
-        int pre2 = 1, pre1 = 1, cur;
-        for (int i = 2; i &lt;= n; ++i) &#123;
-            cur = pre1 + pre2;
-            pre1 = pre2;
-            pre2 = cur; 
-        &#125;
-        return cur;
-    &#125;
-&#125;;
-</code></pre>
-</li>
-</ol>
 
                 
             </div>
@@ -481,7 +472,7 @@ public:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/16/pa-lou-ti-jian-dan/">https://xustudy.com/2021/03/16/pa-lou-ti-jian-dan/</a>
+                    <a href="https://xustudy.com/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/">https://xustudy.com/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -691,7 +682,7 @@ public:
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-16-22-48-37',
+        id: '2021-03-16-23-40-42',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -720,17 +711,18 @@ public:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/16/da-jia-jie-she-zhong-deng/">
+                <a href="/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="打家劫舍-中等">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="413. 等差数列划分-中等">
                         
-                        <span class="card-title">打家劫舍-中等</span>
+                        <span class="card-title">413. 等差数列划分-中等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -740,9 +732,9 @@ public:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -755,6 +747,7 @@ public:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -773,13 +766,13 @@ public:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/16/linux-chang-yong-ming-ling/">
+                <a href="/2021/03/16/198-da-jia-jie-she-zhong-deng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="Linux常用命令">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="70.打家劫舍-中等">
                         
-                        <span class="card-title">Linux常用命令</span>
+                        <span class="card-title">70.打家劫舍-中等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -796,8 +789,8 @@ public:
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    学习记录
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -807,8 +800,8 @@ public:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -1044,7 +1037,7 @@ public:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.6k</span>&nbsp;字
+                class="white-color">6.9k</span>&nbsp;字
             
             
             

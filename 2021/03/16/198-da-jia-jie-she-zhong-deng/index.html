@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux常用命令, xustudy">
+    <meta name="keywords" content="70.打家劫舍-中等, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Linux常用命令 | xustudy</title>
+    <title>70.打家劫舍-中等 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -229,12 +229,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/58.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux常用命令</h1>
+                    <h1 class="description center-align post-title">70.打家劫舍-中等</h1>
                 </div>
             </div>
         </div>
@@ -350,8 +350,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
                     </div>
@@ -362,8 +362,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
-                                学习记录
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -389,7 +389,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    401
+                    169
                 </div>
                 
 
@@ -416,44 +416,45 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="防火墙命令"><a href="#防火墙命令" class="headerlink" title="防火墙命令"></a>防火墙命令</h2><pre><code class="line-numbers language-shell"># 查看firewall服务状态
-systemctl status firewalld
-# 开启、重启、关闭、firewalld.service服务
-# 开启
-service firewalld start
-# 重启
-service firewalld restart
-# 关闭
-service firewalld stop
-# 查看防火墙规则
-firewall-cmd --list-all # 查看全部信息
-firewall-cmd --list-ports # 只看端口信息
-# 开启端口
-开端口命令：firewall-cmd --zone=public --add-port=8080/tcp --permanent
-重启防火墙：systemctl restart firewalld.service
-命令含义：
---zone #作用域
---add-port=80/tcp #添加端口，格式为：端口/通讯协议
---permanent #永久生效，没有此参数重启后失效
+                <h2 id="198-打家劫舍"><a href="#198-打家劫舍" class="headerlink" title="198. 打家劫舍"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber/">198. 打家劫舍</a></h2><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><ol>
+<li><p>动态规划 <code>dp[i] = max(dp[i-1], nums[i-1] + dp[i-2])。</code></p>
+<pre><code class="line-numbers language-c++">class Solution &#123;
+public:
+    int rob(vector&lt;int&gt;&amp; nums) &#123;
+        //  dp ---0, 1, 2, 3, 4, 5 ... ---
+        //nums ---   0, 1, 2, 3, 4 ... ---
+        if (nums.empty()) return 0;
+        int n = nums.size();
+        vector&lt;int&gt; dp(n + 1, 0);
+        dp[1] = nums[0];
+        for (int i = 2; i &lt;= n; ++i) &#123;
+            dp[i] = max(dp[i-1], nums[i-1] + dp[i-2]);
+        &#125;
+        return dp[n];
+    &#125;
+&#125;;
 </code></pre>
-<h2 id="系统目录结构"><a href="#系统目录结构" class="headerlink" title="系统目录结构"></a>系统目录结构</h2><blockquote>
-<ul>
-<li><p>/etc： 这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
 </li>
-<li><p>/home：用户的主目录，在Linux中，每个用户都有一个自己的目录一般该目录名是以用户的账号命名的。</p>
+<li><p>进行空间压缩</p>
+<pre><code class="line-numbers language-c++">class Solution &#123;
+public:
+    int rob(vector&lt;int&gt;&amp; nums) &#123;
+        // cur ---0, 1, 2, 3, 4, 5 ... ---
+        //nums ---   0, 1, 2, 3, 4 ... ---
+        if (nums.empty()) return 0;
+        int n = nums.size();
+        int pre1 = 0, pre2 = nums[0], cur;
+        for (int i = 1; i &lt; n; ++i) &#123;
+            cur = max(pre2, pre1 + nums[i]);
+            pre1 = pre2;
+            pre2 = cur;
+        &#125;
+        return cur;
+    &#125;
+&#125;;
+</code></pre>
 </li>
-<li><p>/opt：这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
-</li>
-<li><p>/root：该目录为系统管理员，也称作超级权限者的用户主目录。</p>
-</li>
-<li><p>/tmp：这个目录是用来存放一些临时文件的。用完即丢的文件，可以放在这个目录下，安装包！</p>
-</li>
-<li><p>/usr：这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于windows下的program files目录。</p>
-</li>
-<li><p>/var：这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
-</li>
-</ul>
-</blockquote>
+</ol>
 
                 
             </div>
@@ -480,7 +481,7 @@ firewall-cmd --list-ports # 只看端口信息
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/16/linux-chang-yong-ming-ling/">https://xustudy.com/2021/03/16/linux-chang-yong-ming-ling/</a>
+                    <a href="https://xustudy.com/2021/03/16/198-da-jia-jie-she-zhong-deng/">https://xustudy.com/2021/03/16/198-da-jia-jie-she-zhong-deng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -518,8 +519,8 @@ firewall-cmd --list-ports # 只看端口信息
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
                         </div>
@@ -690,7 +691,7 @@ firewall-cmd --list-ports # 只看端口信息
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-16-16-00-49',
+        id: '2021-03-16-23-26-30',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -723,13 +724,13 @@ firewall-cmd --list-ports # 只看端口信息
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/16/70-pa-lou-ti-jian-dan/">
+                <a href="/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/72.jpg" class="responsive-img" alt="70.爬楼梯-简单">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="413. 等差数列划分-中等">
                         
-                        <span class="card-title">70.爬楼梯-简单</span>
+                        <span class="card-title">413. 等差数列划分-中等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -772,13 +773,13 @@ firewall-cmd --list-ports # 只看端口信息
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/15/docker-jin-jie/">
+                <a href="/2021/03/16/70-pa-lou-ti-jian-dan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Docker进阶">
+                        <img src="/medias/featureimages/72.jpg" class="responsive-img" alt="70.爬楼梯-简单">
                         
-                        <span class="card-title">Docker进阶</span>
+                        <span class="card-title">70.爬楼梯-简单</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -789,14 +790,14 @@ firewall-cmd --list-ports # 只看端口信息
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    学习记录
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -806,8 +807,8 @@ firewall-cmd --list-ports # 只看端口信息
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
