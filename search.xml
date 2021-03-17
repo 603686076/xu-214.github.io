@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>413. 等差数列划分-中等</title>
-      <link href="2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/"/>
-      <url>2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/</url>
+      <title>91. 解码方法-中等</title>
+      <link href="2021/03/17/91-jie-ma-fang-fa-zhong-deng/"/>
+      <url>2021/03/17/91-jie-ma-fang-fa-zhong-deng/</url>
       
-        <content type="html"><![CDATA[<h2 id="413-等差数列划分"><a href="#413-等差数列划分" class="headerlink" title="413. 等差数列划分"></a><a href="https://leetcode-cn.com/problems/arithmetic-slices/">413. 等差数列划分</a></h2><p>引用题解：<a href="https://github.com/changgyhub/leetcode_101">https://github.com/changgyhub/leetcode_101</a></p><pre><code class="line-numbers language-c++">1234123 234  1   2            1+2 = 312345123 234 345   1      2   3        1 + 2 + 3 = 6</code></pre><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个数组，求这个数组中连续且等差的子数组一共有多少个。</p><h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p>输入是一个一维数组，输出是满足等差条件的连续字数组个数。</p><pre><code class="line-numbers language-c++">Input: nums = [1,2,3,4]Output: 3</code></pre><p>在这个样例中，等差数列有 [1,2,3]、[2,3,4] 和 [1,2,3,4]。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这道题略微特殊，因为要求是等差数列，可以很自然的想到子数组必定满足 num[i] - num[i-1] = num[i-1] - num[i-2]。然而由于我们对于 dp 数组的定义通常为以 i 结尾的，满足某些条件的子数组数量，而等差子数组可以在任意一个位置终结，因此此题在最后需要对 dp 数组求和。</p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size();        if (n &lt; 3) return 0;        vector&lt;int&gt; dp(n, 0);        for (int i = 2; i &lt; n; ++i) &#123;            if (nums[i] - nums[i-1] == nums[i-1] - nums[i-2]) &#123;                dp[i] = dp[i-1] + 1;            &#125;        &#125;        return accumulate(dp.begin(), dp.end(), 0);    &#125;&#125;;</code></pre>]]></content>
+        <content type="html"><![CDATA[<h2 id="91-解码方法"><a href="#91-解码方法" class="headerlink" title="91. 解码方法"></a><a href="https://leetcode-cn.com/problems/decode-ways/">91. 解码方法</a></h2><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>一共会有四种情况发生</p><ol><li><p><code>00 || [30, 40, 50, ...]</code>新来了0和前面那个一起构不成解码</p><p>合并解码和分开解码都不可</p><p>并且这两种情况都导致会出现以 0 开头的数字(00直接出现， [30, 40, 50, …]下一个来时出现)，由于没有字符映射到以 0 开头的数字，不合题意</p><p>则return 0;</p></li><li><p><code>[11, 19] || [21, 26]</code>新来了非0和前面那个一起构成解码</p><p>这两个数字有两种解码方式，即合并解码和分开解码，以11为例，可以解码为”K”或者”AA”</p><p>以22611为例</p><p>“K”可以和dp[i-2] 构成一次新的解码，即”(BZ， VF， BBF)K” =&gt;[(2 26) , (22 6), (2 2 6)]   11</p><p>“AA”可以使”A”和dp[i-1]构成一次解码，即”(BZA， VFA， BBFA)A” =&gt;[(2 26 1) , (22 6 1), (2 2 6 1)]   1</p><p>则求和：dp[i] = dp[i-2] + dp[i-1];</p></li><li><p><code>10 || 20</code> 新来了0和前面那个一起构成解码</p><p>这两个数字有一种解码方式，即合并解码，以10为例，可以解码为”J”</p><p>以22610为例</p><p>“J”可以和dp[i-2] 构成一次新的解码，即”(BZ， VF， BBF)J” =&gt;[(2 26) , (22 6), (2 2 6)]   10</p><p>则：dp[i] = dp[i-2];</p></li><li><p><code>[27, 29] </code>新来了非0和前面那个一起构不成解码</p><p>这两个数字有一种解码方式，即分开解码，以27为例，可以解码为”BG”</p><p>以22627为例</p><p>“BG”可以和dp[i-2] 构成一次新的解码，即”(BZ， VF， BBF)BG” =&gt;[(2 26) , (22 6), (2 2 6)]   27</p><p>则：dp[i] = dp[i-1];</p></li></ol><pre><code class="line-numbers language-c++">class Solution &#123;public:    int numDecodings(string s) &#123;        int n = s.length();        if (n == 0) return 0;        int prev = s[0] - &#39;0&#39;;        if (!prev) return 0;        if (n == 1) return 1;        vector&lt;int&gt; dp(n + 1, 1);        for (int i = 2; i &lt;= n; ++i) &#123;            int cur = s[i-1] - &#39;0&#39;;            //00 || [30, 40, 50, ...]新来了0和前面那个一起构不成解码            //这都导致会出现以 0 开头的数字(00直接出现， [30, 40, 50, ...]下一个来时出现)，不合题意，return 0.            if ((prev == 0 || prev &gt; 2) &amp;&amp; cur == 0) &#123;                return 0;            &#125;            //[10, 29]            if ((prev == 1) || prev == 2 &amp;&amp; cur &lt; 7) &#123;                //[11, 19] || [21, 26]新来了非0和前面那个一起构成解码                if (cur) &#123;                    dp[i] = dp[i-2] + dp[i-1];                &#125; else &#123;//10 || 20 新来了0和前面那个一起构成解码                    dp[i] = dp[i-2];                &#125;            &#125; else &#123;    //[27, 29] 新来了非0和前面那个一起构不成解码                       dp[i] = dp[i-1];            &#125;            prev = cur;        &#125;        return dp[n];    &#125;&#125;;</code></pre>]]></content>
       
       
       <categories>
@@ -21,6 +21,35 @@
         <tags>
             
             <tag> leetcode </tag>
+            
+            <tag> 搜索 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>413. 等差数列划分-中等</title>
+      <link href="2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/"/>
+      <url>2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="413-等差数列划分"><a href="#413-等差数列划分" class="headerlink" title="413. 等差数列划分"></a><a href="https://leetcode-cn.com/problems/arithmetic-slices/">413. 等差数列划分</a></h2><p>引用题解：<a href="https://github.com/changgyhub/leetcode_101">https://github.com/changgyhub/leetcode_101</a></p><pre><code class="line-numbers language-c++">动态规划过程：1234：123 234  1   2            1 + 2 = 312345：123 234 345   1   2   3     1 + 2 + 3 = 6    最后为什么要对 dp 数组求和？=&gt;return accumulate(dp.begin(), dp.end(), 0);    简单分析：        123有一个 123        234有两个 234， 1234        345有三个 345， 2345， 12345    所以要求和！</code></pre><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个数组，求这个数组中连续且等差的子数组一共有多少个。</p><h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p>输入是一个一维数组，输出是满足等差条件的连续字数组个数。</p><pre><code class="line-numbers language-c++">Input: nums = [1,2,3,4]Output: 3</code></pre><p>在这个样例中，等差数列有 [1,2,3]、[2,3,4] 和 [1,2,3,4]。</p><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这道题略微特殊，因为要求是等差数列，可以很自然的想到子数组必定满足 num[i] - num[i-1] = num[i-1] - num[i-2]。然而由于我们对于 dp 数组的定义通常为以 i 结尾的，满足某些条件的子数组数量，而等差子数组可以在任意一个位置终结，因此此题在最后需要对 dp 数组求和。</p><pre><code class="line-numbers language-c++">class Solution &#123;public:    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; nums) &#123;        int n = nums.size();        if (n &lt; 3) return 0;        vector&lt;int&gt; dp(n, 0);        for (int i = 2; i &lt; n; ++i) &#123;            if (nums[i] - nums[i-1] == nums[i-1] - nums[i-2]) &#123;                dp[i] = dp[i-1] + 1;            &#125;        &#125;        return accumulate(dp.begin(), dp.end(), 0);    &#125;&#125;;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -47,6 +76,8 @@
             
             <tag> leetcode </tag>
             
+            <tag> 动态规划 </tag>
+            
         </tags>
       
     </entry>
@@ -71,6 +102,8 @@
         <tags>
             
             <tag> leetcode </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -171,6 +204,8 @@
         <tags>
             
             <tag> leetcode </tag>
+            
+            <tag> 搜索 </tag>
             
         </tags>
       

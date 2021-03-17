@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker的学习使用记录, xustudy">
+    <meta name="keywords" content="91. 解码方法-中等, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Docker的学习使用记录 | xustudy</title>
+    <title>91. 解码方法-中等 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -229,12 +229,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/75.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/59.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker的学习使用记录</h1>
+                    <h1 class="description center-align post-title">91. 解码方法-中等</h1>
                 </div>
             </div>
         </div>
@@ -350,8 +350,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Docker/">
-                                <span class="chip bg-color">Docker</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%90%9C%E7%B4%A2/">
+                                <span class="chip bg-color">搜索</span>
                             </a>
                         
                     </div>
@@ -362,8 +366,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
-                                学习记录
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -375,28 +379,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-14
+                    2021-03-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-03-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    434
+                    640
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -416,40 +420,65 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="容器数据卷使用"><a href="#容器数据卷使用" class="headerlink" title="容器数据卷使用"></a>容器数据卷使用</h2><h3 id="什么是容器数据卷"><a href="#什么是容器数据卷" class="headerlink" title="什么是容器数据卷"></a>什么是容器数据卷</h3><p>将应用和环境打包成一个镜像！</p>
-<p>数据？如果数据都在容器中，那么我们容器删除，数据就会丢失！需求：数据可以持久化</p>
-<p>MySQL，容器删除了，删库跑路！需求：MySQL数据可以存储在本地！</p>
-<p>容器之间可以有一个数据共享的技术！Docker容器中产生的数据，同步到本地！</p>
-<p>这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面！</p>
-<p><strong>总结一句话：容器的持久化和同步操作！容器间也是可以数据共享的！</strong></p>
-<h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><pre><code class="line-numbers language-Shell">#1.启动容器mysql
-docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=密码 --name mysql mysql:8.0.23
-
-#命令
--d 后台运行
--p 端口映射
--v 卷挂载
--e 环境配置
--- name 容器名字
-
-#2.查看容器的信息 docker inspect 容器id 
-</code></pre>
-<p><img src="/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/image-20210314200223048.png" alt="image-20210314200223048"></p>
-<pre><code class="line-numbers language-shell">-v /home/mysql/conf:/etc/mysql/conf.d     #&#39;:&#39;前面是主机内地址， &#39;:&#39;后面是docker容器内地址
-</code></pre>
-<h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre><code class="line-numbers language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载
--v 容器内路径            #匿名挂载
--v 卷名：容器内路径          #具名挂载
--v /宿主机路径：容器内路径 #指定路径挂载 docker volume ls 是查看不到的
-</code></pre>
-<p>拓展</p>
-<pre><code class="line-numbers language-shell"># 通过 -v 容器内路径： ro rw 改变读写权限
-ro #readonly 只读
-rw #readwrite 可读可写
-$ docker run -d -P --name nginx05 -v juming:/etc/nginx:ro nginx
-$ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
-
-# ro 只要看到ro就说明这个路径只能通过宿主机来操作，容器内部是无法操作！
+                <h2 id="91-解码方法"><a href="#91-解码方法" class="headerlink" title="91. 解码方法"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/decode-ways/">91. 解码方法</a></h2><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>一共会有四种情况发生</p>
+<ol>
+<li><p><code>00 || [30, 40, 50, ...]</code>新来了0和前面那个一起构不成解码</p>
+<p>合并解码和分开解码都不可</p>
+<p>并且这两种情况都导致会出现以 0 开头的数字(00直接出现， [30, 40, 50, …]下一个来时出现)，由于没有字符映射到以 0 开头的数字，不合题意</p>
+<p>则return 0;</p>
+</li>
+<li><p><code>[11, 19] || [21, 26]</code>新来了非0和前面那个一起构成解码</p>
+<p>这两个数字有两种解码方式，即合并解码和分开解码，以11为例，可以解码为”K”或者”AA”</p>
+<p>以22611为例</p>
+<p>“K”可以和dp[i-2] 构成一次新的解码，即”(BZ， VF， BBF)K” =&gt;[(2 26) , (22 6), (2 2 6)]   11</p>
+<p>“AA”可以使”A”和dp[i-1]构成一次解码，即”(BZA， VFA， BBFA)A” =&gt;[(2 26 1) , (22 6 1), (2 2 6 1)]   1</p>
+<p>则求和：dp[i] = dp[i-2] + dp[i-1];</p>
+</li>
+<li><p><code>10 || 20</code> 新来了0和前面那个一起构成解码</p>
+<p>这两个数字有一种解码方式，即合并解码，以10为例，可以解码为”J”</p>
+<p>以22610为例</p>
+<p>“J”可以和dp[i-2] 构成一次新的解码，即”(BZ， VF， BBF)J” =&gt;[(2 26) , (22 6), (2 2 6)]   10</p>
+<p>则：dp[i] = dp[i-2];</p>
+</li>
+<li><p><code>[27, 29] </code>新来了非0和前面那个一起构不成解码</p>
+<p>这两个数字有一种解码方式，即分开解码，以27为例，可以解码为”BG”</p>
+<p>以22627为例</p>
+<p>“BG”可以和dp[i-2] 构成一次新的解码，即”(BZ， VF， BBF)BG” =&gt;[(2 26) , (22 6), (2 2 6)]   27</p>
+<p>则：dp[i] = dp[i-1];</p>
+</li>
+</ol>
+<pre><code class="line-numbers language-c++">class Solution &#123;
+public:
+    int numDecodings(string s) &#123;
+        int n = s.length();
+        if (n == 0) return 0;
+        int prev = s[0] - &#39;0&#39;;
+        if (!prev) return 0;
+        if (n == 1) return 1;
+        vector&lt;int&gt; dp(n + 1, 1);
+        for (int i = 2; i &lt;= n; ++i) &#123;
+            int cur = s[i-1] - &#39;0&#39;;
+            //00 || [30, 40, 50, ...]新来了0和前面那个一起构不成解码
+            //这都导致会出现以 0 开头的数字(00直接出现， [30, 40, 50, ...]下一个来时出现)，不合题意，return 0.
+            if ((prev == 0 || prev &gt; 2) &amp;&amp; cur == 0) &#123;
+                return 0;
+            &#125;
+            //[10, 29]
+            if ((prev == 1) || prev == 2 &amp;&amp; cur &lt; 7) &#123;
+                //[11, 19] || [21, 26]新来了非0和前面那个一起构成解码
+                if (cur) &#123;
+                    dp[i] = dp[i-2] + dp[i-1];
+                &#125; else &#123;//10 || 20 新来了0和前面那个一起构成解码
+                    dp[i] = dp[i-2];
+                &#125;
+            &#125; else &#123;    //[27, 29] 新来了非0和前面那个一起构不成解码       
+                dp[i] = dp[i-1];
+            &#125;
+            prev = cur;
+        &#125;
+        return dp[n];
+    &#125;
+&#125;;
 </code></pre>
 
                 
@@ -477,7 +506,7 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/">https://xustudy.com/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/</a>
+                    <a href="https://xustudy.com/2021/03/17/91-jie-ma-fang-fa-zhong-deng/">https://xustudy.com/2021/03/17/91-jie-ma-fang-fa-zhong-deng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -515,8 +544,12 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Docker/">
-                                    <span class="chip bg-color">Docker</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%90%9C%E7%B4%A2/">
+                                    <span class="chip bg-color">搜索</span>
                                 </a>
                             
                         </div>
@@ -687,7 +720,7 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-14-20-30-48',
+        id: '2021-03-17-15-58-06',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -716,17 +749,18 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/14/126-dan-ci-jie-long-ii-kun-nan/">
+                <a href="/2021/03/17/91-jie-ma-fang-fa-zhong-deng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="126.单词接龙 II-困难">
+                        <img src="/medias/featureimages/59.jpg" class="responsive-img" alt="91. 解码方法-中等">
                         
-                        <span class="card-title">126.单词接龙 II-困难</span>
+                        <span class="card-title">91. 解码方法-中等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -736,9 +770,9 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -751,6 +785,7 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -773,13 +808,13 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/">
+                <a href="/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/45.jpg" class="responsive-img" alt="Gitalk 评论登录 403 问题解决">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="413. 等差数列划分-中等">
                         
-                        <span class="card-title">Gitalk 评论登录 403 问题解决</span>
+                        <span class="card-title">413. 等差数列划分-中等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -790,14 +825,14 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="post-category">
-                                    问题解决
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -807,12 +842,12 @@ $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
-                        <span class="chip bg-color">转载</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>
