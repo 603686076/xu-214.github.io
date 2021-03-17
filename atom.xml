@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-17T08:53:24.770Z</updated>
+  <updated>2021-03-17T15:28:32.354Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据库基本指令练习</title>
+    <link href="https://xustudy.com/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/"/>
+    <id>https://xustudy.com/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/</id>
+    <published>2021-03-17T13:46:31.000Z</published>
+    <updated>2021-03-17T15:28:32.354Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;收集整理来自&lt;a href=&quot;https://www.w3schools.com/sql/exercise.asp&quot;&gt;https://www.w3schools.com/sql/exercise.asp&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;SQL-Select&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://xustudy.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="基本操作" scheme="https://xustudy.com/tags/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>91. 解码方法-中等</title>
