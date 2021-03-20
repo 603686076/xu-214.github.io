@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="Docker的学习使用记录, xustudy">
+    <meta name="keywords" content="SpringMVC执行流程, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Docker的学习使用记录 | xustudy</title>
+    <title>SpringMVC执行流程 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -229,12 +229,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/75.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/41.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Docker的学习使用记录</h1>
+                    <h1 class="description center-align post-title">SpringMVC执行流程</h1>
                 </div>
             </div>
         </div>
@@ -350,8 +350,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Docker/">
-                                <span class="chip bg-color">Docker</span>
+                            <a href="/tags/SpringMVC/">
+                                <span class="chip bg-color">SpringMVC</span>
                             </a>
                         
                     </div>
@@ -362,8 +362,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
-                                学习记录
+                            <a href="/categories/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                面试复习
                             </a>
                         
                     </div>
@@ -375,28 +375,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-14
+                    2021-03-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-03-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    799
+                    164
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -416,67 +416,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="容器数据卷使用"><a href="#容器数据卷使用" class="headerlink" title="容器数据卷使用"></a>容器数据卷使用</h2><h3 id="什么是容器数据卷"><a href="#什么是容器数据卷" class="headerlink" title="什么是容器数据卷"></a>什么是容器数据卷</h3><p>将应用和环境打包成一个镜像！</p>
-<p>数据？如果数据都在容器中，那么我们容器删除，数据就会丢失！需求：数据可以持久化</p>
-<p>MySQL，容器删除了，删库跑路！需求：MySQL数据可以存储在本地！</p>
-<p>容器之间可以有一个数据共享的技术！Docker容器中产生的数据，同步到本地！</p>
-<p>这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面！</p>
-<p><strong>总结一句话：容器的持久化和同步操作！容器间也是可以数据共享的！</strong></p>
-<h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><pre><code class="line-numbers language-Shell">#1.启动容器mysql
-docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=密码 --name mysql mysql:8.0.23
-
-#命令
--d 后台运行
--p 端口映射
--v 卷挂载
--e 环境配置
--- name 容器名字
-
-#2.查看容器的信息 docker inspect 容器id 
-</code></pre>
-<p><img src="/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/image-20210314200223048.png" alt="image-20210314200223048"></p>
-<pre><code class="line-numbers language-shell">-v /home/mysql/conf:/etc/mysql/conf.d     #&#39;:&#39;前面是主机内地址， &#39;:&#39;后面是docker容器内地址
-</code></pre>
-<h3 id="三种挂载方式"><a href="#三种挂载方式" class="headerlink" title="三种挂载方式"></a>三种挂载方式</h3><pre><code class="line-numbers language-shell"># 三种挂载： 匿名挂载、具名挂载、指定路径挂载
--v 容器内路径            #匿名挂载
--v 卷名：容器内路径          #具名挂载
--v /宿主机路径：容器内路径 #指定路径挂载 docker volume ls 是查看不到的
-</code></pre>
-<p>拓展</p>
-<pre><code class="line-numbers language-shell"># 通过 -v 容器内路径： ro rw 改变读写权限
-ro #readonly 只读
-rw #readwrite 可读可写
-$ docker run -d -P --name nginx05 -v juming:/etc/nginx:ro nginx
-$ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
-
-# ro 只要看到ro就说明这个路径只能通过宿主机来操作，容器内部是无法操作！
-</code></pre>
-<h2 id="docker启动关闭删除所有的容器命令"><a href="#docker启动关闭删除所有的容器命令" class="headerlink" title="docker启动关闭删除所有的容器命令"></a>docker启动关闭删除所有的容器命令</h2><p>1、启动所有容器</p>
-<pre><code class="line-numbers language-shell">docker start $(docker ps -a | awk &#39;&#123; print $1&#125;&#39; | tail -n +2)
-</code></pre>
-<p>2、关闭所有容器</p>
-<pre><code class="line-numbers language-shell">docker stop $(docker ps -a | awk &#39;&#123; print $1&#125;&#39; | tail -n +2)
-</code></pre>
-<p>3、删除所有容器</p>
-<pre><code class="line-numbers language-shell">docker rm $(docker ps -a | awk &#39;&#123; print $1&#125;&#39; | tail -n +2)
-</code></pre>
-<p>4、删除所有镜像（慎用）</p>
-<pre><code class="line-numbers language-shell">docker rmi $(docker images | awk &#39;&#123;print $3&#125;&#39; |tail -n +2)
-</code></pre>
-<h2 id="docker启动和关闭命令"><a href="#docker启动和关闭命令" class="headerlink" title="docker启动和关闭命令"></a>docker启动和关闭命令</h2><p>docker启动       </p>
-<pre><code class="line-numbers language-shell">systemctl start docker
-重启docker服务
-
-systemctl restart  docker
-关闭docker    
-
-systemctl stop docker
-查看是否启动成功
-
-docker ps -a
-</code></pre>
-<h2 id="启动tomcat"><a href="#启动tomcat" class="headerlink" title="启动tomcat"></a>启动tomcat</h2><p>进入tomcat bin目录后</p>
-<p>直接启动<code>./startup.sh </code><br>作为服务启动<code>nohup ./startup.sh &amp;</code><br>控制台动态输出方式启动<code> ./catalina.sh run</code> 动态地显示tomcat后台的控制台输出信息,Ctrl+C后退出并关闭服务<br>通过方式一、方式三启动的tomcat有个弊端，当客户端连接断开的时候，tomcat服务也会立即停止，通过方式二可以作为，linux服务一直运行。<br>通过方式一、方式二方式启动的tomcat，其日志会写到相应的日志文件中，而不能动态地查看tomcat控制台的输出信息与错误情况，然后还需要<code>tail -f catalina.out</code> ;Ctrl+c 退出tail命令.<br>     然后就是检测tomcat是否启动成功： <code>ps -aux | grep tomcat </code>。输出org.apache.catalina.startup.Bootstrap start说明启动成功，<code>kill    -9 进程号</code>可以杀死进程。</p>
+                <p>1.客户端（浏览器）输入url,直接发送请求到DispatcherServlet；</p>
+<p>2.DispatcherServlet根据请求调用HandlerMapping，请求解析到对应的Handler；</p>
+<p>3.解析到对应的Handler后， 由HandlerAdapter适配器处理；</p>
+<p>4.HandlerAdapter会根据Handler（也就是平常说的Controller控制器）调用真正的处理器处理请求，并处理相应的业务逻辑；</p>
+<p>5.处理完业务逻辑后，会返回一个ModelAndView对象， Model返回的是数据对象， View返回的是逻辑上的View；</p>
+<p>6.ViewResolver会根据逻辑View查找实际的View；</p>
+<p>7.DispatcherServlet把返回的Model传给View进行视图渲染；</p>
+<p>8.最后把View返回给请求者（浏览器）。</p>
 
                 
             </div>
@@ -503,7 +450,7 @@ docker ps -a
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/">https://xustudy.com/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/</a>
+                    <a href="https://xustudy.com/2021/03/19/springmvc-zhi-xing-liu-cheng/">https://xustudy.com/2021/03/19/springmvc-zhi-xing-liu-cheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,8 +488,8 @@ docker ps -a
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Docker/">
-                                    <span class="chip bg-color">Docker</span>
+                                <a href="/tags/SpringMVC/">
+                                    <span class="chip bg-color">SpringMVC</span>
                                 </a>
                             
                         </div>
@@ -713,7 +660,7 @@ docker ps -a
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-14-20-30-48',
+        id: '2021-03-19-20-29-09',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -746,13 +693,13 @@ docker ps -a
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/14/126-dan-ci-jie-long-ii-kun-nan/">
+                <a href="/2021/03/20/309-zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-zhong-deng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="126.单词接龙 II-困难">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="309. 最佳买卖股票时机含冷冻期-中等">
                         
-                        <span class="card-title">126.单词接龙 II-困难</span>
+                        <span class="card-title">309. 最佳买卖股票时机含冷冻期-中等</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -763,7 +710,7 @@ docker ps -a
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
                         </span>
                         <span class="publish-author">
                             
@@ -784,8 +731,8 @@ docker ps -a
                         <span class="chip bg-color">leetcode</span>
                     </a>
                     
-                    <a href="/tags/%E6%90%9C%E7%B4%A2/">
-                        <span class="chip bg-color">搜索</span>
+                    <a href="/tags/%E8%B4%AA%E5%BF%83/">
+                        <span class="chip bg-color">贪心</span>
                     </a>
                     
                 </div>
@@ -799,13 +746,13 @@ docker ps -a
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/">
+                <a href="/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/45.jpg" class="responsive-img" alt="Gitalk 评论登录 403 问题解决">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="数据库基本指令练习">
                         
-                        <span class="card-title">Gitalk 评论登录 403 问题解决</span>
+                        <span class="card-title">数据库基本指令练习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -816,14 +763,14 @@ docker ps -a
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="post-category">
-                                    问题解决
+                            <a href="/categories/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/" class="post-category">
+                                    面试复习
                                 </a>
                             
                             
@@ -833,12 +780,8 @@ docker ps -a
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BD%AC%E8%BD%BD/">
-                        <span class="chip bg-color">转载</span>
-                    </a>
-                    
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
