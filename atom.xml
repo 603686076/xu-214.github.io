@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-20T17:56:38.355Z</updated>
+  <updated>2021-03-21T10:30:47.072Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -17,29 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>309. 最佳买卖股票时机含冷冻期-中等</title>
-    <link href="https://xustudy.com/2021/03/20/309-zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-zhong-deng/"/>
-    <id>https://xustudy.com/2021/03/20/309-zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-zhong-deng/</id>
-    <published>2021-03-20T15:50:59.000Z</published>
-    <updated>2021-03-20T17:56:38.355Z</updated>
+    <title>面试复习</title>
+    <link href="https://xustudy.com/2021/03/21/mian-shi-fu-xi/"/>
+    <id>https://xustudy.com/2021/03/21/mian-shi-fu-xi/</id>
+    <published>2021-03-21T06:52:09.000Z</published>
+    <updated>2021-03-21T10:30:47.072Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;309-最佳买卖股票时机含冷冻期&quot;&gt;&lt;a href=&quot;#309-最佳买卖股票时机含冷冻期&quot; class=&quot;headerlink&quot; title=&quot;309. 最佳买卖股票时机含冷冻期&quot;&gt;&lt;/a&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;事务的四大特性（ACID）：&quot;&gt;&lt;a href=&quot;#事务的四大特性（ACID）：&quot; class=&quot;headerlink&quot; title=&quot;事务的四大特性（ACID）：&quot;&gt;&lt;/a&gt;事务的四大特性（ACID）：&lt;/h2&gt;&lt;p&gt;原子性：事务是最小的执行单位，</summary>
         
       
     
     
     
-    <category term="算法" scheme="https://xustudy.com/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="leetcode" scheme="https://xustudy.com/tags/leetcode/"/>
-    
-    <category term="贪心" scheme="https://xustudy.com/tags/%E8%B4%AA%E5%BF%83/"/>
+    <category term="面试复习" scheme="https://xustudy.com/tags/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
     
   </entry>
   

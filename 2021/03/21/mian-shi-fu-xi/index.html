@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="309. 最佳买卖股票时机含冷冻期-中等, xustudy">
+    <meta name="keywords" content="面试复习, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>309. 最佳买卖股票时机含冷冻期-中等 | xustudy</title>
+    <title>面试复习 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -229,12 +229,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/49.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">309. 最佳买卖股票时机含冷冻期-中等</h1>
+                    <h1 class="description center-align post-title">面试复习</h1>
                 </div>
             </div>
         </div>
@@ -350,12 +350,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/leetcode/">
-                                <span class="chip bg-color">leetcode</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%B4%AA%E5%BF%83/">
-                                <span class="chip bg-color">贪心</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/">
+                                <span class="chip bg-color">面试复习</span>
                             </a>
                         
                     </div>
@@ -366,8 +362,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                算法
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                学习记录
                             </a>
                         
                     </div>
@@ -379,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-03-21
                 </div>
                 
 
@@ -393,7 +389,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    424
+                    170
                 </div>
                 
 
@@ -420,39 +416,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="309-最佳买卖股票时机含冷冻期"><a href="#309-最佳买卖股票时机含冷冻期" class="headerlink" title="309. 最佳买卖股票时机含冷冻期"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">309. 最佳买卖股票时机含冷冻期</a></h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>还未写完，要改</p>
-<p>一共只有三种状态， 买入， 卖出， 冷冻期， 进行贪心+状态转换</p>
-<p>每天都考虑要买（贪心），求出最大收益；</p>
-<p><code>buy[i]</code>指当天贪心后的最大收益， <code>buy[i-1]</code>指前一天贪心后的最大收益， <code>sell[i]</code>指累计最大收益， <code>s2</code>指进入冷冻期</p>
-<p>通过buy[i] = max(s2 - prices[i], buy[i-1])贪心当天是否要买股票；</p>
-<ol>
-<li>当天买股票，即buy[i] = s2 - prices[i]， 由于sell[i] = buy[i] + prices[i]，  则sell[i] = s2 - prices[i] + prices[i] = s2， 则buy[i] 指当天买入后的最大收益（之后就要准备卖出了）， sell[i]相当于当天未买未卖后的累计最大收益；</li>
-<li>当天未买股票， 即buy[i] = buy[i-1]， 由于sell[i] = buy[i] + prices[i]，  则sell[i] = buy[i-1] + prices[i]，则buy[i] 指前一天的最大收益， 则sell[i]表明当天卖出后的累计最大收益；</li>
-</ol>
-<p>s2 = max(s2, sell[i-1])中，与前一天的累计最大收益比，求处于冷冻期中的累计最大收益</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="line-numbers language-c++">class Solution &#123;
-public:
-    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;
-        int n = prices.size();
-        if (n == 0) &#123;
-            return 0;
-        &#125;
-        vector&lt;int&gt; buy(n), sell(n);
-        int s1, s2;
-        buy[0] = -prices[0];
-        sell[0] = s2 = 0;
-        for (int i = 1; i &lt; n; i++) &#123;        
-            //手上持有股票的最大收益
-            buy[i] = max(s2 - prices[i], buy[i-1]); 
-              //手上不持有股票，并且不在冷冻期中的累计最大收益
-            sell[i] = buy[i] + prices[i];
-            //手上不持有股票，并且处于冷冻期中的累计最大收益
-            s2 = max(s2, sell[i-1]);
-        &#125;
-        return max(sell[n-1], s2);
-    &#125;
-&#125;;7
-</code></pre>
+                <h2 id="事务的四大特性（ACID）："><a href="#事务的四大特性（ACID）：" class="headerlink" title="事务的四大特性（ACID）："></a>事务的四大特性（ACID）：</h2><p>原子性：事务是最小的执行单位， 不允许分割。事务的原子性确保事务要么全部完成，要么全部都不起作用。</p>
+<p>一致性: 执行事务以后， 数据保持一致， 多个事务对同一个数据的读取的结果是相同的。</p>
+<p>隔离性：并发访问数据库时， 一个用户的事务不被其他事务所干扰， 各并发事务之间数据库是相互独立的。</p>
+<p>持久性：事务一旦提交， 它对数据库的数据改变是持久的， 即使数据库发生故障也不应该有任何影响。</p>
 
                 
             </div>
@@ -479,7 +446,7 @@ public:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/20/309-zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-zhong-deng/">https://xustudy.com/2021/03/20/309-zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-zhong-deng/</a>
+                    <a href="https://xustudy.com/2021/03/21/mian-shi-fu-xi/">https://xustudy.com/2021/03/21/mian-shi-fu-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -517,12 +484,8 @@ public:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/leetcode/">
-                                    <span class="chip bg-color">leetcode</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%B4%AA%E5%BF%83/">
-                                    <span class="chip bg-color">贪心</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/">
+                                    <span class="chip bg-color">面试复习</span>
                                 </a>
                             
                         </div>
@@ -693,7 +656,7 @@ public:
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-20-23-50-59',
+        id: '2021-03-21-14-52-09',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -727,13 +690,13 @@ public:
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/03/20/309-zui-jia-mai-mai-gu-piao-shi-ji-han-leng-dong-qi-zhong-deng/">
+                <a href="/2021/03/21/mian-shi-fu-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="309. 最佳买卖股票时机含冷冻期-中等">
+                        <img src="/medias/featureimages/49.jpg" class="responsive-img" alt="面试复习">
                         
-                        <span class="card-title">309. 最佳买卖股票时机含冷冻期-中等</span>
+                        <span class="card-title">面试复习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -744,14 +707,14 @@ public:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
                                 </a>
                             
                             
@@ -762,12 +725,8 @@ public:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%B4%AA%E5%BF%83/">
-                        <span class="chip bg-color">贪心</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/">
+                        <span class="chip bg-color">面试复习</span>
                     </a>
                     
                 </div>
@@ -1052,7 +1011,7 @@ public:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">9.8k</span>&nbsp;字
+                class="white-color">9.6k</span>&nbsp;字
             
             
             
