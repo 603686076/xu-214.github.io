@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-21T10:30:47.072Z</updated>
+  <updated>2021-03-23T14:04:01.996Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>面试复习</title>
-    <link href="https://xustudy.com/2021/03/21/mian-shi-fu-xi/"/>
-    <id>https://xustudy.com/2021/03/21/mian-shi-fu-xi/</id>
+    <title>计算机网络复习</title>
+    <link href="https://xustudy.com/2021/03/23/ji-suan-ji-wang-luo-fu-xi/"/>
+    <id>https://xustudy.com/2021/03/23/ji-suan-ji-wang-luo-fu-xi/</id>
+    <published>2021-03-23T13:55:10.000Z</published>
+    <updated>2021-03-23T14:04:01.996Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;OSI七层模型&quot;&gt;&lt;a href=&quot;#OSI七层模型&quot; class=&quot;headerlink&quot; title=&quot;OSI七层模型&quot;&gt;&lt;/a&gt;OSI七层模型&lt;/h2&gt;&lt;h3 id=&quot;应用层&quot;&gt;&lt;a href=&quot;#应用层&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="面试复习" scheme="https://xustudy.com/categories/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="计算机网络" scheme="https://xustudy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring复习</title>
+    <link href="https://xustudy.com/2021/03/23/spring-fu-xi/"/>
+    <id>https://xustudy.com/2021/03/23/spring-fu-xi/</id>
+    <published>2021-03-23T13:45:51.000Z</published>
+    <updated>2021-03-23T13:54:10.254Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;谈谈自己对Spring-IOC和AOP的区别&quot;&gt;&lt;a href=&quot;#谈谈自己对Spring-IOC和AOP的区别&quot; class=&quot;headerlink&quot; title=&quot;谈谈自己对Spring IOC和AOP的区别&quot;&gt;&lt;/a&gt;谈谈自己对Spring</summary>
+        
+      
+    
+    
+    
+    <category term="面试复习" scheme="https://xustudy.com/categories/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="Spring" scheme="https://xustudy.com/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库复习</title>
+    <link href="https://xustudy.com/2021/03/21/shu-ju-ku-fu-xi/"/>
+    <id>https://xustudy.com/2021/03/21/shu-ju-ku-fu-xi/</id>
     <published>2021-03-21T06:52:09.000Z</published>
-    <updated>2021-03-21T10:30:47.072Z</updated>
+    <updated>2021-03-24T02:03:27.392Z</updated>
     
     
       
@@ -34,10 +84,10 @@
     
     
     
-    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <category term="面试复习" scheme="https://xustudy.com/categories/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
     
     
-    <category term="面试复习" scheme="https://xustudy.com/tags/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
+    <category term="数据库" scheme="https://xustudy.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
