@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>使用 Nginx 部署前后端分离项目，解决跨域问题</title>
+      <link href="2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/"/>
+      <url>2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<h1 id="使用-Nginx-部署前后端分离项目，解决跨域问题"><a href="#使用-Nginx-部署前后端分离项目，解决跨域问题" class="headerlink" title="使用 Nginx 部署前后端分离项目，解决跨域问题"></a>使用 Nginx 部署前后端分离项目，解决跨域问题</h1><h3 id="1-不得不说的跨域"><a href="#1-不得不说的跨域" class="headerlink" title="1 不得不说的跨域"></a>1 不得不说的跨域</h3><p>很多人对前后端分离部署感到困惑，其实主要是困惑跨域问题怎么解决。因为前后端分离项目在开发的时候，前端通过 nodejs 来运行，需要一个单独的端口，后端通过 Tomcat 或者 Jetty 来运行，也需要端口，两个不同的端口，就造成了跨域。</p><p>但是松哥之前多次和大家聊过这个问题，这种跨域并不是我们传统开发中真正的跨域，这个所谓的跨域只在开发环境中存在，生产环境下就不存在这个跨域问题了。所以我们不能按照以往的通过 JSONP 或者 CORS 之类的手段来解决这个跨域问题。</p><p>前后端分离开发中，前端为了能够模拟出测试数据，并且模拟出请求，一般需要借助于 nodejs 来运行，这是开发时候的状态，开发时候的配置大家可以参考这篇文章：</p><ul><li><a href="https://mp.weixin.qq.com/s/szgfT3tnYMCHSeiE3_QnpA">前后端分离历险记</a></li></ul><p>等开发完成后，我们会对前端项目编译打包，编译打包完成之后，就只剩下一堆 js、css 以及 html 文件了，我们把这些编译打包后的文件拷贝到后端项目中，这样再去运行就不存在跨域问题了（例如将编译打包后的静态文件拷贝到 Spring Boot 项目的 <code>src/main/resources/static</code> 目录下）。这种方式我就不再多说了，相信大家都会，今天咱们主要来看看如何结合 Nginx 来部署。</p><h3 id="2-Nginx-大杀器"><a href="#2-Nginx-大杀器" class="headerlink" title="2 Nginx 大杀器"></a>2 Nginx 大杀器</h3><p>结合 Nginx 来部署前后端分离项目算是目前的主流方案。一来部署方便，二来通过动静分离也可以有效提高项目的运行效率。</p><p>大家知道我们项目中的资源包含动态资源和静态资源两种，其中：</p><ul><li>动态资源就是那些需要经过容器处理的资源，例如 jsp、freemarker、各种接口等。</li><li>静态资源则是那些不需要经过容器处理，收到客户端请求就可以直接返回的资源，像 js、css、html 以及各种格式的图片，都属于静态资源。</li></ul><p>将动静资源分开部署，可以有效提高静态资源的加载速度以及整个系统的运行效率。</p><p>在前后端分离项目部署中，我们用 Nginx 来做一个反向代理服务器，它既可以代理动态请求，也可以直接提供静态资源访问。我们来一起看下。建议大家先阅读松哥以前关于 Nginx 的一篇旧文，可以有效帮助大家理解后面的配置：</p><ul><li><a href="https://mp.weixin.qq.com/s/ZN07_3ImmyRU0NQaqzcazQ">Nginx 极简入门教程！</a></li></ul><h4 id="2-1-后端部署"><a href="#2-1-后端部署" class="headerlink" title="2.1 后端部署"></a>2.1 后端部署</h4><p>后端接口的部署，主要看项目的形式，如果就是普通的 SSM 项目，那就提前准备好 Tomcat ，在 Tomcat 中部署项目，如果是 Spring Boot 项目，可以通过命令直接启动 jar，如果是微服务项目，存在多个 jar 的话，可以结合 Docker 来部署（参考<a href="https://mp.weixin.qq.com/s/vSCQLvQBYMYoPhdlO2v3XA">一键部署 Spring Boot 到远程 Docker 容器</a>），无论是那种形式，对于我们 Java 工程师来说，这都不是问题，我相信这一步大家都能搞定。</p><p>后端项目可以在一个非 80 端口上部署，部署成功之后，因为这个后端项目只是提供接口，所以我们并不会直接去访问他。而是通过 Nginx 请求转发来访问这个后端接口。</p><p>松哥这里以我去年为一个律所的小程序为例，后端是一个 Spring Boot 工程，那么我可以通过 Docker 部署，也可以直接通过命令来启动，这里简单点，直接通过命令来启动 jar ，如下：</p><pre><code class="line-numbers language-shell">nohup java -jar jinlu.jar &gt; vhr.log &amp;</code></pre><p>后端启动成功之后，我并不急着直接去访问后端，而是安装并且去配置一个 Nginx，通过 Nginx 来转发请求，Nginx 的基本介绍与安装，大家可以参考（<a href="https://mp.weixin.qq.com/s/ZN07_3ImmyRU0NQaqzcazQ">Nginx 极简入门教程！</a>），我这里就直接来说相关的配置了。</p><p>这里我们在 nginx.conf 中做出如下配置：</p><p>首先配置上游服务器：</p><pre><code class="line-numbers language-shell">upstream zqq.com&#123;  server 127.0.0.1:9999 weight=2;&#125;</code></pre><p>在这里主要是配置服务端的地址，如果服务端是集群化部署，那么这里就会有多个服务端地址，然后可以通过权重或者 ip hash 等方式进行请求分发。</p><p>然后我们在 server 中配置转发规则：</p><pre><code class="line-numbers language-shell">location /jinlu/ &#123;  proxy_pass http://zqq.com;  tcp_nodelay     on;  proxy_set_header Host            $host;  proxy_set_header X-Real-IP       $remote_addr;  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;&#125;</code></pre><p>这样配置完成后，假设我目前的域名是 javaboy.org，那么用户通过 <code>http://www.javaboy.org/jinlu/**</code> 格式的地址就可以访问到我服务端的接口。</p><h4 id="2-2-前端部署"><a href="#2-2-前端部署" class="headerlink" title="2.2 前端部署"></a>2.2 前端部署</h4><p>以 Vue 为例，如果是 SPA 应用，项目打包之后，就是一个 index.html 还有几个 js、css、images 以及 fonts ，这些都是静态文件，我们将静态文件首先上传到服务器，然后在 nginx.conf 中配置静态资源访问，具体配置如下：</p><pre><code class="line-numbers language-shell">location ~ .*\.(js|css|ico|png|jpg|eot|svg|ttf|woff|html|txt|pdf|) &#123;   root /usr/local/nginx/html/;#所有静态文件直接读取硬盘   expires 30d; #缓存30天&#125; </code></pre><p>当然我这里是按照资源类型来拦截的，即后缀为 js、css、ico 等的文件，统统都不进行请求分发，直接从本地的 /usr/local/nginx/html/ 目录下读取并返回到前端（我们需要将静态资源文件上传到 <code>/usr/local/nginx/html/</code> 目录下）。</p><p>如果我们的服务器上部署了多个项目，这种写法就不太合适，因为多个项目的前端静态文件肯定要分门别类，各自放好的，这个时候我们一样可以通过路径来拦截，配置如下：</p><pre><code class="line-numbers language-shell">location /jinlu-admin/ &#123;   root /usr/local/nginx/html/jinlu-admin/;#所有静态文件直接读取硬盘   expires 30d; #缓存30天&#125; </code></pre><p>这样，请求路径是 /jinlu-admin/ 格式的请求，则不会进行请求分发，而是直接从本机的 <code>/usr/local/nginx/html/jinlu-admin/</code> 目录下返回相关资源。采用这方方式配置静态资源，我们就可以部署多个项目了，多个项目的部署方式和上面的一样。</p><p>这样部署完成之后，假设我的域名是 javaboy.org ，那么用户通过 <code>http://www.javaboy.org/jinlu-admin/**</code> 格式的请求就可以访问到前端资源了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 转载 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vhr-微人事</title>
       <link href="2021/03/27/vhr-wei-ren-shi/"/>
       <url>2021/03/27/vhr-wei-ren-shi/</url>

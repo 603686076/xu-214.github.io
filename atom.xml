@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-28T02:13:36.702Z</updated>
+  <updated>2021-03-28T10:26:27.430Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 Nginx 部署前后端分离项目，解决跨域问题</title>
+    <link href="https://xustudy.com/2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/"/>
+    <id>https://xustudy.com/2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/</id>
+    <published>2021-03-28T10:23:08.000Z</published>
+    <updated>2021-03-28T10:26:27.430Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;使用-Nginx-部署前后端分离项目，解决跨域问题&quot;&gt;&lt;a href=&quot;#使用-Nginx-部署前后端分离项目，解决跨域问题&quot; class=&quot;headerlink&quot; title=&quot;使用 Nginx 部署前后端分离项目，解决跨域问题&quot;&gt;&lt;/a&gt;使用 Nginx</summary>
+        
+      
+    
+    
+    
+    <category term="转载" scheme="https://xustudy.com/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+    <category term="Nginx" scheme="https://xustudy.com/tags/Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>vhr-微人事</title>
