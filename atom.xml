@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-23T14:04:01.996Z</updated>
+  <updated>2021-03-28T02:13:36.702Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vhr-微人事</title>
+    <link href="https://xustudy.com/2021/03/27/vhr-wei-ren-shi/"/>
+    <id>https://xustudy.com/2021/03/27/vhr-wei-ren-shi/</id>
+    <published>2021-03-27T13:15:56.000Z</published>
+    <updated>2021-03-28T02:13:36.702Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;快速部署&quot;&gt;&lt;a href=&quot;#快速部署&quot; class=&quot;headerlink&quot; title=&quot;快速部署&quot;&gt;&lt;/a&gt;快速部署&lt;/h2&gt;&lt;p&gt;项目地址+部署教程：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="项目" scheme="https://xustudy.com/categories/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="SpringBoot" scheme="https://xustudy.com/tags/SpringBoot/"/>
+    
+    <category term="Vue" scheme="https://xustudy.com/tags/Vue/"/>
+    
+    <category term="Redis" scheme="https://xustudy.com/tags/Redis/"/>
+    
+    <category term="RabbitMQ" scheme="https://xustudy.com/tags/RabbitMQ/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络复习</title>

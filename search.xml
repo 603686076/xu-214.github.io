@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>vhr-微人事</title>
+      <link href="2021/03/27/vhr-wei-ren-shi/"/>
+      <url>2021/03/27/vhr-wei-ren-shi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="快速部署"><a href="#快速部署" class="headerlink" title="快速部署"></a>快速部署</h2><p>项目地址+部署教程：<a href="https://github.com/lenve/vhr">https://github.com/lenve/vhr</a></p><h3 id="启动Redis"><a href="#启动Redis" class="headerlink" title="启动Redis"></a>启动Redis</h3><ol><li><p>进入命令行模式</p><pre><code class="line-numbers language-cmd">cmd G:\Environment\redis6</code></pre></li><li><p>启动Redis</p><pre><code class="line-numbers language-cmd">redis-server.exe redis.conf</code></pre></li></ol><h3 id="启动RabbitMQ"><a href="#启动RabbitMQ" class="headerlink" title="启动RabbitMQ"></a>启动RabbitMQ</h3><ol><li><p>查看运行状态</p><pre><code class="line-numbers language-cmd">rabbitmqctl status</code></pre></li><li><p>运行</p><pre><code class="line-numbers language-cmd">rabbitmq-server.bat</code></pre></li><li><p>启动成功访问地址<a href="http://localhost:15672/">http://localhost:15672</a></p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+            <tag> Vue </tag>
+            
+            <tag> Redis </tag>
+            
+            <tag> RabbitMQ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机网络复习</title>
       <link href="2021/03/23/ji-suan-ji-wang-luo-fu-xi/"/>
       <url>2021/03/23/ji-suan-ji-wang-luo-fu-xi/</url>
