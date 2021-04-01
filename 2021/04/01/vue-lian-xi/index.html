@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo代码高亮问题解决, xustudy">
+    <meta name="keywords" content="Vue练习, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>hexo代码高亮问题解决 | xustudy</title>
+    <title>Vue练习 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -242,12 +242,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hexo代码高亮问题解决</h1>
+                    <h1 class="description center-align post-title">Vue练习</h1>
                 </div>
             </div>
         </div>
@@ -361,25 +361,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="post-category">
-                                问题解决
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -388,28 +375,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-04-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-04-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    525
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -429,63 +416,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我的个人博客采用的是闪烁之狐大佬的主题<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">Matery</a></p>
-<p>最近发现我的文章代码无法高亮，寻找原因许久，终于解决！</p>
-<p>闪烁之狐大佬采用的代码高亮插件是<a target="_blank" rel="noopener" href="https://github.com/ele828/hexo-prism-plugin">hexo-prism-plugin</a>，我按照教程一步步来，但无法高亮，网上很多解决方案也试了，都没有解决问题。</p>
-<p>最后找到一篇博客<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f395d92a1110">Hexo博客：六、prism代码高亮</a>，终于解决了我的问题。</p>
-<p>本博客主题为<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">Matery</a>，上边解决问题的主题为next，不过问题不大，照葫芦画瓢，无非是文件位置和代码写法不一样。</p>
-<p>开动！！！</p>
-<h3 id="1-清除hexo-prism-plugin插件"><a href="#1-清除hexo-prism-plugin插件" class="headerlink" title="1. 清除hexo-prism-plugin插件"></a>1. 清除<a target="_blank" rel="noopener" href="https://github.com/ele828/hexo-prism-plugin">hexo-prism-plugin</a>插件</h3><ol>
-<li><p>打开根目录下的<code>package.json</code>文件，删除</p>
-<pre><code class="line-numbers language-shell">hexo-prism-plugin: &quot;^2.3.0&quot;,
-</code></pre>
-</li>
-<li><p>打开根目录下的<code>_config.yml</code>文件，删除</p>
-<pre><code class="line-numbers language-shell">prism_plugin:
-  mode: &#39;preprocess&#39;    # realtime/preprocess
-  theme: &#39;tomorrow&#39;
-  line_number: false    # default false
-  custom_css:
-</code></pre>
-</li>
-<li><p>删除<code>node_modules</code>文件中的<code>hexo-prism-plugin</code>文件夹</p>
-</li>
-</ol>
-<h3 id="2-禁用highlight"><a href="#2-禁用highlight" class="headerlink" title="2.  禁用highlight"></a>2.  禁用highlight</h3><p>打开根目录下的<code>_config.yml</code>文件，修改配置</p>
-<pre><code class="line-numbers language-yml">highlight:
-  enable: false
-  line_number: false
-  auto_detect: false
-  tab_replace: &#39;&#39;
-  wrap: false
-  hljs: false
-</code></pre>
-<h3 id="3-获取prism"><a href="#3-获取prism" class="headerlink" title="3.  获取prism"></a>3.  获取prism</h3><p>下载页面：<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://prismjs.com/download.html">https://prismjs.com/download.html</a>；选择 theme 主题、language 支持的语言（不要选太多，够用就好）、plugin 插件（我选的是Line Numbers、Highlight Keywords，其他的看自己需求）；然后点击下载按钮就行了；下载到本地。将他们移动到对应的的位置，它们的路径分别是：</p>
-<pre><code class="line-numbers language-txt">项目根目录\themes\hexo-theme-matery\source\css\prism.css
-
-项目根目录\themes\hexo-theme-matery\source\js\prism.js
-</code></pre>
-<h3 id="4-配置-prism"><a href="#4-配置-prism" class="headerlink" title="4.  配置 prism"></a>4.  配置 prism</h3><ol>
-<li><p>修改<code>\themes\hexo-theme-matery\layout\_partial\footer.ejs</code>， 在尾部添加以下代码：</p>
-<pre><code class="line-numbers language-ejs">&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/prism.css&quot;&gt;
-</code></pre>
-</li>
-<li><p>修改 <code>\themes\hexo-theme-matery\layout\_partial\footer.ejs</code>，在尾部添加以下代码</p>
-<pre><code class="line-numbers language-ejs">&lt;script src=&quot;/js/prism.js&quot; async&gt;&lt;/script&gt;    
-</code></pre>
-</li>
-</ol>
-<h3 id="5-修改博客配置"><a href="#5-修改博客配置" class="headerlink" title="5. 修改博客配置"></a>5. 修改博客配置</h3><p>打开根目录下的<code>_config.yml</code>文件，添加下面代码</p>
-<pre><code class="line-numbers language-yml">marked:
-  langPrefix: line-numbers language-
-</code></pre>
-<h3 id="6-测试prism"><a href="#6-测试prism" class="headerlink" title="6.  测试prism"></a>6.  测试prism</h3><pre><code class="line-numbers language-git">hexo clean
-hexo g
-hexo s
-</code></pre>
-<p>大功告成！！！</p>
-<p>这个问题解决了，烦心的事情又少了一件，终于可以快快乐乐的写博客了！</p>
-
+                
                 
             </div>
             <hr/>
@@ -511,7 +442,7 @@ hexo s
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/">https://xustudy.com/2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/</a>
+                    <a href="https://xustudy.com/2021/04/01/vue-lian-xi/">https://xustudy.com/2021/04/01/vue-lian-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -548,11 +479,7 @@ hexo s
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -721,7 +648,7 @@ hexo s
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-15-11-36-30',
+        id: '2021-04-01-17-45-24',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -750,66 +677,18 @@ hexo s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/15/docker-jin-jie/">
+                <a href="/2021/04/01/vue-lian-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="Docker进阶">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Vue练习">
                         
-                        <span class="card-title">Docker进阶</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    学习记录
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/03/14/126-dan-ci-jie-long-ii-kun-nan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/64.jpg" class="responsive-img" alt="126.单词接龙 II-困难">
-                        
-                        <span class="card-title">126.单词接龙 II-困难</span>
+                        <span class="card-title">Vue练习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -820,14 +699,52 @@ hexo s
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            xustudy
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/52.jpg" class="responsive-img" alt="使用 Nginx 部署前后端分离项目，解决跨域问题">
+                        
+                        <span class="card-title">使用 Nginx 部署前后端分离项目，解决跨域问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/%E8%BD%AC%E8%BD%BD/" class="post-category">
+                                    转载
                                 </a>
                             
                             
@@ -837,12 +754,8 @@ hexo s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%90%9C%E7%B4%A2/">
-                        <span class="chip bg-color">搜索</span>
+                    <a href="/tags/Nginx/">
+                        <span class="chip bg-color">Nginx</span>
                     </a>
                     
                 </div>

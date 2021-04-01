@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-03-28T10:26:27.430Z</updated>
+  <updated>2021-04-01T09:45:24.655Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue练习</title>
+    <link href="https://xustudy.com/2021/04/01/vue-lian-xi/"/>
+    <id>https://xustudy.com/2021/04/01/vue-lian-xi/</id>
+    <published>2021-04-01T09:45:24.000Z</published>
+    <updated>2021-04-01T09:45:24.655Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>使用 Nginx 部署前后端分离项目，解决跨域问题</title>
@@ -46,7 +59,7 @@
     <link href="https://xustudy.com/2021/03/27/vhr-wei-ren-shi/"/>
     <id>https://xustudy.com/2021/03/27/vhr-wei-ren-shi/</id>
     <published>2021-03-27T13:15:56.000Z</published>
-    <updated>2021-03-31T13:18:46.711Z</updated>
+    <updated>2021-04-01T09:49:20.081Z</updated>
     
     
       
