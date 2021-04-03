@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-04-01T09:45:24.655Z</updated>
+  <updated>2021-04-03T01:49:33.961Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MS</title>
+    <link href="https://xustudy.com/2021/04/03/ms/"/>
+    <id>https://xustudy.com/2021/04/03/ms/</id>
+    <published>2021-04-03T01:44:06.000Z</published>
+    <updated>2021-04-03T01:49:33.961Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;get与post请求的区别，post的安全性体现在那里，是否可以发现他的请求内容&quot;&gt;&lt;a href=&quot;#get与post请求的区别，post的安全性体现在那里，是否可以发现他的请求内容&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="MS" scheme="https://xustudy.com/tags/MS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker常用命令</title>
+    <link href="https://xustudy.com/2021/04/01/docker-chang-yong-ming-ling/"/>
+    <id>https://xustudy.com/2021/04/01/docker-chang-yong-ming-ling/</id>
+    <published>2021-04-01T14:30:24.000Z</published>
+    <updated>2021-04-01T14:36:25.918Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;进入容器&lt;/p&gt;
+&lt;p&gt;docker exec -it mysql</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Docker常用命令" scheme="https://xustudy.com/tags/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue练习</title>
@@ -59,7 +110,7 @@
     <link href="https://xustudy.com/2021/03/27/vhr-wei-ren-shi/"/>
     <id>https://xustudy.com/2021/03/27/vhr-wei-ren-shi/</id>
     <published>2021-03-27T13:15:56.000Z</published>
-    <updated>2021-04-01T09:57:22.343Z</updated>
+    <updated>2021-04-03T01:48:16.768Z</updated>
     
     
       
@@ -90,7 +141,7 @@
     <link href="https://xustudy.com/2021/03/19/springmvc-zhi-xing-liu-cheng/"/>
     <id>https://xustudy.com/2021/03/19/springmvc-zhi-xing-liu-cheng/</id>
     <published>2021-03-19T12:29:09.000Z</published>
-    <updated>2021-03-19T12:40:27.594Z</updated>
+    <updated>2021-04-03T01:45:41.151Z</updated>
     
     
       
@@ -105,7 +156,7 @@
     
     
     
-    <category term="面试复习" scheme="https://xustudy.com/categories/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     
     <category term="SpringMVC" scheme="https://xustudy.com/tags/SpringMVC/"/>
@@ -117,7 +168,7 @@
     <link href="https://xustudy.com/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/"/>
     <id>https://xustudy.com/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/</id>
     <published>2021-03-17T13:46:31.000Z</published>
-    <updated>2021-03-19T12:30:29.339Z</updated>
+    <updated>2021-04-03T01:50:23.124Z</updated>
     
     
       
@@ -131,7 +182,7 @@
     
     
     
-    <category term="面试复习" scheme="https://xustudy.com/categories/%E9%9D%A2%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     
     <category term="数据库" scheme="https://xustudy.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
