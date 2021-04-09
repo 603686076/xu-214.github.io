@@ -70,27 +70,6 @@ CREATE</summary>
   </entry>
   
   <entry>
-    <title>MS</title>
-    <link href="https://xustudy.com/2021/04/03/ms/"/>
-    <id>https://xustudy.com/2021/04/03/ms/</id>
-    <published>2021-04-03T01:44:06.000Z</published>
-    <updated>2021-04-03T01:49:33.961Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;get与post请求的区别，post的安全性体现在那里，是否可以发现他的请求内容&quot;&gt;&lt;a href=&quot;#get与post请求的区别，post的安全性体现在那里，是否可以发现他的请求内容&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Docker常用命令</title>
     <link href="https://xustudy.com/2021/04/01/docker-chang-yong-ming-ling/"/>
     <id>https://xustudy.com/2021/04/01/docker-chang-yong-ming-ling/</id>
@@ -247,9 +226,9 @@ CREATE</summary>
     <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="数据库" scheme="https://xustudy.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
     <category term="MySQL" scheme="https://xustudy.com/tags/MySQL/"/>
+    
+    <category term="数据库" scheme="https://xustudy.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -285,7 +264,7 @@ CREATE</summary>
     <link href="https://xustudy.com/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/"/>
     <id>https://xustudy.com/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/</id>
     <published>2021-03-16T15:40:42.000Z</published>
-    <updated>2021-03-17T02:39:55.716Z</updated>
+    <updated>2021-04-09T10:25:29.805Z</updated>
     
     
       
