@@ -363,8 +363,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-                                <span class="chip bg-color">Docker常用命令</span>
+                            <a href="/tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
                             </a>
                         
                     </div>
@@ -395,14 +395,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-01
+                    2021-04-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10
+                    53
                 </div>
                 
 
@@ -430,7 +430,16 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>进入容器</p>
-<p>docker exec -it mysql bin/bash</p>
+<pre><code class="line-numbers language-shell">docker exec -it mysql bin/bash
+</code></pre>
+<p>容器数据卷挂载示例</p>
+<pre><code class="line-numbers language-shell">docker run -p 3306:3306 --name mysql \
+-v /mydata/mysql/log:/var/log/mysql \
+-v /mydata/mysql/data:/var/lib/mysql \
+-v /mydata/mysql/conf:/etc/mysql \
+-e MYSQL_ROOT_PASSWORD=root \
+-d mysql:5.7
+</code></pre>
 
                 
             </div>
@@ -495,8 +504,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-                                    <span class="chip bg-color">Docker常用命令</span>
+                                <a href="/tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
                                 </a>
                             
                         </div>
@@ -749,13 +758,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/01/vue-lian-xi/">
+                <a href="/2021/04/01/jvm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Vue练习">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="JVM">
                         
-                        <span class="card-title">Vue练习</span>
+                        <span class="card-title">JVM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -770,11 +779,23 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            xustudy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1008,7 +1029,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.9k</span>&nbsp;字
+                class="white-color">26.5k</span>&nbsp;字
             
             
             

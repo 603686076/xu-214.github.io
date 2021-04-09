@@ -1,9 +1,10 @@
+https://xustudy.com/2021/04/09/cong-readwritelock-dao-java-suo/
 https://xustudy.com/2021/04/03/ms/
 https://xustudy.com/2021/04/01/docker-chang-yong-ming-ling/
-https://xustudy.com/2021/04/01/vue-lian-xi/
+https://xustudy.com/2021/04/01/jvm/
 https://xustudy.com/2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/
 https://xustudy.com/2021/03/27/vhr-wei-ren-shi/
-https://xustudy.com/2021/03/19/springmvc-zhi-xing-liu-cheng/
+https://xustudy.com/2021/03/19/springmvc/
 https://xustudy.com/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/
 https://xustudy.com/2021/03/17/91-jie-ma-fang-fa-zhong-deng/
 https://xustudy.com/2021/03/16/413-deng-chai-shu-lie-hua-fen-zhong-deng/

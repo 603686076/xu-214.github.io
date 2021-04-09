@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringMVC执行流程, xustudy">
+    <meta name="keywords" content="从ReadWriteLock到Java锁, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SpringMVC执行流程 | xustudy</title>
+    <title>从ReadWriteLock到Java锁 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -242,12 +242,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/44.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SpringMVC执行流程</h1>
+                    <h1 class="description center-align post-title">从ReadWriteLock到Java锁</h1>
                 </div>
             </div>
         </div>
@@ -363,8 +363,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringMVC/">
-                                <span class="chip bg-color">SpringMVC</span>
+                            <a href="/tags/Java%E9%94%81/">
+                                <span class="chip bg-color">Java锁</span>
                             </a>
                         
                     </div>
@@ -388,28 +388,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-19
+                    2021-04-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-03
+                    2021-04-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    164
+                    6.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    23 分
                 </div>
                 
 
@@ -429,14 +429,301 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1.客户端（浏览器）输入url,直接发送请求到DispatcherServlet；</p>
-<p>2.DispatcherServlet根据请求调用HandlerMapping，请求解析到对应的Handler；</p>
-<p>3.解析到对应的Handler后， 由HandlerAdapter适配器处理；</p>
-<p>4.HandlerAdapter会根据Handler（也就是平常说的Controller控制器）调用真正的处理器处理请求，并处理相应的业务逻辑；</p>
-<p>5.处理完业务逻辑后，会返回一个ModelAndView对象， Model返回的是数据对象， View返回的是逻辑上的View；</p>
-<p>6.ViewResolver会根据逻辑View查找实际的View；</p>
-<p>7.DispatcherServlet把返回的Model传给View进行视图渲染；</p>
-<p>8.最后把View返回给请求者（浏览器）。</p>
+                <h2 id="可重入锁详解"><a href="#可重入锁详解" class="headerlink" title="可重入锁详解"></a>可重入锁详解</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>什么是 “可重入”，可重入就是说某个线程已经获得某个锁，可以再次获取锁而不会出现死锁。</p>
+<pre><code class="line-numbers language-java">package com.xu.lock;
+
+// 演示可重入锁是什么意思，可重入，就是可以重复获取相同的锁，synchronized和ReentrantLock都是可重入的
+// 可重入降低了编程复杂性
+public class WhatReentrant &#123;
+    public static void main(String[] args) &#123;
+        new Thread(new Runnable() &#123;
+            @Override
+            public void run() &#123;
+                synchronized (this) &#123;
+                    System.out.println(&quot;第1次获取锁，这个锁是：&quot; + this);
+                    int index = 1;
+                    while (true) &#123;
+                        synchronized (this) &#123;
+                            System.out.println(&quot;第&quot; + (++index) + &quot;次获取锁，这个锁是：&quot; + this);
+                        &#125;
+                        if (index == 10) &#123;
+                            break;
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;).start();
+    &#125;
+&#125;
+</code></pre>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617934588759-f84e34fd-e4d6-4663-9233-8f6dbe273c04.png" alt="image.png"></p>
+<pre><code class="line-numbers language-java">package com.xu.lock;
+
+import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
+
+// 演示可重入锁是什么意思
+public class WhatReentrant2 &#123;
+    public static void main(String[] args) &#123;
+        ReentrantLock lock = new ReentrantLock();
+        
+        new Thread(new Runnable() &#123;
+            @Override
+            public void run() &#123;
+                try &#123;
+                    lock.lock();
+                    System.out.println(&quot;第1次获取锁，这个锁是：&quot; + lock);
+
+                    int index = 1;
+                    while (true) &#123;
+                        try &#123;
+                            lock.lock();
+                            System.out.println(&quot;第&quot; + (++index) + &quot;次获取锁，这个锁是：&quot; + lock);
+                            
+                            try &#123;
+                                Thread.sleep(new Random().nextInt(200));
+                            &#125; catch (InterruptedException e) &#123;
+                                e.printStackTrace();
+                            &#125;
+                            
+                            if (index == 10) &#123;
+                                break;
+                            &#125;
+                        &#125; finally &#123;
+                            lock.unlock();
+                        &#125;
+
+                    &#125;
+
+                &#125; finally &#123;
+                    lock.unlock();
+                &#125;
+            &#125;
+        &#125;).start();
+    &#125;
+&#125;
+</code></pre>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617934811627-3cf08b46-79c3-42e6-8dab-10073443a1c4.png" alt="image.png"></p>
+<p>可以发现没发生死锁，可以多次获取相同的锁</p>
+<p>可重入锁有</p>
+<ul>
+<li>synchronized</li>
+<li>ReentrantLock</li>
+</ul>
+<h3 id="使用ReentrantLock的注意点"><a href="#使用ReentrantLock的注意点" class="headerlink" title="使用ReentrantLock的注意点"></a>使用ReentrantLock的注意点</h3><p>ReentrantLock 和 synchronized 不一样，需要手动释放锁，所以使用 ReentrantLock的时候一定要<strong>手动释放锁</strong>，并且<strong>加锁次数和释放次数要一样</strong></p>
+<h2 id="ReentrantReadWriteLock读写锁"><a href="#ReentrantReadWriteLock读写锁" class="headerlink" title="ReentrantReadWriteLock读写锁"></a>ReentrantReadWriteLock读写锁</h2><h3 id="读写锁简介"><a href="#读写锁简介" class="headerlink" title="读写锁简介"></a>读写锁简介</h3><p>  现实中有这样一种场景：对共享资源有读和写的操作，且写操作没有读操作那么频繁。在没有写操作的时候，多个线程同时读一个资源没有任何问题，所以应该允许多个线程同时读取共享资源；但是如果一个线程想去写这些共享资源，就不应该允许其他线程对该资源进行读和写的操作了。</p>
+<p>　针对这种场景，<strong>JAVA的并发包提供了读写锁ReentrantReadWriteLock，它表示两个锁，一个是读操作相关的锁，称为共享锁；一个是写相关的锁，称为排他锁</strong>，描述如下：</p>
+<p>线程进入读锁的前提条件：</p>
+<p>没有其他线程的写锁，</p>
+<p>没有写请求或者<strong>有写请求，但调用线程和持有锁的线程是同一个。</strong></p>
+<p>线程进入写锁的前提条件：</p>
+<p>没有其他线程的读锁</p>
+<p>没有其他线程的写锁</p>
+<p>而读写锁有以下三个重要的特性：</p>
+<p>（1）公平选择性：支持非公平（默认）和公平的锁获取方式，吞吐量还是非公平优于公平。</p>
+<p>（2）重进入：读锁和写锁都支持线程重进入。</p>
+<p>（3）锁降级：遵循获取写锁、获取读锁再释放写锁的次序，写锁能够降级成为读锁。</p>
+<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p>ReentrantLock 是 java.util.concurrent（J.U.C）包中的锁。</p>
+<p>在Java同步框架AbstractQueuedSynchronizer提到了两个概念，一个是独占锁，一个是共享锁，所谓独占锁就是只能有一个线程获取到锁，其他线程必须在这个锁释放了锁之后才能竞争而获得锁。而共享锁则可以允许多个线程获取到锁。</p>
+<h1 id><a href="#" class="headerlink" title></a></h1><h2 id="Java设计一个高性能缓存模型（两种方法）"><a href="#Java设计一个高性能缓存模型（两种方法）" class="headerlink" title="Java设计一个高性能缓存模型（两种方法）"></a>Java设计一个高性能缓存模型（两种方法）</h2><h3 id="1-缓存模型（线程不安全）"><a href="#1-缓存模型（线程不安全）" class="headerlink" title="1. 缓存模型（线程不安全）"></a>1. 缓存模型（线程不安全）</h3><pre><code class="line-numbers language-java">import java.util.HashMap;
+import java.util.Map;
+public class CacheDemo &#123;
+    //声明一个map,用来作为缓存模型
+    private static Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+    public  static Object getValue(String key) &#123;
+        Object value = map.get(key);
+        if (value == null) &#123;
+            value = &quot;abc&quot;;//这里是去数据库查询
+            map.put(key, value);//将数据放到缓存模型中
+        &#125;
+        return value;
+    &#125;
+&#125;
+</code></pre>
+<p>从上面的代码可以看出，当10个线程同时访问的时候，会出现到数据查询次数也是10次，这样数据库访问压力大，不推荐使用</p>
+<h3 id="2-缓存模型（线程安全）"><a href="#2-缓存模型（线程安全）" class="headerlink" title="2. 缓存模型（线程安全）"></a>2. 缓存模型（线程安全）</h3><pre><code class="line-numbers language-java">import java.util.HashMap;
+import java.util.Map;
+public class CacheDemo &#123;
+    //声明一个map,用来作为缓存模型
+    private static Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+    public synchronized static Object getValue(String key) &#123;
+        Object value = map.get(key);
+        if (value == null) &#123;
+            value = &quot;abc&quot;;//这里是去数据库查询
+            map.put(key, value);//将数据放到缓存模型中
+        &#125;
+        return value;
+    &#125;
+&#125;
+</code></pre>
+<p>在getValue方法上加上后，10个线程同时访问的话，减少了数据库访问压力，但是出现一个情况，就是线程之间要通过排队抢锁才能进行访问 </p>
+<h3 id="3-缓存模型（高性能）"><a href="#3-缓存模型（高性能）" class="headerlink" title="3. 缓存模型（高性能）"></a>3. 缓存模型（高性能）</h3><h4 id="3-1-通过synchronized设计"><a href="#3-1-通过synchronized设计" class="headerlink" title="3.1 通过synchronized设计"></a>3.1 通过synchronized设计</h4><pre><code class="line-numbers language-java">import java.util.HashMap;
+import java.util.Map;
+public class CacheDemo &#123;
+    //声明一个map,用来作为缓存模型
+    private static Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+    public static Object getValue(String key) &#123;
+        Object value = map.get(key);
+        if(value==null)&#123;
+            synchronized (CacheDemo.class)&#123;
+                if(value==null)&#123;
+                    value=&quot;abc&quot;;//这里是去数据库查询
+                    map.put(key,value);//将数据放到缓存模型中
+                &#125;
+            &#125;
+        &#125;
+        return value;
+    &#125;
+&#125;
+</code></pre>
+<p> 从上面的代码设计可以看出，如果10个线程访问的数据已经存在于map中，不会出现竞争锁的情况，直接返回value，如果访问的数据不存在于map中，才会竞争锁进行数据库查询，并且只有第一个抢到锁的线程查询数据库，其他的线程拿到锁以后，发现value已经不为null了</p>
+<h4 id="3-2-通过ReadWriteLock设计"><a href="#3-2-通过ReadWriteLock设计" class="headerlink" title="3.2 通过ReadWriteLock设计"></a>3.2 通过ReadWriteLock设计</h4><p>下面这个用的读写锁，设计思想和上面synchronized是一样的</p>
+<pre><code class="line-numbers language-java">import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+public class CacheDemo &#123;
+    //声明一个map,用来作为缓存模型
+    private static Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+    //声明一个读写锁
+    private static ReadWriteLock rwl = new ReentrantReadWriteLock();
+   
+   
+    public static Object getValue(String key) &#123;
+        Object value = null;
+        try &#123;
+            rwl.readLock().lock();//开启读锁
+            value = map.get(key);
+            if (value == null) &#123;
+                try &#123;
+                    rwl.readLock().unlock();//关闭读锁
+                    rwl.writeLock().lock();//开启写锁
+                    if (value == null) &#123;
+                        value = &quot;abc&quot;;//这里是去数据库查询
+                        map.put(key, value);//将数据放到缓存模型中
+                    &#125;
+                &#125;catch (Exception e)&#123;
+                    e.printStackTrace();
+                &#125;
+                finally &#123;
+                    rwl.writeLock().unlock();//关闭写锁
+                    rwl.readLock().lock();//开启读锁
+                &#125;
+            &#125;
+        &#125;catch (Exception e)&#123;
+            e.printStackTrace();
+        &#125;
+        finally &#123;
+            rwl.readLock().unlock();//关闭读锁
+        &#125;
+        return value;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="通俗易懂-悲观锁、乐观锁、可重入锁、自旋锁、偏向锁、轻量-重量级锁、读写锁、各种锁及其Java实现！"><a href="#通俗易懂-悲观锁、乐观锁、可重入锁、自旋锁、偏向锁、轻量-重量级锁、读写锁、各种锁及其Java实现！" class="headerlink" title="通俗易懂 悲观锁、乐观锁、可重入锁、自旋锁、偏向锁、轻量/重量级锁、读写锁、各种锁及其Java实现！"></a>通俗易懂 悲观锁、乐观锁、可重入锁、自旋锁、偏向锁、轻量/重量级锁、读写锁、各种锁及其Java实现！</h2><p>转载自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71156910">https://zhuanlan.zhihu.com/p/71156910</a></p>
+<p>网上关于Java中锁的话题可以说资料相当丰富，但相关内容总感觉是一大串术语的罗列，让人云里雾里，读完就忘。本文希望能为Java新人做一篇通俗易懂的整合，旨在消除对各种各样锁的术语的恐惧感，对每种锁的底层实现浅尝辄止，但是在需要时能够知道去查什么。</p>
+<p>首先要打消一种想法，就是一个锁只能属于一种分类。其实并不是这样，比如一个锁可以同时是悲观锁、可重入锁、公平锁、可中断锁等等，就像一个人可以是男人、医生、健身爱好者、游戏玩家，这并不矛盾。OK，国际惯例，上干货。</p>
+<h3 id="〇、synchronized与Lock"><a href="#〇、synchronized与Lock" class="headerlink" title="〇、synchronized与Lock"></a>〇、synchronized与Lock</h3><p>Java中有两种加锁的方式：一种是用<strong>synchronized关键字</strong>，另一种是用<strong>Lock接口</strong>的实现类。</p>
+<p>形象地说，synchronized关键字是<strong>自动档</strong>，可以满足一切日常驾驶需求。但是如果你想要玩漂移或者各种骚操作，就需要<strong>手动档</strong>了——各种Lock的实现类。</p>
+<p>所以如果你只是想要简单的加个锁，对性能也没什么特别的要求，用synchronized关键字就足够了。自Java 5之后，才在java.util.concurrent.locks包下有了另外一种方式来实现锁，那就是Lock。也就是说，<strong>synchronized是Java语言内置的关键字，而Lock是一个接口</strong>，这个接口的实现类在代码层面实现了锁的功能，具体细节不在本文展开，有兴趣可以研究下AbstractQueuedSynchronizer类，写得可以说是牛逼爆了。</p>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617947581977-be460e52-f8f8-4a2c-a97b-fb43af7607fa.png" alt="image">其实只需要关注三个类就可以了：ReentrantLock类、ReadLock类、WriteLock类。</p>
+<p><strong>ReentrantLock、ReadLock、WriteLock</strong> 是Lock接口最重要的三个实现类。对应了“可重入锁”、“读锁”和“写锁”，后面会讲它们的用途。</p>
+<p>ReadWriteLock其实是一个工厂接口，而ReentrantReadWriteLock是ReadWriteLock的实现类，它包含两个静态内部类ReadLock和WriteLock。这两个静态内部类又分别实现了Lock接口。</p>
+<p>我们停止深究源码，仅从使用的角度看，Lock与synchronized的区别是什么？在接下来的几个小节中，我将梳理各种锁分类的概念，以及synchronized关键字、各种Lock实现类之间的区别与联系。</p>
+<p>备注：</p>
+<p>类的内部类</p>
+<p>ReentrantReadWriteLock有五个内部类，五个内部类之间也是相互关联的。内部类的关系如下图所示。</p>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617947885762-9710cf84-e6e9-4ffc-b4ba-fe1e0c94aa75.png" alt="image"></p>
+<p>说明：如上图所示，Sync继承自AQS、NonfairSync继承自Sync类、FairSync继承自Sync类（通过构造函数传入的布尔值决定要构造哪一种Sync实例）；ReadLock实现了Lock接口、WriteLock也实现了Lock接口。</p>
+<h3 id="一、悲观锁与乐观锁"><a href="#一、悲观锁与乐观锁" class="headerlink" title="一、悲观锁与乐观锁"></a>一、悲观锁与乐观锁</h3><p>锁的一种宏观分类方式是<strong>悲观锁</strong>和<strong>乐观锁</strong>。悲观锁与乐观锁<strong>并不是特指某个锁</strong>（Java中没有哪个Lock实现类就叫PessimisticLock或OptimisticLock），而是在并发情况下的两种不同策略。</p>
+<p>悲观锁（Pessimistic Lock）, 就是很悲观，每次去拿数据的时候都认为别人会修改。所以每次在拿数据的时候都会上锁。这样别人想拿数据就被挡住，直到悲观锁被释放。</p>
+<p>乐观锁（Optimistic Lock）, 就是很乐观，每次去拿数据的时候都认为别人不会修改。所以<strong>不会上锁，不会上锁！</strong>但是如果想要更新数据，则会在<strong>更新前检查在读取至更新这段时间别人有没有修改过这个数据</strong>。如果修改过，则重新读取，再次尝试更新，循环上述步骤直到更新成功（当然也允许更新失败的线程放弃操作）。</p>
+<p><strong>悲观锁阻塞事务，乐观锁回滚重试</strong>，它们各有优缺点，不要认为一种一定好于另一种。像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行重试，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适。</p>
+<h3 id="二、乐观锁的基础——CAS"><a href="#二、乐观锁的基础——CAS" class="headerlink" title="二、乐观锁的基础——CAS"></a>二、乐观锁的基础——CAS</h3><p>说到乐观锁，就必须提到一个概念：<strong>CAS</strong></p>
+<p>什么是CAS呢？Compare-and-Swap，即<strong>比较并替换，</strong>也有叫做Compare-and-Set的，<strong>比较并设置</strong>。</p>
+<p>1、比较：读取到了一个值A，在将其更新为B之前，检查原值是否仍为A（未被其他线程改动）。</p>
+<p>2、设置：如果是，将A更新为B，结束。[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71156910#ref_1">1]</a>如果不是，则什么都不做。</p>
+<p>上面的两步操作是原子性的，可以简单地理解为瞬间完成，在CPU看来就是一步操作。</p>
+<p>有了CAS，就可以实现一个<strong>乐观锁</strong>：</p>
+<pre><code class="line-numbers language-java">data = 123; // 共享数据
+/* 更新数据的线程会进行如下操作 */
+flag = true;
+while (flag) &#123;
+    oldValue = data; // 保存原始数据
+    newValue = doSomething(oldValue); 
+    // 下面的部分为CAS操作，尝试更新data的值
+    if (data == oldValue) &#123; // 比较
+        data = newValue; // 设置
+        flag = false; // 结束
+    &#125; else &#123;
+    // 啥也不干，循环重试
+    &#125;
+&#125;
+/* 
+   很明显，这样的代码根本不是原子性的，
+   因为真正的CAS利用了CPU指令，
+   这里只是为了展示执行流程，本意是一样的。
+*/
+</code></pre>
+<p>这是一个简单直观的乐观锁实现，它允许多个线程同时读取（因为根本没有加锁操作），但是只有一个线程可以成功更新数据，并导致其他要更新数据的线程回滚重试。 CAS利用CPU指令，从硬件层面保证了操作的原子性，以达到类似于锁的效果。</p>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617947582144-f3f2b9ca-d744-4a66-865e-91dcd53ba608.jpeg" alt="image">Java中真正的CAS操作调用的native方法</p>
+<p>因为整个过程中并没有“加锁”和“解锁”操作，因此乐观锁策略也被称为<strong>无锁编程</strong>。换句话说，乐观锁其实不是“锁”，它仅仅是一个循环重试CAS的算法而已！</p>
+<h3 id="三、自旋锁"><a href="#三、自旋锁" class="headerlink" title="三、自旋锁"></a>三、自旋锁</h3><p>有一种锁叫<strong>自旋锁</strong>。所谓自旋，说白了就是一个 while(true) 无限循环。</p>
+<p>刚刚的乐观锁就有类似的无限循环操作，那么它是自旋锁吗？</p>
+<blockquote>
+<p>感谢评论区<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/zhao-chen-77-90">养猫的虾</a>的指正。</p>
+</blockquote>
+<p>不是。尽管自旋与 while(true) 的操作是一样的，但还是应该将这两个术语分开。“自旋”这两个字，特指自旋锁的自旋。</p>
+<p>然而在JDK中并没有自旋锁（SpinLock）这个类，那什么才是自旋锁呢？读完下个小节就知道了。</p>
+<h3 id="四、synchronized锁升级：偏向锁-→-轻量级锁-→-重量级锁"><a href="#四、synchronized锁升级：偏向锁-→-轻量级锁-→-重量级锁" class="headerlink" title="四、synchronized锁升级：偏向锁 → 轻量级锁 → 重量级锁"></a>四、synchronized锁升级：偏向锁 → 轻量级锁 → 重量级锁</h3><p>前面提到，synchronized关键字就像是汽车的<strong>自动档，</strong>现在详细讲这个过程。一脚油门踩下去，synchronized会从<strong>无锁</strong>升级为<strong>偏向锁</strong>，再升级为<strong>轻量级锁</strong>，最后升级为<strong>重量级锁</strong>，就像自动换挡一样。那么自旋锁在哪里呢？这里的轻量级锁就是一种<strong>自旋锁</strong>。</p>
+<p>初次执行到synchronized代码块的时候，锁对象变成<strong>偏向锁</strong>（通过CAS修改对象头里的锁标志位），字面意思是“偏向于第一个获得它的线程”的锁。执行完同步代码块后，线程并<strong>不会主动释放偏向锁</strong>。当第二次到达同步代码块时，线程会判断此时持有锁的线程是否就是自己（持有锁的线程ID也在对象头里），如果是则正常往下执行。<strong>由于之前没有释放锁，这里也就不需要重新加锁。</strong>如果自始至终使用锁的线程只有一个，很明显偏向锁几乎没有额外开销，性能极高。</p>
+<p>一旦有第二个线程加入<strong>锁竞争</strong>，偏向锁就升级为<strong>轻量级锁（自旋锁）</strong>。这里要明确一下什么是锁竞争：如果多个线程轮流获取一个锁，但是每次获取锁的时候都很顺利，没有发生阻塞，那么就不存在锁竞争。只有当某线程尝试获取锁的时候，发现该锁已经被占用，只能等待其释放，这才发生了锁竞争。</p>
+<p>在轻量级锁状态下继续锁竞争，没有抢到锁的线程将<strong>自旋</strong>，即不停地循环判断锁是否能够被成功获取。获取锁的操作，其实就是通过CAS修改对象头里的锁标志位。先<strong>比较</strong>当前锁标志位是否为“释放”，如果是则将其<strong>设置</strong>为“锁定”，比较并设置是<strong>原子性</strong>发生的。这就算抢到锁了，然后线程将当前锁的持有者信息修改为自己。</p>
+<p>长时间的自旋操作是非常消耗资源的，一个线程持有锁，其他线程就只能在原地空耗CPU，执行不了任何有效的任务，这种现象叫做<strong>忙等（busy-waiting）</strong>。如果多个线程用一个锁，但是没有发生锁竞争，或者发生了很轻微的锁竞争，那么synchronized就用轻量级锁，允许短时间的忙等现象。这是一种折衷的想法，<strong>短时间的忙等，换取线程在用户态和内核态之间切换的开销。</strong></p>
+<p>显然，此忙等是有限度的（有个计数器记录自旋次数，默认允许循环10次，可以通过虚拟机参数更改）。如果锁竞争情况严重，某个达到最大自旋次数的线程，会将轻量级锁升级为<strong>重量级锁</strong>（依然是CAS修改锁标志位，但不修改持有锁的线程ID）。当后续线程尝试获取锁时，发现被占用的锁是重量级锁，则直接将自己挂起（而不是忙等），等待将来被唤醒。在JDK1.6之前，synchronized直接加重量级锁，很明显现在得到了很好的优化。</p>
+<p>一个锁只能按照 偏向锁、轻量级锁、重量级锁的顺序逐渐升级（也有叫<strong>锁膨胀</strong>的），不允许降级。</p>
+<blockquote>
+<p>感谢评论区<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/ding-yi-51-99">酷帅俊靓美</a>的问题：偏向锁的一个特性是，持有锁的线程在执行完同步代码块时不会释放锁。那么当第二个线程执行到这个synchronized代码块时是否一定会发生锁竞争然后升级为轻量级锁呢？线程A第一次执行完同步代码块后，当线程B尝试获取锁的时候，发现是偏向锁，会判断线程A是否仍然存活。<strong>如果线程A仍然存活，</strong>将线程A暂停，此时偏向锁升级为轻量级锁，之后线程A继续执行，线程B自旋。但是<strong>如果判断结果是线程A不存在了</strong>，则线程B持有此偏向锁，锁不升级。还有人对此有疑惑，我之前确实没有描述清楚，但如果要展开讲，涉及到太多新概念，可以新开一篇了。更何况有些太底层的东西，我没读过源码，没有自信说自己一定是对的。其实在升级为轻量级锁之前，虚拟机会让线程A尽快在安全点挂起，然后在它的栈中“伪造”一些信息，让线程A在被唤醒之后，认为自己一直持有的是轻量级锁。如果线程A之前正在同步代码块中，那么线程B自旋等待即可。如果线程A之前不在同步代码块中，它会在被唤醒后检查到这一情况并立即释放锁，让线程B可以拿到。这部分内容我之前也没有深入研究过，如果有说的不对的，请多多指教啊！</p>
+</blockquote>
+<h3 id="五、可重入锁（递归锁）"><a href="#五、可重入锁（递归锁）" class="headerlink" title="五、可重入锁（递归锁）"></a>五、可重入锁（递归锁）</h3><p>可重入锁的字面意思是“可以重新进入的锁”，即<strong>允许同一个线程多次获取同一把锁</strong>。比如一个递归函数里有加锁操作，递归过程中这个锁会阻塞自己吗？如果不会，那么这个锁就是<strong>可重入锁</strong>（因为这个原因可重入锁也叫做<strong>递归锁</strong>）<strong>。</strong></p>
+<p>Java里只要以Reentrant开头命名的锁都是可重入锁，而且<strong>JDK提供的所有现成的Lock实现类，包括synchronized关键字锁都是可重入的。</strong>如果你需要不可重入锁，只能自己去实现了。网上不可重入锁的实现真的很多，就不在这里贴代码了。99%的业务场景用可重入锁就可以了，剩下的1%是什么呢？我也不知道，谁可以在评论里告诉我？</p>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617947582164-84f7c034-c756-4e95-b56c-8ac238953c99.png" alt="image">JDK提供的Lock的实现类都是可重入的</p>
+<h3 id="六、公平锁、非公平锁"><a href="#六、公平锁、非公平锁" class="headerlink" title="六、公平锁、非公平锁"></a>六、公平锁、非公平锁</h3><p>如果多个线程申请一把<strong>公平锁</strong>，那么当锁释放的时候，先申请的先得到，非常公平。显然如果是<strong>非公平锁</strong>，后申请的线程可能先获取到锁，是随机或者按照其他优先级排序的。</p>
+<p>对ReentrantLock类而言，通过构造函数传参<strong>可以指定该锁是否是公平锁，默认是非公平锁</strong>。一般情况下，非公平锁的吞吐量比公平锁大，如果没有特殊要求，优先使用非公平锁。</p>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617947582159-4d30ca9e-793b-45db-8315-f8d836a5fc4d.png" alt="image">ReentrantLock构造器可以指定为公平或非公平</p>
+<p>对于synchronized而言，它也是一种<strong>非公平锁</strong>，但是并没有任何办法使其变成公平锁。</p>
+<h3 id="七、可中断锁"><a href="#七、可中断锁" class="headerlink" title="七、可中断锁"></a>七、可中断锁</h3><p>可中断锁，字面意思是“可以<strong>响应中断</strong>的锁”。</p>
+<p>这里的关键是理解什么是<strong>中断</strong>。Java并没有提供任何直接中断某线程的方法，只提供了<strong>中断机制</strong>。何谓“中断机制”？线程A向线程B发出“请你停止运行”的请求（线程B也可以自己给自己发送此请求），但线程B并不会立刻停止运行，而是自行选择合适的时机以自己的方式响应中断，也可以直接忽略此中断。也就是说，Java的<strong>中断不能直接终止线程</strong>，而是需要被中断的线程自己决定怎么处理。这好比是父母叮嘱在外的子女要注意身体，但子女是否注意身体，怎么注意身体则完全取决于自己。[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71156910#ref_2">2]</a></p>
+<p>回到锁的话题上来，如果线程A持有锁，线程B等待获取该锁。由于线程A持有锁的时间过长，线程B不想继续等待了，我们可以让线程B中断自己或者在别的线程里中断它，这种就是<strong>可中断锁</strong>。</p>
+<p>在Java中，synchronized就是<strong>不可中断锁</strong>，而Lock的实现类都是<strong>可中断锁，</strong>可以简单看下Lock接口。</p>
+<pre><code class="line-numbers language-java">/* Lock接口 */
+public interface Lock &#123;
+    void lock(); // 拿不到锁就一直等，拿到马上返回。
+    void lockInterruptibly() throws InterruptedException; // 拿不到锁就一直等，如果等待时收到中断请求，则需要处理InterruptedException。
+    boolean tryLock(); // 无论拿不拿得到锁，都马上返回。拿到返回true，拿不到返回false。
+    boolean tryLock(long time, TimeUnit unit) throws InterruptedException; // 同上，可以自定义等待的时间。
+    void unlock();
+    Condition newCondition();
+&#125;
+</code></pre>
+<h3 id="八、读写锁、共享锁、互斥锁"><a href="#八、读写锁、共享锁、互斥锁" class="headerlink" title="八、读写锁、共享锁、互斥锁"></a>八、读写锁、共享锁、互斥锁</h3><p>读写锁其实是一对锁，一个读锁（共享锁）和一个写锁（互斥锁、排他锁）。</p>
+<p>看下Java里的ReadWriteLock接口，它只规定了两个方法，一个返回读锁，一个返回写锁。</p>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617947582160-6204e421-3d0f-458b-bb08-74dc528df788.png" alt="image"></p>
+<p>记得之前的乐观锁策略吗？所有线程随时都可以读，仅在写之前判断值有没有被更改。</p>
+<p>读写锁其实做的事情是一样的，但是策略稍有不同。很多情况下，线程知道自己读取数据后，是否是为了更新它。那么何不在加锁的时候直接明确这一点呢？如果我读取值是为了更新它（SQL的for update就是这个意思），那么加锁的时候就直接加<strong>写锁</strong>，我持有写锁的时候别的线程无论读还是写都需要等待；如果我读取数据仅为了前端展示，那么加锁时就明确地加一个<strong>读锁，</strong>其他线程如果也要加读锁，不需要等待，可以直接获取（读锁计数器+1）。</p>
+<p>虽然读写锁感觉与乐观锁有点像，但是<strong>读写锁是悲观锁策略</strong>。因为读写锁并没有在<strong>更新前</strong>判断值有没有被修改过，而是在<strong>加锁前</strong>决定应该用读锁还是写锁。乐观锁特指无锁编程，如果仍有疑惑可以再回到第一、二小节，看一下什么是“乐观锁”。</p>
+<p>JDK提供的唯一一个ReadWriteLock接口实现类是ReentrantReadWriteLock。看名字就知道，它不仅提供了读写锁，而是都是可重入锁。 除了两个接口方法以外，ReentrantReadWriteLock还提供了一些便于外界监控其内部工作状态的方法，这里就不一一展开。</p>
+<h3 id="九、回到悲观锁和乐观锁"><a href="#九、回到悲观锁和乐观锁" class="headerlink" title="九、回到悲观锁和乐观锁"></a>九、回到悲观锁和乐观锁</h3><blockquote>
+<p>这篇文章经历过一次修改，我之前认为偏向锁和轻量级锁是乐观锁，重量级锁和Lock实现类为悲观锁，网上很多资料对这些概念的表述也很模糊，各执一词。</p>
+</blockquote>
+<p>先抛出我的结论：</p>
+<p>我们在Java里使用的各种锁，<strong>几乎全都是悲观锁</strong>。synchronized从偏向锁、轻量级锁到重量级锁，全是悲观锁。JDK提供的Lock实现类全是悲观锁。其实只要有“锁对象”出现，那么就一定是悲观锁。因为<strong>乐观锁不是锁，而是一个在循环里尝试CAS的算法。</strong></p>
+<p>那JDK并发包里到底有没有乐观锁呢？</p>
+<p>有。java.util.concurrent.atomic包里面的<strong>原子类</strong>都是利用乐观锁实现的。</p>
+<p><img src="/2021/04/09/cong-readwritelock-dao-java-suo/1617947582180-c1250e5b-dbf4-40d7-8189-2f4e535059f5.png" alt="image"></p>
+<p>原子类AtomicInteger的自增方法为乐观锁策略</p>
+<p>为什么网上有些资料认为偏向锁、轻量级锁是乐观锁？理由是它们底层用到了CAS？或者是把“乐观/悲观”与“轻量/重量”搞混了？其实，线程在抢占这些锁的时候，确实是循环+CAS的操作，感觉好像是乐观锁。但问题的关键是，我们说一个锁是悲观锁还是乐观锁，总是应该站在应用层，看它们是如何锁住应用数据的，而不是站在底层看抢占锁的过程。如果一个线程尝试获取锁时，发现已经被占用，它是否继续读取数据，等后续要更新时再决定要不要重试？对于偏向锁、轻量级锁来说，显然答案是否定的。无论是挂起还是忙等，对应用数据的读取操作都被“挡住”了。从这个角度看，它们确实是悲观锁。</p>
+<p>退一步讲，也没有必要在这些术语上狠钻牛角尖，最重要的是理解它们的运行机制。想写得尽量简单一些，却发现洋洋洒洒近万字，只讲了个皮毛。深知自己水平有限，不敢保证完全正确，只能说路漫漫其修远兮，望指正。</p>
 
                 
             </div>
@@ -463,7 +750,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/19/springmvc-zhi-xing-liu-cheng/">https://xustudy.com/2021/03/19/springmvc-zhi-xing-liu-cheng/</a>
+                    <a href="https://xustudy.com/2021/04/09/cong-readwritelock-dao-java-suo/">https://xustudy.com/2021/04/09/cong-readwritelock-dao-java-suo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -501,8 +788,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringMVC/">
-                                    <span class="chip bg-color">SpringMVC</span>
+                                <a href="/tags/Java%E9%94%81/">
+                                    <span class="chip bg-color">Java锁</span>
                                 </a>
                             
                         </div>
@@ -673,7 +960,7 @@
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-19-20-29-09',
+        id: '2021-04-09-14-06-23',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -702,17 +989,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/27/vhr-wei-ren-shi/">
+                <a href="/2021/04/09/cong-readwritelock-dao-java-suo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/66.jpg" class="responsive-img" alt="vhr-微人事">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="从ReadWriteLock到Java锁">
                         
-                        <span class="card-title">vhr-微人事</span>
+                        <span class="card-title">从ReadWriteLock到Java锁</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -722,38 +1010,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="post-category">
-                                    项目
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
-                    </a>
-                    
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
-                    </a>
-                    
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                    <a href="/tags/RabbitMQ/">
-                        <span class="chip bg-color">RabbitMQ</span>
+                    <a href="/tags/Java%E9%94%81/">
+                        <span class="chip bg-color">Java锁</span>
                     </a>
                     
                 </div>
@@ -767,13 +1044,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/">
+                <a href="/2021/04/03/ms/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/49.jpg" class="responsive-img" alt="数据库基本指令练习">
+                        <img src="/medias/featureimages/70.jpg" class="responsive-img" alt="MS">
                         
-                        <span class="card-title">数据库基本指令练习</span>
+                        <span class="card-title">MS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -784,7 +1061,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-03
                             </span>
                         <span class="publish-author">
                             
@@ -801,8 +1078,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/MS/">
+                        <span class="chip bg-color">MS</span>
                     </a>
                     
                 </div>
@@ -1038,7 +1315,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.9k</span>&nbsp;字
+                class="white-color">26.5k</span>&nbsp;字
             
             
             

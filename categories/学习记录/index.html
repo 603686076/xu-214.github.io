@@ -294,11 +294,11 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="学习记录: 7">
+                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="学习记录: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #F5EEF8;">学习记录
-                        <span class="tag-length">7</span>
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -352,6 +352,55 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2021/04/09/cong-readwritelock-dao-java-suo/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="从ReadWriteLock到Java锁">
+                            
+                            <span class="card-title">从ReadWriteLock到Java锁</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                可重入锁详解概述什么是 “可重入”，可重入就是说某个线程已经获得某个锁，可以再次获取锁而不会出现死锁。
+package com.xu.lock;
+
+// 演示可重入锁是什么意思，可重入，就是可以重复获取相同的锁，synchronized和R
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Java%E9%94%81/">
+                            <span class="chip bg-color">Java锁</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2021/04/03/ms/">
                         <div class="card-image tag-image">
                             
@@ -402,20 +451,20 @@ GE
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/04/01/docker-chang-yong-ming-ling/">
+                    <a href="/2021/04/01/jvm/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Docker常用命令">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="JVM">
                             
-                            <span class="card-title">Docker常用命令</span>
+                            <span class="card-title">JVM</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                进入容器
-docker exec -it mysql bin/bash
+                                JVM内存模型
+一个对象从出生到消亡的过程
 
                             
                         </div>
@@ -439,8 +488,8 @@ docker exec -it mysql bin/bash
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-                            <span class="chip bg-color">Docker常用命令</span>
+                        <a href="/tags/JVM/">
+                            <span class="chip bg-color">JVM</span>
                         </a>
                         
                     </div>
@@ -450,7 +499,58 @@ docker exec -it mysql bin/bash
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/03/19/springmvc-zhi-xing-liu-cheng/">
+                    <a href="/2021/04/01/docker-chang-yong-ming-ling/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Docker常用命令">
+                            
+                            <span class="card-title">Docker常用命令</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                进入容器
+docker exec -it mysql bin/bash
+
+容器数据卷挂载示例
+docker run -p 3306:3306 --name mysql \
+-v /mydata/mysql/log:/var/log/mysq
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/03/19/springmvc/">
                         <div class="card-image tag-image">
                             
                             
@@ -462,9 +562,12 @@ docker exec -it mysql bin/bash
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1.客户端（浏览器）输入url,直接发送请求到DispatcherServlet；
-2.DispatcherServlet根据请求调用HandlerMapping，请求解析到对应的Handler；
-3.解析到对应的Handler后， 由Ha
+                                SpringMVC 工作原理原理如下图所示：
+
+上图的一个笔误的小问题：Spring MVC 的入口函数也就是前端控制器 DispatcherServlet 的作用是接收请求，响应结果。
+流程说明（重要）：
+
+客户端（浏览器）发送请求，直接
                             
                         </div>
                         <div class="publish-info">
@@ -765,7 +868,7 @@ MySQL，容器删除了，删库跑路！需求：MySQL数据可以存储在本�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.9k</span>&nbsp;字
+                class="white-color">26.5k</span>&nbsp;字
             
             
             

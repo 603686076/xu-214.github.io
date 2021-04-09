@@ -534,6 +534,56 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2021/04/09/cong-readwritelock-dao-java-suo/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="从ReadWriteLock到Java锁">
+                            
+                            <span class="card-title">从ReadWriteLock到Java锁</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                可重入锁详解概述什么是 “可重入”，可重入就是说某个线程已经获得某个锁，可以再次获取锁而不会出现死锁。
+package com.xu.lock;
+
+// 演示可重入锁是什么意思，可重入，就是可以重复获取相同的锁，synchronized和R
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Java%E9%94%81/">
+                            <span class="chip bg-color">Java锁</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2021/04/03/ms/">
                         <div class="card-image">
                             
@@ -601,6 +651,9 @@ GE
                                 进入容器
 docker exec -it mysql bin/bash
 
+容器数据卷挂载示例
+docker run -p 3306:3306 --name mysql \
+-v /mydata/mysql/log:/var/log/mysq
                             
                         </div>
                         <div class="publish-info">
@@ -623,8 +676,8 @@ docker exec -it mysql bin/bash
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-                            <span class="chip bg-color">Docker常用命令</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
                         </a>
                         
                     </div>
@@ -634,18 +687,22 @@ docker exec -it mysql bin/bash
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/04/01/vue-lian-xi/">
+                    <a href="/2021/04/01/jvm/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Vue练习">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="JVM">
                             
-                            <span class="card-title">Vue练习</span>
+                            <span class="card-title">JVM</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
+                            
+                                JVM内存模型
+一个对象从出生到消亡的过程
+
                             
                         </div>
                         <div class="publish-info">
@@ -654,13 +711,25 @@ docker exec -it mysql bin/bash
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fas fa-user fa-fw"></i>
-                                xustudy
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
+                                </a>
+                                
                                 
                             </span>
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JVM/">
+                            <span class="chip bg-color">JVM</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -780,7 +849,7 @@ redis-server.exe redis.co
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/03/19/springmvc-zhi-xing-liu-cheng/">
+                    <a href="/2021/03/19/springmvc/">
                         <div class="card-image">
                             
                             
@@ -793,9 +862,12 @@ redis-server.exe redis.co
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1.客户端（浏览器）输入url,直接发送请求到DispatcherServlet；
-2.DispatcherServlet根据请求调用HandlerMapping，请求解析到对应的Handler；
-3.解析到对应的Handler后， 由Ha
+                                SpringMVC 工作原理原理如下图所示：
+
+上图的一个笔误的小问题：Spring MVC 的入口函数也就是前端控制器 DispatcherServlet 的作用是接收请求，响应结果。
+流程说明（重要）：
+
+客户端（浏览器）发送请求，直接
                             
                         </div>
                         <div class="publish-info">
@@ -991,61 +1063,6 @@ SQL Select1.Insert the missing statement to get all the columns from th
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/16/198-da-jia-jie-she-zhong-deng/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="198.打家劫舍-中等">
-                            
-                            <span class="card-title">198.打家劫舍-中等</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                198. 打家劫舍题解
-动态规划 dp[i] = max(dp[i-1], nums[i-1] + dp[i-2])。
-class Solution &#123;
-public:
-    int rob(vector&lt;int&gt;&
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/leetcode/">
-                            <span class="chip bg-color">leetcode</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-                            <span class="chip bg-color">动态规划</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1143,7 +1160,7 @@ public:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.9k</span>&nbsp;字
+                class="white-color">26.5k</span>&nbsp;字
             
             
             
