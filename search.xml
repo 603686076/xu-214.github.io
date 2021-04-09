@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>MySQL创建数据库,添加用户,用户授权实操方法</title>
+      <link href="2021/04/09/mysql-chuang-jian-shu-ju-ku-tian-jia-yong-hu-yong-hu-shou-quan-shi-cao-fang-fa/"/>
+      <url>2021/04/09/mysql-chuang-jian-shu-ju-ku-tian-jia-yong-hu-yong-hu-shou-quan-shi-cao-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<p><strong>一、创建MySQL数据库</strong></p><p>1.创建数据库语法</p><pre><code class="line-numbers language-sql">--创建名称为“testdb”数据库，并设定编码集为utf8CREATE DATABASE IF NOT EXISTS testdb DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</code></pre><p><strong>二、创建用户</strong></p><p>1.新建用户</p><pre><code class="line-numbers language-sql"> --创建了一个名为：test 密码为：1234 的用户 create user &#39;test&#39;@&#39;localhost&#39; identified by &#39;1234&#39;;</code></pre><blockquote><p>注意：<br>此处的”localhost”，是指该用户只能在本地登录，不能在另外一台机器上远程登录。如果想远程登录的话，将”localhost”改为”%”，表示在任何一台电脑上都可以登录。也可以指定某台机器可以远程登录。</p></blockquote><p>2.查询用户</p><pre><code class="line-numbers language-sql">--查询用户select user,host from mysql.user;</code></pre><p>3.删除用户</p><pre><code class="line-numbers language-sql">--删除用户“test”drop user test@localhost ;--若创建的用户允许任何电脑登陆，删除用户如下drop user test@&#39;%&#39;;</code></pre><p>4.更改密码</p><pre><code class="line-numbers language-sql">--方法1，密码实时更新；修改用户“test”的密码为“1122”set password for test =password(&#39;1122&#39;);--方法2，需要刷新；修改用户“test”的密码为“1234”update mysql.user set password=password(&#39;1234&#39;) where user=&#39;test&#39;--刷新flush privileges;</code></pre><p>5.用户分配权限</p><pre><code class="line-numbers language-sql">--授予用户test通过外网IP对数据库“testdb”的全部权限grant all privileges on &#39;testdb&#39;.* to &#39;test&#39;@&#39;%&#39; identified by &#39;1234&#39;; --刷新权限flush privileges; --授予用户“test”通过外网IP对于该数据库“testdb”中表的创建、修改、删除权限,以及表数据的增删查改权限grant create,alter,drop,select,insert,update,delete on testdb.* to test@&#39;%&#39;;   </code></pre><p>6.查看用户权限</p><pre><code class="line-numbers language-sql">--查看用户“test”show grants for test;</code></pre><blockquote><p>注意：修改完权限以后 一定要刷新服务，或者重启服务，刷新服务用：flush privileges;</p></blockquote><p>例子：</p><pre><code class="line-numbers language-sql">create user &#39;A&#39;@&#39;%&#39; identified by &#39;A&#39;;select user,host from mysql.userGrant all privileges on test_db.* to &#39;A&#39;@&#39;%&#39;;  grant create,alter,drop,select,insert,update,delete on test_db.* to A@&#39;%&#39;;flush privileges;--其他操作drop user A@&#39;%&#39;;update mysql.user set host=&#39;%&#39; where user=&#39;A&#39;;show grants for A@&#39;%&#39;;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 问题解决 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>从ReadWriteLock到Java锁</title>
       <link href="2021/04/09/cong-readwritelock-dao-java-suo/"/>
       <url>2021/04/09/cong-readwritelock-dao-java-suo/</url>
@@ -202,6 +227,8 @@
         <tags>
             
             <tag> 数据库 </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
       

@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-04-09T06:16:46.566Z</updated>
+  <updated>2021-04-09T07:40:14.413Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL创建数据库,添加用户,用户授权实操方法</title>
+    <link href="https://xustudy.com/2021/04/09/mysql-chuang-jian-shu-ju-ku-tian-jia-yong-hu-yong-hu-shou-quan-shi-cao-fang-fa/"/>
+    <id>https://xustudy.com/2021/04/09/mysql-chuang-jian-shu-ju-ku-tian-jia-yong-hu-yong-hu-shou-quan-shi-cao-fang-fa/</id>
+    <published>2021-04-09T07:32:40.000Z</published>
+    <updated>2021-04-09T07:40:14.413Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;一、创建MySQL数据库&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1.创建数据库语法&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;line-numbers language-sql&quot;&gt;--创建名称为“testdb”数据库，并设定编码集为utf8
+CREATE</summary>
+        
+      
+    
+    
+    
+    <category term="问题解决" scheme="https://xustudy.com/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    
+    
+    <category term="MySQL" scheme="https://xustudy.com/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>从ReadWriteLock到Java锁</title>
@@ -206,7 +234,7 @@
     <link href="https://xustudy.com/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/"/>
     <id>https://xustudy.com/2021/03/17/shu-ju-ku-ji-ben-zhi-ling-lian-xi/</id>
     <published>2021-03-17T13:46:31.000Z</published>
-    <updated>2021-04-03T01:50:23.124Z</updated>
+    <updated>2021-04-09T07:27:35.063Z</updated>
     
     
       
@@ -224,6 +252,8 @@
     
     
     <category term="数据库" scheme="https://xustudy.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="MySQL" scheme="https://xustudy.com/tags/MySQL/"/>
     
   </entry>
   
