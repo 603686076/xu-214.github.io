@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="Gitalk 评论登录 403 问题解决, xustudy">
+    <meta name="keywords" content="MySQL并发访问的核心机制-MVCC, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Gitalk 评论登录 403 问题解决 | xustudy</title>
+    <title>MySQL并发访问的核心机制-MVCC | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -242,12 +242,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/65.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Gitalk 评论登录 403 问题解决</h1>
+                    <h1 class="description center-align post-title">MySQL并发访问的核心机制-MVCC</h1>
                 </div>
             </div>
         </div>
@@ -363,8 +363,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
                             </a>
                         
                     </div>
@@ -375,8 +375,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="post-category">
-                                问题解决
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                学习记录
                             </a>
                         
                     </div>
@@ -388,28 +388,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-19
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    21
+                    544
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -429,9 +429,79 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://cuiqingcai.com/30010.html">https://cuiqingcai.com/30010.html</a></p>
-<p>博主解决问题的思路很清晰，值得学习!</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/yfzGSe"><img src="https://s3.ax1x.com/2021/02/19/yfzGSe.jpg" alt="yfzGSe.jpg"></a></p>
+                <h3 id="RC、RR、当前读、快照读"><a href="#RC、RR、当前读、快照读" class="headerlink" title="RC、RR、当前读、快照读"></a>RC、RR、当前读、快照读</h3><p><img src="/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/1617985687206-25965f94-99c4-4793-9b66-4702e7eb9e8f.png" alt="image.png"></p>
+<p><img src="/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/1618025212755-25c3ff4a-e40e-4e32-aa60-9a2a36d14872.png" alt="image.png"></p>
+<p>MVCC实现了事务的隔离性</p>
+<p>其他：</p>
+<blockquote>
+<p>原子性-&gt;undolog</p>
+<p>一致性-&gt;代码层面</p>
+<p>持久性-&gt;redolog </p>
+</blockquote>
+<h3 id="数据库一行数据"><a href="#数据库一行数据" class="headerlink" title="数据库一行数据"></a>数据库一行数据</h3><p>id  name  隐藏id  trx_id  roll_pointer </p>
+<p><img src="/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/1617984203206-9fe723cf-de95-444a-be15-f28b71c660cc.png" alt="image.png"></p>
+<p>上面的rowid既是隐藏id</p>
+<h3 id="innodb表下存在隐藏列"><a href="#innodb表下存在隐藏列" class="headerlink" title="innodb表下存在隐藏列:"></a>innodb表下存在隐藏列:</h3><p>trx_id : 存放当前事务id</p>
+<p>roll_pointer : 存放一个指向上一事务版本的指针</p>
+<h3 id="版本链作用"><a href="#版本链作用" class="headerlink" title="版本链作用"></a>版本链作用</h3><ol>
+<li>用一个单链表的结构存放每个事务版本对应的行的数据; 通过我当前的事务id可以获取对应的数据</li>
+<li>配合readView的活跃事务数组可以判断当前应该读取哪个节点的数据, 如果我当前事务不在版本链上就向前读取节点直到读取的节点ID不在活跃事务数组中, 那么这个版本的数据就是最新的已提交数据</li>
+</ol>
+<p>当我们存在多个历史版本的时候， 我们应该选择哪个历史版本呢？</p>
+<p><strong>当存在多个历史版本的时候，会涉及到一个可见性算法，来计算当前事务读取的是哪一个历史版本的数据。</strong></p>
+<p>既是<strong>ReadView</strong></p>
+<p>ReadView是事务开启时，当前所有事务的一个集合，这个数据结构中存储了当前ReadView中最大的ID及最小的ID。</p>
+<p>这就是当前活跃事务列表，如下所示：</p>
+<p>ct-trx –&gt; trx11 –&gt; trx9 –&gt; trx6 –&gt; trx5 –&gt; trx3;</p>
+<p>ct-trx 表示当前事务的id，对应上面的read_view数据结构如下，</p>
+<p>read_view-&gt;creator_trx_id = ct-trx;</p>
+<p>read_view-&gt;up_limit_id = trx3;</p>
+<p>read_view-&gt;low_limit_id = trx11; </p>
+<p>read_view-&gt;trx_ids = [trx11, trx9, trx6, trx5, trx3];</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事务开始</td>
+<td>事务开始</td>
+<td>事务开始</td>
+<td>事务开始</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>update；commit；</td>
+</tr>
+<tr>
+<td>…</td>
+<td>快照读</td>
+<td>…</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>问题：事务二执行快照读的时候， 能否读到事务4修改的数据？</p>
+<p>此时：</p>
+<p>undolog 历史版本： 1个历史版本</p>
+<p>trx_ids  = [1, 2, 3]  生成ReadView时的活跃id（4已提交，不再活跃）</p>
+<p>up_limit_id = 1  当前活跃id的最小值</p>
+<p>lower_limit_id = 5  尚未分配的下一个事务id   </p>
+<p>当前行所对应的事务db_trx_id是4（因为4最先对其进行了修改）</p>
+<p><img src="/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/1617985375936-cff7990e-6ded-4c88-8450-0d55c4d6d983.png" alt="image.png"></p>
+<p>根据规则， 可见。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p><img src="/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/1617985561625-ff55b487-f9f9-458e-a38d-f003cc836b74.png" alt="image.png"></p>
 
                 
             </div>
@@ -458,7 +528,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/">https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/</a>
+                    <a href="https://xustudy.com/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/">https://xustudy.com/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -496,8 +566,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
                                 </a>
                             
                         </div>
@@ -668,7 +738,7 @@
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-02-19-00-08-26',
+        id: '2021-04-10-11-31-18',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -697,17 +767,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/">
+                <a href="/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/52.jpg" class="responsive-img" alt="Docker的学习使用记录">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="MySQL并发访问的核心机制-MVCC">
                         
-                        <span class="card-title">Docker的学习使用记录</span>
+                        <span class="card-title">MySQL并发访问的核心机制-MVCC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -717,9 +788,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -732,11 +803,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -750,13 +822,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/02/18/mu-yang-shao-nian-qi-huan-zhi-lu/">
+                <a href="/2021/04/09/mysql-chuang-jian-shu-ju-ku-tian-jia-yong-hu-yong-hu-shou-quan-shi-cao-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/36.jpg" class="responsive-img" alt="牧羊少年的奇幻之旅">
+                        <img src="/medias/featureimages/69.jpg" class="responsive-img" alt="MySQL创建数据库,添加用户,用户授权实操方法">
                         
-                        <span class="card-title">牧羊少年的奇幻之旅</span>
+                        <span class="card-title">MySQL创建数据库,添加用户,用户授权实操方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -767,14 +839,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%84%9F%E6%82%9F/" class="post-category">
-                                    感悟
+                            <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="post-category">
+                                    问题解决
                                 </a>
                             
                             
@@ -784,8 +856,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%96%87%E5%AD%A6/">
-                        <span class="chip bg-color">文学</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>

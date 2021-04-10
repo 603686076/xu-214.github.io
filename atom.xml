@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-04-09T07:40:14.413Z</updated>
+  <updated>2021-04-10T03:32:33.344Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL并发访问的核心机制-MVCC</title>
+    <link href="https://xustudy.com/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/"/>
+    <id>https://xustudy.com/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/</id>
+    <published>2021-04-10T03:31:18.000Z</published>
+    <updated>2021-04-10T03:32:33.344Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;RC、RR、当前读、快照读&quot;&gt;&lt;a href=&quot;#RC、RR、当前读、快照读&quot; class=&quot;headerlink&quot; title=&quot;RC、RR、当前读、快照读&quot;&gt;&lt;/a&gt;RC、RR、当前读、快照读&lt;/h3&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="MySQL" scheme="https://xustudy.com/tags/MySQL/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL创建数据库,添加用户,用户授权实操方法</title>
