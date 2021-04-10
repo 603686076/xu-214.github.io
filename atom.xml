@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-04-10T06:18:41.054Z</updated>
+  <updated>2021-04-10T13:13:15.192Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>人脸识别用户系统接口文档</title>
+    <link href="https://xustudy.com/2021/04/10/ren-lian-shi-bie-yong-hu-xi-tong-jie-kou-wen-dang/"/>
+    <id>https://xustudy.com/2021/04/10/ren-lian-shi-bie-yong-hu-xi-tong-jie-kou-wen-dang/</id>
+    <published>2021-04-10T13:08:57.000Z</published>
+    <updated>2021-04-10T13:13:15.192Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;人脸识别用户系统接口文档&quot;&gt;&lt;a href=&quot;#人脸识别用户系统接口文档&quot; class=&quot;headerlink&quot; title=&quot;人脸识别用户系统接口文档&quot;&gt;&lt;/a&gt;人脸识别用户系统接口文档&lt;/h1&gt;&lt;p&gt;baseUrl: http://域名&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="接口文档" scheme="https://xustudy.com/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL聚簇索引和非聚簇索引的区别</title>
@@ -514,33 +540,6 @@ CREATE</summary>
     
     
     <category term="Docker" scheme="https://xustudy.com/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gitalk 评论登录 403 问题解决</title>
-    <link href="https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/"/>
-    <id>https://xustudy.com/2021/02/19/gitalk-ping-lun-deng-lu-403-wen-ti-jie-jue/</id>
-    <published>2021-02-18T16:08:26.000Z</published>
-    <updated>2021-03-28T10:29:07.139Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://cuiqingcai.com/30010.html&quot;&gt;https://cuiqingcai.com/30010.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;博主解决问题的思路很清晰，值得学习!&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="问题解决" scheme="https://xustudy.com/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-    
-    
-    <category term="hexo" scheme="https://xustudy.com/tags/hexo/"/>
     
   </entry>
   

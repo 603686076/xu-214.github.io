@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="使用 Nginx 部署前后端分离项目，解决跨域问题, xustudy">
+    <meta name="keywords" content="人脸识别用户系统接口文档, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>使用 Nginx 部署前后端分离项目，解决跨域问题 | xustudy</title>
+    <title>人脸识别用户系统接口文档 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -242,12 +242,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/52.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/64.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用 Nginx 部署前后端分离项目，解决跨域问题</h1>
+                    <h1 class="description center-align post-title">人脸识别用户系统接口文档</h1>
                 </div>
             </div>
         </div>
@@ -363,8 +363,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Nginx/">
-                                <span class="chip bg-color">Nginx</span>
+                            <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">
+                                <span class="chip bg-color">接口文档</span>
                             </a>
                         
                     </div>
@@ -375,8 +375,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%BD%AC%E8%BD%BD/" class="post-category">
-                                转载
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                学习记录
                             </a>
                         
                     </div>
@@ -388,28 +388,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-28
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    282
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    1 分
                 </div>
                 
 
@@ -429,63 +429,103 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="使用-Nginx-部署前后端分离项目，解决跨域问题"><a href="#使用-Nginx-部署前后端分离项目，解决跨域问题" class="headerlink" title="使用 Nginx 部署前后端分离项目，解决跨域问题"></a>使用 Nginx 部署前后端分离项目，解决跨域问题</h1><h3 id="1-不得不说的跨域"><a href="#1-不得不说的跨域" class="headerlink" title="1 不得不说的跨域"></a>1 不得不说的跨域</h3><p>很多人对前后端分离部署感到困惑，其实主要是困惑跨域问题怎么解决。因为前后端分离项目在开发的时候，前端通过 nodejs 来运行，需要一个单独的端口，后端通过 Tomcat 或者 Jetty 来运行，也需要端口，两个不同的端口，就造成了跨域。</p>
-<p>但是松哥之前多次和大家聊过这个问题，这种跨域并不是我们传统开发中真正的跨域，这个所谓的跨域只在开发环境中存在，生产环境下就不存在这个跨域问题了。所以我们不能按照以往的通过 JSONP 或者 CORS 之类的手段来解决这个跨域问题。</p>
-<p>前后端分离开发中，前端为了能够模拟出测试数据，并且模拟出请求，一般需要借助于 nodejs 来运行，这是开发时候的状态，开发时候的配置大家可以参考这篇文章：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/szgfT3tnYMCHSeiE3_QnpA">前后端分离历险记</a></li>
-</ul>
-<p>等开发完成后，我们会对前端项目编译打包，编译打包完成之后，就只剩下一堆 js、css 以及 html 文件了，我们把这些编译打包后的文件拷贝到后端项目中，这样再去运行就不存在跨域问题了（例如将编译打包后的静态文件拷贝到 Spring Boot 项目的 <code>src/main/resources/static</code> 目录下）。这种方式我就不再多说了，相信大家都会，今天咱们主要来看看如何结合 Nginx 来部署。</p>
-<h3 id="2-Nginx-大杀器"><a href="#2-Nginx-大杀器" class="headerlink" title="2 Nginx 大杀器"></a>2 Nginx 大杀器</h3><p>结合 Nginx 来部署前后端分离项目算是目前的主流方案。一来部署方便，二来通过动静分离也可以有效提高项目的运行效率。</p>
-<p>大家知道我们项目中的资源包含动态资源和静态资源两种，其中：</p>
-<ul>
-<li>动态资源就是那些需要经过容器处理的资源，例如 jsp、freemarker、各种接口等。</li>
-<li>静态资源则是那些不需要经过容器处理，收到客户端请求就可以直接返回的资源，像 js、css、html 以及各种格式的图片，都属于静态资源。</li>
-</ul>
-<p>将动静资源分开部署，可以有效提高静态资源的加载速度以及整个系统的运行效率。</p>
-<p>在前后端分离项目部署中，我们用 Nginx 来做一个反向代理服务器，它既可以代理动态请求，也可以直接提供静态资源访问。我们来一起看下。建议大家先阅读松哥以前关于 Nginx 的一篇旧文，可以有效帮助大家理解后面的配置：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ZN07_3ImmyRU0NQaqzcazQ">Nginx 极简入门教程！</a></li>
-</ul>
-<h4 id="2-1-后端部署"><a href="#2-1-后端部署" class="headerlink" title="2.1 后端部署"></a>2.1 后端部署</h4><p>后端接口的部署，主要看项目的形式，如果就是普通的 SSM 项目，那就提前准备好 Tomcat ，在 Tomcat 中部署项目，如果是 Spring Boot 项目，可以通过命令直接启动 jar，如果是微服务项目，存在多个 jar 的话，可以结合 Docker 来部署（参考<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vSCQLvQBYMYoPhdlO2v3XA">一键部署 Spring Boot 到远程 Docker 容器</a>），无论是那种形式，对于我们 Java 工程师来说，这都不是问题，我相信这一步大家都能搞定。</p>
-<p>后端项目可以在一个非 80 端口上部署，部署成功之后，因为这个后端项目只是提供接口，所以我们并不会直接去访问他。而是通过 Nginx 请求转发来访问这个后端接口。</p>
-<p>松哥这里以我去年为一个律所的小程序为例，后端是一个 Spring Boot 工程，那么我可以通过 Docker 部署，也可以直接通过命令来启动，这里简单点，直接通过命令来启动 jar ，如下：</p>
-<pre><code class="line-numbers language-shell">nohup java -jar jinlu.jar &gt; vhr.log &amp;
-</code></pre>
-<p>后端启动成功之后，我并不急着直接去访问后端，而是安装并且去配置一个 Nginx，通过 Nginx 来转发请求，Nginx 的基本介绍与安装，大家可以参考（<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ZN07_3ImmyRU0NQaqzcazQ">Nginx 极简入门教程！</a>），我这里就直接来说相关的配置了。</p>
-<p>这里我们在 nginx.conf 中做出如下配置：</p>
-<p>首先配置上游服务器：</p>
-<pre><code class="line-numbers language-shell">upstream zqq.com&#123;
-  server 127.0.0.1:9999 weight=2;
+                <h1 id="人脸识别用户系统接口文档"><a href="#人脸识别用户系统接口文档" class="headerlink" title="人脸识别用户系统接口文档"></a>人脸识别用户系统接口文档</h1><p>baseUrl: http://域名</p>
+<h2 id="接口列表："><a href="#接口列表：" class="headerlink" title="接口列表："></a>接口列表：</h2><h3 id="1、新增用户人脸标识"><a href="#1、新增用户人脸标识" class="headerlink" title="1、新增用户人脸标识"></a>1、新增用户人脸标识</h3><h4 id="请求URL"><a href="#请求URL" class="headerlink" title="请求URL:"></a>请求URL:</h4><p>http://域名/v1/user/add</p>
+<h4 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式:"></a>请求方式:</h4><p>get</p>
+<h4 id="参数类型：param"><a href="#参数类型：param" class="headerlink" title="参数类型：param"></a>参数类型：param</h4><table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>是否必选</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>face_id</td>
+<td>Y</td>
+<td>string</td>
+<td>人脸的标识码</td>
+</tr>
+<tr>
+<td>city</td>
+<td>Y</td>
+<td>string</td>
+<td>用户首次被识别的城市信息</td>
+</tr>
+</tbody></table>
+<h4 id="返回示例："><a href="#返回示例：" class="headerlink" title="返回示例："></a>返回示例：</h4><pre><code class="line-numbers language-javascript">&#123;
+  msg:&quot;添加成功&quot;,
+  status:0
 &#125;
 </code></pre>
-<p>在这里主要是配置服务端的地址，如果服务端是集群化部署，那么这里就会有多个服务端地址，然后可以通过权重或者 ip hash 等方式进行请求分发。</p>
-<p>然后我们在 server 中配置转发规则：</p>
-<pre><code class="line-numbers language-shell">location /jinlu/ &#123;
-  proxy_pass http://zqq.com;
-  tcp_nodelay     on;
-  proxy_set_header Host            $host;
-  proxy_set_header X-Real-IP       $remote_addr;
-  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+<h3 id="2、更新用户备注和姓名"><a href="#2、更新用户备注和姓名" class="headerlink" title="2、更新用户备注和姓名"></a>2、更新用户备注和姓名</h3><h4 id="请求URL-1"><a href="#请求URL-1" class="headerlink" title="请求URL:"></a>请求URL:</h4><p>http://域名/v1/user/update</p>
+<h4 id="请求方式-1"><a href="#请求方式-1" class="headerlink" title="请求方式:"></a>请求方式:</h4><p>get</p>
+<h4 id="参数类型：param-1"><a href="#参数类型：param-1" class="headerlink" title="参数类型：param"></a>参数类型：param</h4><table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>是否必选</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>face_id</td>
+<td>Y</td>
+<td>string</td>
+<td>人脸识别码</td>
+</tr>
+<tr>
+<td>userName</td>
+<td>Y</td>
+<td>string</td>
+<td>用户名称</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Y</td>
+<td>string</td>
+<td>备注信息</td>
+</tr>
+</tbody></table>
+<h4 id="返回示例：-1"><a href="#返回示例：-1" class="headerlink" title="返回示例："></a>返回示例：</h4><pre><code class="line-numbers language-javascript">&#123;
+  status:0,//状态码，0表示正常，-1表示错误
+  msg:&quot;保存成功&quot;,//返回的消息
 &#125;
 </code></pre>
-<p>这样配置完成后，假设我目前的域名是 javaboy.org，那么用户通过 <code>http://www.javaboy.org/jinlu/**</code> 格式的地址就可以访问到我服务端的接口。</p>
-<h4 id="2-2-前端部署"><a href="#2-2-前端部署" class="headerlink" title="2.2 前端部署"></a>2.2 前端部署</h4><p>以 Vue 为例，如果是 SPA 应用，项目打包之后，就是一个 index.html 还有几个 js、css、images 以及 fonts ，这些都是静态文件，我们将静态文件首先上传到服务器，然后在 nginx.conf 中配置静态资源访问，具体配置如下：</p>
-<pre><code class="line-numbers language-shell">location ~ .*\.(js|css|ico|png|jpg|eot|svg|ttf|woff|html|txt|pdf|) &#123;
-   root /usr/local/nginx/html/;#所有静态文件直接读取硬盘
-   expires 30d; #缓存30天
-&#125; 
+<h3 id="3、更新用户的收录次数"><a href="#3、更新用户的收录次数" class="headerlink" title="3、更新用户的收录次数"></a>3、更新用户的收录次数</h3><h4 id="请求URL-2"><a href="#请求URL-2" class="headerlink" title="请求URL:"></a>请求URL:</h4><p>http://域名/v1/user/count</p>
+<h4 id="请求方式-2"><a href="#请求方式-2" class="headerlink" title="请求方式:"></a>请求方式:</h4><p>get</p>
+<h4 id="参数类型：param-2"><a href="#参数类型：param-2" class="headerlink" title="参数类型：param"></a>参数类型：param</h4><table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>是否必选</strong></th>
+<th><strong>类型</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>face_id</td>
+<td>Y</td>
+<td>string</td>
+<td>人脸识别码</td>
+</tr>
+</tbody></table>
+<h4 id="返回示例：-2"><a href="#返回示例：-2" class="headerlink" title="返回示例："></a>返回示例：</h4><pre><code class="line-numbers language-JavaScript">&#123;
+  data: &#123;
+  city: &quot;杭州市&quot;,
+  count: 10,
+  description: &quot;IT界大佬&quot;,
+  face_id: &quot;1235314&quot;,
+  id: 10086,
+  userName: &quot;小明&quot;
+ &#125;,
+ msg: &quot;操作成功&quot;,
+ status: 0
+&#125;
 </code></pre>
-<p>当然我这里是按照资源类型来拦截的，即后缀为 js、css、ico 等的文件，统统都不进行请求分发，直接从本地的 /usr/local/nginx/html/ 目录下读取并返回到前端（我们需要将静态资源文件上传到 <code>/usr/local/nginx/html/</code> 目录下）。</p>
-<p>如果我们的服务器上部署了多个项目，这种写法就不太合适，因为多个项目的前端静态文件肯定要分门别类，各自放好的，这个时候我们一样可以通过路径来拦截，配置如下：</p>
-<pre><code class="line-numbers language-shell">location /jinlu-admin/ &#123;
-   root /usr/local/nginx/html/jinlu-admin/;#所有静态文件直接读取硬盘
-   expires 30d; #缓存30天
-&#125; 
-</code></pre>
-<p>这样，请求路径是 /jinlu-admin/ 格式的请求，则不会进行请求分发，而是直接从本机的 <code>/usr/local/nginx/html/jinlu-admin/</code> 目录下返回相关资源。采用这方方式配置静态资源，我们就可以部署多个项目了，多个项目的部署方式和上面的一样。</p>
-<p>这样部署完成之后，假设我的域名是 javaboy.org ，那么用户通过 <code>http://www.javaboy.org/jinlu-admin/**</code> 格式的请求就可以访问到前端资源了。</p>
-
+<h3 id><a href="#" class="headerlink" title></a></h3>
                 
             </div>
             <hr/>
@@ -511,7 +551,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/">https://xustudy.com/2021/03/28/shi-yong-nginx-bu-shu-qian-hou-duan-fen-chi-xiang-mu-jie-jue-kua-yu-wen-ti/</a>
+                    <a href="https://xustudy.com/2021/04/10/ren-lian-shi-bie-yong-hu-xi-tong-jie-kou-wen-dang/">https://xustudy.com/2021/04/10/ren-lian-shi-bie-yong-hu-xi-tong-jie-kou-wen-dang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -549,8 +589,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Nginx/">
-                                    <span class="chip bg-color">Nginx</span>
+                                <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">
+                                    <span class="chip bg-color">接口文档</span>
                                 </a>
                             
                         </div>
@@ -721,7 +761,7 @@
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-28-18-23-08',
+        id: '2021-04-10-21-08-57',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -750,17 +790,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/04/01/jvm/">
+                <a href="/2021/04/10/ren-lian-shi-bie-yong-hu-xi-tong-jie-kou-wen-dang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="JVM">
+                        <img src="/medias/featureimages/64.jpg" class="responsive-img" alt="人脸识别用户系统接口文档">
                         
-                        <span class="card-title">JVM</span>
+                        <span class="card-title">人脸识别用户系统接口文档</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -770,9 +811,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">
+                        <span class="chip bg-color">接口文档</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="MySQL聚簇索引和非聚簇索引的区别">
+                        
+                        <span class="card-title">MySQL聚簇索引和非聚簇索引的区别</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -788,69 +879,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/03/27/vhr-wei-ren-shi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/66.jpg" class="responsive-img" alt="vhr-微人事">
-                        
-                        <span class="card-title">vhr-微人事</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-27
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="post-category">
-                                    项目
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
-                    </a>
-                    
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
-                    </a>
-                    
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                    <a href="/tags/RabbitMQ/">
-                        <span class="chip bg-color">RabbitMQ</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>

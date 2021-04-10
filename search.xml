@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>人脸识别用户系统接口文档</title>
+      <link href="2021/04/10/ren-lian-shi-bie-yong-hu-xi-tong-jie-kou-wen-dang/"/>
+      <url>2021/04/10/ren-lian-shi-bie-yong-hu-xi-tong-jie-kou-wen-dang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="人脸识别用户系统接口文档"><a href="#人脸识别用户系统接口文档" class="headerlink" title="人脸识别用户系统接口文档"></a>人脸识别用户系统接口文档</h1><p>baseUrl: http://域名</p><h2 id="接口列表："><a href="#接口列表：" class="headerlink" title="接口列表："></a>接口列表：</h2><h3 id="1、新增用户人脸标识"><a href="#1、新增用户人脸标识" class="headerlink" title="1、新增用户人脸标识"></a>1、新增用户人脸标识</h3><h4 id="请求URL"><a href="#请求URL" class="headerlink" title="请求URL:"></a>请求URL:</h4><p>http://域名/v1/user/add</p><h4 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式:"></a>请求方式:</h4><p>get</p><h4 id="参数类型：param"><a href="#参数类型：param" class="headerlink" title="参数类型：param"></a>参数类型：param</h4><table><thead><tr><th><strong>参数</strong></th><th><strong>是否必选</strong></th><th><strong>类型</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td>face_id</td><td>Y</td><td>string</td><td>人脸的标识码</td></tr><tr><td>city</td><td>Y</td><td>string</td><td>用户首次被识别的城市信息</td></tr></tbody></table><h4 id="返回示例："><a href="#返回示例：" class="headerlink" title="返回示例："></a>返回示例：</h4><pre><code class="line-numbers language-javascript">&#123;  msg:&quot;添加成功&quot;,  status:0&#125;</code></pre><h3 id="2、更新用户备注和姓名"><a href="#2、更新用户备注和姓名" class="headerlink" title="2、更新用户备注和姓名"></a>2、更新用户备注和姓名</h3><h4 id="请求URL-1"><a href="#请求URL-1" class="headerlink" title="请求URL:"></a>请求URL:</h4><p>http://域名/v1/user/update</p><h4 id="请求方式-1"><a href="#请求方式-1" class="headerlink" title="请求方式:"></a>请求方式:</h4><p>get</p><h4 id="参数类型：param-1"><a href="#参数类型：param-1" class="headerlink" title="参数类型：param"></a>参数类型：param</h4><table><thead><tr><th><strong>参数</strong></th><th><strong>是否必选</strong></th><th><strong>类型</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td>face_id</td><td>Y</td><td>string</td><td>人脸识别码</td></tr><tr><td>userName</td><td>Y</td><td>string</td><td>用户名称</td></tr><tr><td>description</td><td>Y</td><td>string</td><td>备注信息</td></tr></tbody></table><h4 id="返回示例：-1"><a href="#返回示例：-1" class="headerlink" title="返回示例："></a>返回示例：</h4><pre><code class="line-numbers language-javascript">&#123;  status:0,//状态码，0表示正常，-1表示错误  msg:&quot;保存成功&quot;,//返回的消息&#125;</code></pre><h3 id="3、更新用户的收录次数"><a href="#3、更新用户的收录次数" class="headerlink" title="3、更新用户的收录次数"></a>3、更新用户的收录次数</h3><h4 id="请求URL-2"><a href="#请求URL-2" class="headerlink" title="请求URL:"></a>请求URL:</h4><p>http://域名/v1/user/count</p><h4 id="请求方式-2"><a href="#请求方式-2" class="headerlink" title="请求方式:"></a>请求方式:</h4><p>get</p><h4 id="参数类型：param-2"><a href="#参数类型：param-2" class="headerlink" title="参数类型：param"></a>参数类型：param</h4><table><thead><tr><th><strong>参数</strong></th><th><strong>是否必选</strong></th><th><strong>类型</strong></th><th><strong>说明</strong></th></tr></thead><tbody><tr><td>face_id</td><td>Y</td><td>string</td><td>人脸识别码</td></tr></tbody></table><h4 id="返回示例：-2"><a href="#返回示例：-2" class="headerlink" title="返回示例："></a>返回示例：</h4><pre><code class="line-numbers language-JavaScript">&#123;  data: &#123;  city: &quot;杭州市&quot;,  count: 10,  description: &quot;IT界大佬&quot;,  face_id: &quot;1235314&quot;,  id: 10086,  userName: &quot;小明&quot; &#125;, msg: &quot;操作成功&quot;, status: 0&#125;</code></pre><h3 id><a href="#" class="headerlink" title></a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 接口文档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MySQL聚簇索引和非聚簇索引的区别</title>
       <link href="2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/"/>
       <url>2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/</url>
