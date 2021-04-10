@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="126.单词接龙 II-困难, xustudy">
+    <meta name="keywords" content="MySQL聚簇索引和非聚簇索引的区别, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>126.单词接龙 II-困难 | xustudy</title>
+    <title>MySQL聚簇索引和非聚簇索引的区别 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -242,12 +242,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/64.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">126.单词接龙 II-困难</h1>
+                    <h1 class="description center-align post-title">MySQL聚簇索引和非聚簇索引的区别</h1>
                 </div>
             </div>
         </div>
@@ -363,12 +363,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/leetcode/">
-                                <span class="chip bg-color">leetcode</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%90%9C%E7%B4%A2/">
-                                <span class="chip bg-color">搜索</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
                             </a>
                         
                     </div>
@@ -379,8 +375,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                算法
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                学习记录
                             </a>
                         
                     </div>
@@ -392,28 +388,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-14
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-17
+                    2021-04-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    843
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -433,93 +429,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="126-单词接龙-II"><a href="#126-单词接龙-II" class="headerlink" title="126. 单词接龙 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-ladder-ii/">126. 单词接龙 II</a></h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个起始字符串和一个终止字符串，以及一个单词表，求是否可以将起始字符串每次改一个字符，直到改成终止字符串，且所有中间的修改过程表示的字符串都可以在单词表里找到。</p>
-<p>若存在，输出需要修改次数最少的所有更改方式。</p>
-<h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p>输入是两个字符串，输出是一个二维字符串数组，表示每种字符串修改方式。</p>
-<pre><code class="line-numbers language-C++">Input:
-beginWord = &quot;hit&quot;, endWord = &quot;cog&quot;,
-wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]
-Output:
-[[&quot;hit&quot;,&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;cog&quot;],
-[&quot;hit&quot;,&quot;hot&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]]
-</code></pre>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><p>我们可以把起始字符串、终止字符串、以及单词表里所有的字符串想象成节点。若两个字符串只有一个字符不同，那么它们相连。因为题目需要输出修改次数最少的所有修改方式，因此我们可以使用广度优先搜索，求得起始节点到终止节点的最短距离。</p>
-<p>我们同时还使用了一个小技巧：我们并不是直接从起始节点进行广度优先搜索，直到找到终止节点为止；而是从起始节点和终止节点分别进行广度优先搜索，每次只延展当前层节点数最少的那一端，这样我们可以减少搜索的总结点数。举例来说，假设最短距离为 4，如果我们只从一端搜索 4 层，总遍历节点数最多是 1 + 2 + 4 + 8 + 16 = 31；而如果我们从两端各搜索两层，总遍历节点数最多只有 2 × (1 + 2 + 4) = 14。</p>
-<p>在搜索结束后，我们还需要通过回溯法来重建所有可能的路径。</p>
-<pre><code class="line-numbers language-C++">class Solution &#123;
-public:
-    vector&lt;vector&lt;string&gt;&gt; findLadders(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) &#123;
-        //ans用来存放最后的输出结果
-        vector&lt;vector&lt;string&gt;&gt; ans;
-        //dict用来以set的形式存放字典wordList
-        unordered_set&lt;string&gt; dict;
-        for (const auto&amp; w: wordList) &#123;
-            dict.insert(w);
-        &#125;
-        //如果字典里没有endList，直接返回结果
-        if (!dict.count(endWord)) &#123;
-            return ans;
-        &#125;
-        //删除字典里的beginWord和endWord
-        dict.erase(beginWord);
-        dict.erase(endWord);
-        unordered_set&lt;string&gt; q1&#123;beginWord&#125;, q2&#123;endWord&#125;;
-        unordered_map&lt;string, vector&lt;string&gt;&gt; next;
-        bool reversed = false, found = false;
-        while (!q1.empty()) &#123;
-                unordered_set &lt;string&gt; q;
-                for (const auto&amp; w: q1) &#123;
-                    string s = w;
-                    for (size_t i = 0; i &lt; s.size(); i++) &#123;
-                        char ch = s[i]; 
-                        for (int j = 0; j &lt; 26; j++) &#123;
-                            s[i] = j + &#39;a&#39;;
-                            if (q2.count(s)) &#123;
-                                reversed ? next[s].push_back(w) : next[w].push_back(s); 
-                                found = true;
-                            &#125;
-                            if (dict.count(s)) &#123;
-                                reversed ? next[s].push_back(w) : next[w].push_back(s);
-                                q.insert(s);
-                            &#125;
-                        &#125;
-                        s[i] = ch;
-                    &#125;
-                &#125;
-                if (found) &#123; 
-                    break;
-                &#125;
-                for (const auto&amp; w: q) &#123;
-                    dict.erase(w);
-                &#125;
-                if (q.size() &lt;= q2.size()) &#123;
-                    q1 = q;
-                &#125; else &#123; 
-                    reversed = !reversed;
-                    q1 = q2;
-                    q2 = q;
-                &#125;
-        &#125;
-        if (found) &#123;
-            vector&lt;string&gt; path = &#123;beginWord&#125;;
-            backtracking(beginWord, endWord, next, path, ans);
-        &#125;
-        return ans;
-    &#125;
-
-    void backtracking(const string&amp; src, const string&amp; dst, unordered_map&lt;string, vector&lt;string&gt;&gt;&amp; next, vector&lt;string&gt;&amp; path,vector&lt;vector&lt;string&gt;&gt;&amp; ans) &#123;
-        if (src == dst) &#123;
-            ans.push_back(path);
-            return;
-        &#125;
-        for (const auto&amp; s : next[src]) &#123;
-            path.push_back(s);
-            backtracking(s, dst, next, path, ans);
-            path.pop_back();
-        &#125;
-    &#125;
-&#125;;
-</code></pre>
+                <h2 id="MyISAM-和-InnoDB-的区别"><a href="#MyISAM-和-InnoDB-的区别" class="headerlink" title="MyISAM 和 InnoDB 的区别"></a>MyISAM 和 InnoDB 的区别</h2><p> <a target="_blank" rel="noopener" href="https://snailclimb.gitee.io/javaguide/#/docs/database/MySQL?id=myisam-%E5%92%8C-innodb-%E7%9A%84%E5%8C%BA%E5%88%AB">原文</a></p>
+<p><img src="/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/1618035155300-6a86d4f6-198c-481d-bd22-418d5ed39939.png" alt="image"></p>
+<p>MySQL 5.5 之前，MyISAM 引擎是 MySQL 的默认存储引擎，可谓是风光一时。</p>
+<p>虽然，MyISAM 的性能还行，各种特性也还不错（比如全文索引、压缩、空间函数等）。但是，MyISAM 不支持事务和行级锁，而且最大的缺陷就是崩溃后无法安全恢复。</p>
+<p>5.5 版本之后，MySQL 引入了 InnoDB（事务性数据库引擎），MySQL 5.5 版本后默认的存储引擎为 InnoDB。小伙子，一定要记好这个 InnoDB ，你每次使用 MySQL 数据库都是用的这个存储引擎吧？</p>
+<p>言归正传！咱们下面还是来简单对比一下两者：</p>
+<h3 id="1-是否支持行级锁"><a href="#1-是否支持行级锁" class="headerlink" title="1.是否支持行级锁"></a>1.是否支持行级锁</h3><p>MyISAM 只有表级锁(table-level locking)，而 InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。</p>
+<p>也就说，MyISAM 一锁就是锁住了整张表，这在并发写的情况下是多么滴憨憨啊！这也是为什么 InnoDB 在并发写的时候，性能更牛皮了！</p>
+<h3 id="2-是否支持事务"><a href="#2-是否支持事务" class="headerlink" title="2.是否支持事务"></a>2.是否支持事务</h3><p>MyISAM 不提供事务支持。</p>
+<p>InnoDB 提供事务支持，具有提交(commit)和回滚(rollback)事务的能力。</p>
+<h3 id="3-是否支持外键"><a href="#3-是否支持外键" class="headerlink" title="3.是否支持外键"></a>3.是否支持外键</h3><p>MyISAM 不支持，而 InnoDB 支持。</p>
+<p>🌈 拓展一下：</p>
+<p>一般我们也是不建议在数据库层面使用外键的，应用层面可以解决。不过，这样会对数据的一致性造成威胁。具体要不要使用外键还是要根据你的项目来决定。</p>
+<h3 id="4-是否支持数据库异常崩溃后的安全恢复"><a href="#4-是否支持数据库异常崩溃后的安全恢复" class="headerlink" title="4.是否支持数据库异常崩溃后的安全恢复"></a>4.是否支持数据库异常崩溃后的安全恢复</h3><p>MyISAM 不支持，而 InnoDB 支持。</p>
+<p>使用 InnoDB 的数据库在异常崩溃后，数据库重新启动的时候会保证数据库恢复到崩溃前的状态。这个恢复的过程依赖于 <code>redo log</code> 。</p>
+<p>🌈 拓展一下：</p>
+<ul>
+<li>MySQL InnoDB 引擎使用 <strong>redo log(重做日志)</strong> 保证事务的<strong>持久性</strong>，使用 <strong>undo log(回滚日志)</strong> 来保证事务的<strong>原子性</strong>。</li>
+<li>MySQL InnoDB 引擎通过 <strong>锁机制</strong>、<strong>MVCC</strong> 等手段来保证事务的隔离性（ 默认支持的隔离级别是 <strong><code>REPEATABLE-READ</code></strong> ）。</li>
+<li>保证了事务的持久性、原子性、隔离性之后，一致性才能得到保障。</li>
+</ul>
+<h3 id="5-是否支持-MVCC"><a href="#5-是否支持-MVCC" class="headerlink" title="5.是否支持 MVCC"></a>5.是否支持 MVCC</h3><p>MyISAM 不支持，而 InnoDB 支持。</p>
+<p>讲真，这个对比有点废话，毕竟 MyISAM 连行级锁都不支持。</p>
+<p>MVCC 可以看作是行级锁的一个升级，可以有效减少加锁操作，提供性能。</p>
+<h2 id="MyIsam和Innodb"><a href="#MyIsam和Innodb" class="headerlink" title="MyIsam和Innodb"></a>MyIsam和Innodb</h2><h3 id="MyIsam"><a href="#MyIsam" class="headerlink" title="MyIsam"></a>MyIsam</h3><p><img src="/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/1618034358406-eb4526e4-16a5-4ac1-8327-3c5bd0a81549.png" alt="image.png"></p>
+<h3 id="Innodb"><a href="#Innodb" class="headerlink" title="Innodb"></a>Innodb</h3><p><img src="/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/1618034203702-b60181f0-ca2f-4cc1-ab26-353e8f7d9fd7.png" alt="image.png"></p>
+<p>从上面看出</p>
+<p><img src="/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/1618034559991-db011da1-d80e-4f1b-8acb-8786a48af344.png" alt="image.png"></p>
+<h3 id="聚集索引"><a href="#聚集索引" class="headerlink" title="聚集索引"></a>聚集索引</h3><p><strong>聚集索引即索引结构和数据一起存放的索引。主键索引属于聚集索引。</strong></p>
+<p>在 Mysql 中，InnoDB 引擎的表的 <code>.ibd</code>文件就包含了该表的索引和数据，对于 InnoDB 引擎表来说，该表的索引(B+树)的每个非叶子节点存储索引，叶子节点存储索引和索引对应的数据。</p>
+<h4 id="聚集索引的优点"><a href="#聚集索引的优点" class="headerlink" title="聚集索引的优点"></a>聚集索引的优点</h4><p>聚集索引的查询速度非常的快，因为整个 B+树本身就是一颗多叉平衡树，叶子节点也都是有序的，定位到索引的节点，就相当于定位到了数据。</p>
+<h4 id="聚集索引的缺点"><a href="#聚集索引的缺点" class="headerlink" title="聚集索引的缺点"></a>聚集索引的缺点</h4><ol>
+<li><strong>依赖于有序的数据</strong> ：因为 B+树是多路平衡树，如果索引的数据不是有序的，那么就需要在插入时排序，如果数据是整型还好，否则类似于字符串或 UUID 这种又长又难比较的数据，插入或查找的速度肯定比较慢。</li>
+<li><strong>更新代价大</strong> ： 如果对索引列的数据被修改时，那么对应的索引也将会被修改， 而且况聚集索引的叶子节点还存放着数据，修改代价肯定是较大的， 所以对于主键索引来说，主键一般都是不可被修改的。</li>
+</ol>
+<h3 id="非聚集索引"><a href="#非聚集索引" class="headerlink" title="非聚集索引"></a>非聚集索引</h3><p><strong>非聚集索引即索引结构和数据分开存放的索引。</strong></p>
+<p><strong>二级索引属于非聚集索引。</strong></p>
+<blockquote>
+<p>MYISAM 引擎的表的.MYI 文件包含了表的索引， 该表的索引(B+树)的每个叶子非叶子节点存储索引， 叶子节点存储索引和索引对应数据的指针，指向.MYD 文件的数据。</p>
+<p><strong>非聚集索引的叶子节点并不一定存放数据的指针， 因为二级索引的叶子节点就存放的是主键，根据主键再回表查数据。</strong></p>
+</blockquote>
+<h4 id="非聚集索引的优点"><a href="#非聚集索引的优点" class="headerlink" title="非聚集索引的优点"></a>非聚集索引的优点</h4><p><strong>更新代价比聚集索引要小</strong> 。非聚集索引的更新代价就没有聚集索引那么大了，非聚集索引的叶子节点是不存放数据的</p>
+<h4 id="非聚集索引的缺点"><a href="#非聚集索引的缺点" class="headerlink" title="非聚集索引的缺点"></a>非聚集索引的缺点</h4><ol>
+<li>跟聚集索引一样，非聚集索引也依赖于有序的数据</li>
+<li><strong>可能会二次查询(回表)</strong> :这应该是非聚集索引最大的缺点了。 当查到索引对应的指针或主键后，可能还需要根据指针或主键再到数据文件或表中查询。</li>
+</ol>
 
                 
             </div>
@@ -546,7 +501,7 @@ public:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/2021/03/14/126-dan-ci-jie-long-ii-kun-nan/">https://xustudy.com/2021/03/14/126-dan-ci-jie-long-ii-kun-nan/</a>
+                    <a href="https://xustudy.com/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/">https://xustudy.com/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -584,12 +539,8 @@ public:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/leetcode/">
-                                    <span class="chip bg-color">leetcode</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%90%9C%E7%B4%A2/">
-                                    <span class="chip bg-color">搜索</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
                                 </a>
                             
                         </div>
@@ -760,7 +711,7 @@ public:
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-03-14-21-40-13',
+        id: '2021-04-10-14-15-50',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -789,17 +740,18 @@ public:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/">
+                <a href="/2021/04/10/mysql-ju-cu-suo-yin-he-fei-ju-cu-suo-yin-de-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="hexo代码高亮问题解决">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="MySQL聚簇索引和非聚簇索引的区别">
                         
-                        <span class="card-title">hexo代码高亮问题解决</span>
+                        <span class="card-title">MySQL聚簇索引和非聚簇索引的区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -809,26 +761,27 @@ public:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="post-category">
-                                    问题解决
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-category">
+                                    学习记录
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -842,13 +795,13 @@ public:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/14/docker-de-xue-xi-shi-yong-ji-lu/">
+                <a href="/2021/04/10/mysql-bing-fa-fang-wen-de-he-xin-ji-zhi-mvcc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/52.jpg" class="responsive-img" alt="Docker的学习使用记录">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="MySQL并发访问的核心机制-MVCC">
                         
-                        <span class="card-title">Docker的学习使用记录</span>
+                        <span class="card-title">MySQL并发访问的核心机制-MVCC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -859,7 +812,7 @@ public:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
                             </span>
                         <span class="publish-author">
                             
@@ -876,8 +829,8 @@ public:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
