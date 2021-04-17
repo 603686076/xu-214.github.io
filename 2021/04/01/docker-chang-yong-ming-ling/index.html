@@ -68,6 +68,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/log" class="waves-effect waves-light">
+      
+      <i class="fa fa-list-alt" style="zoom: 0.6;"></i>
+      
+      <span>日志</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/tags" class="waves-effect waves-light">
       
       <i class="fas fa-tags" style="zoom: 0.6;"></i>
@@ -154,6 +165,17 @@
 			    <i class="fa-fw fas fa-home"></i>
 			
 			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/log" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fa fa-list-alt"></i>
+			
+			日志
 		</a>
           
         </li>
@@ -395,14 +417,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-03
+                    2021-04-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    53
+                    62
                 </div>
                 
 
@@ -437,6 +459,7 @@
 -v /mydata/mysql/log:/var/log/mysql \
 -v /mydata/mysql/data:/var/lib/mysql \
 -v /mydata/mysql/conf:/etc/mysql \
+-v /mydata/mysql/mysql-files:/var/lib/mysql-files \
 -e MYSQL_ROOT_PASSWORD=root \
 -d mysql:5.7
 </code></pre>
@@ -1029,7 +1052,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.4k</span>&nbsp;字
+                class="white-color">23k</span>&nbsp;字
             
             
             
