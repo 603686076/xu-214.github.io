@@ -451,9 +451,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="设计一个毕业设计管理系统"><a href="#设计一个毕业设计管理系统" class="headerlink" title="设计一个毕业设计管理系统"></a>设计一个毕业设计管理系统</h2><p><a target="_blank" rel="noopener" href="https://github.com/bwhyman/graduation-process-management">系统要求</a>：</p>
-<blockquote>
-<h1 id="graduation-process-management"><a href="#graduation-process-management" class="headerlink" title="graduation-process-management"></a>graduation-process-management</h1><h3 id="2021-02-16"><a href="#2021-02-16" class="headerlink" title="2021.02.16"></a>2021.02.16</h3><h4 id="task-教师更新描述信息"><a href="#task-教师更新描述信息" class="headerlink" title="task - 教师更新描述信息"></a>task - 教师更新描述信息</h4><p>patch /api/teachers/info</p>
+                <h2 id="设计一个毕业设计管理系统"><a href="#设计一个毕业设计管理系统" class="headerlink" title="设计一个毕业设计管理系统"></a>设计一个毕业设计管理系统</h2><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a><a target="_blank" rel="noopener" href="https://github.com/bwhyman/graduation-process-management">系统要求</a></h2><h3 id="graduation-process-management"><a href="#graduation-process-management" class="headerlink" title="graduation-process-management"></a>graduation-process-management</h3><h3 id="2021-02-16"><a href="#2021-02-16" class="headerlink" title="2021.02.16"></a>2021.02.16</h3><h4 id="task-教师更新描述信息"><a href="#task-教师更新描述信息" class="headerlink" title="task - 教师更新描述信息"></a>task - 教师更新描述信息</h4><p>patch /api/teachers/info</p>
 <h4 id="task-手动添加删除教师-学生"><a href="#task-手动添加删除教师-学生" class="headerlink" title="task - 手动添加删除教师/学生"></a>task - 手动添加删除教师/学生</h4><p>post /api/director/teachers</p>
 <p>手动添加学生，使用导入表格相同接口，将学生对象存数组<br>post /api/director/students</p>
 <p>delete /api/director/teachers/{tid}<br>delete /api/director/students/{sid}</p>
@@ -565,7 +563,6 @@
 </ul>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>就这点功能，不必分模块了吧<br>没加swagger，前后端无法联网联调。并行开发，使用md文档，github分享请求/响应数据结构<br>component包下为原工具类，按单例组件设计<br>entity直接当do层<br>修改application.yml/generatorConfig.xml数据源配置<br>在Maven视图/plugins/mybatis-generator，运行mybatis-generator:generate生成model/mapper<br>每次均创建model覆盖，但仅为新数据表创建mapper</p>
 <p>mybatis-plus全局雪花算法生成ID；注入乐观锁拦截器<br>Jackson序列化时忽略空值属性<br>redis后期看情况加<br>其他自己加</p>
-</blockquote>
 <h2 id="基于RuoYi进行二次开发"><a href="#基于RuoYi进行二次开发" class="headerlink" title="基于RuoYi进行二次开发"></a>基于RuoYi进行二次开发</h2><p>1.官方文档地址：<a target="_blank" rel="noopener" href="http://doc.ruoyi.vip/ruoyi-cloud/">http://doc.ruoyi.vip/ruoyi-cloud/</a></p>
 <p>2.项目演示地址：<a target="_blank" rel="noopener" href="http://cloud.ruoyi.vip/">http://cloud.ruoyi.vip/</a></p>
 <h2 id="先启动一下RuoYi微服务版试下"><a href="#先启动一下RuoYi微服务版试下" class="headerlink" title="先启动一下RuoYi微服务版试下"></a>先启动一下RuoYi微服务版试下</h2><p>RuoYi数据库推荐使用5.7版本， 华为云上面的数据库是5.7， 就先使用华为云吧</p>
