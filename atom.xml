@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-04-17T03:03:26.832Z</updated>
+  <updated>2021-04-19T04:05:59.869Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>删除链表中重复的结点</title>
+    <link href="https://xustudy.com/2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/"/>
+    <id>https://xustudy.com/2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/</id>
+    <published>2021-04-19T03:58:10.000Z</published>
+    <updated>2021-04-19T04:05:59.869Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。</summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="https://xustudy.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="剑指offer" scheme="https://xustudy.com/tags/%E5%89%91%E6%8C%87offer/"/>
+    
+    <category term="链表" scheme="https://xustudy.com/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>毕业设计管理系统1.0.0</title>
@@ -513,33 +540,6 @@ CREATE</summary>
     
     
     <category term="hexo" scheme="https://xustudy.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>126.单词接龙 II-困难</title>
-    <link href="https://xustudy.com/2021/03/14/126-dan-ci-jie-long-ii-kun-nan/"/>
-    <id>https://xustudy.com/2021/03/14/126-dan-ci-jie-long-ii-kun-nan/</id>
-    <published>2021-03-14T13:40:13.000Z</published>
-    <updated>2021-03-17T02:41:44.067Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;126-单词接龙-II&quot;&gt;&lt;a href=&quot;#126-单词接龙-II&quot; class=&quot;headerlink&quot; title=&quot;126. 单词接龙 II&quot;&gt;&lt;/a&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="算法" scheme="https://xustudy.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="leetcode" scheme="https://xustudy.com/tags/leetcode/"/>
-    
-    <category term="搜索" scheme="https://xustudy.com/tags/%E6%90%9C%E7%B4%A2/"/>
     
   </entry>
   

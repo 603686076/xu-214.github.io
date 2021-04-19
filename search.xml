@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>删除链表中重复的结点</title>
+      <link href="2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/"/>
+      <url>2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5 处理后为 1-&gt;2-&gt;5</p><p>示例1</p><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><pre><code>&#123;1,2,3,3,4,4,5&#125;</code></pre><h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><pre><code>&#123;1,2,5&#125;</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>双前指针+HashSet</p><p>HashSet检查是否重复， 用prepre.next = pHead.next进行删除</p><p>之所以要使用prepre， 是因为题目要求<code>重复的结点不保留</code>， 使用prepre记录出现重复节点的的前一个节点， 比如{1， 2， 2}， 则prepre就指向1</p><p>使用dummy虚拟节点， 使其指向当前链表的头节点，这样即使原链表所有节点全被删除，也会有一个 dummy 存在，返回 dummy-&gt;next 即可</p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="line-numbers language-java">package com.xu.删除链表中重复的结点;import com.xu.entity.ListNode;import java.util.HashSet;/* public class ListNode &#123;    int val;    ListNode next = null;    ListNode(int val) &#123;        this.val = val;    &#125;&#125;*/public class Solution &#123;    public ListNode deleteDuplication(ListNode pHead) &#123;        if (pHead == null || pHead.next == null)&#123;            return pHead;        &#125;        HashSet&lt;Integer&gt; set = new HashSet&lt;&gt;();        ListNode prepre, pre, dummy = new ListNode(0);        dummy.next = pHead;        prepre = dummy;        pre = dummy;        while (pHead != null) &#123;            if (set.contains(pHead.val)) &#123;                prepre.next = pHead.next;                pre = prepre;            &#125; else &#123;                set.add(pHead.val);                prepre = pre;                pre = pHead;            &#125;            pHead = pHead.next;        &#125;        return dummy.next;    &#125;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 剑指offer </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>毕业设计管理系统1.0.0</title>
       <link href="2021/04/17/bi-ye-she-ji-guan-li-xi-tong-1-0-0/"/>
       <url>2021/04/17/bi-ye-she-ji-guan-li-xi-tong-1-0-0/</url>

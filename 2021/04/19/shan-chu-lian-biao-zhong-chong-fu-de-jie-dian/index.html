@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="log, xustudy">
+    <meta name="keywords" content="删除链表中重复的结点, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>log | xustudy</title>
+    <title>删除链表中重复的结点 | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -264,12 +264,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/52.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/37.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">log</h1>
+                    <h1 class="description center-align post-title">删除链表中重复的结点</h1>
                 </div>
             </div>
         </div>
@@ -383,12 +383,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%89%91%E6%8C%87offer/">
+                                <span class="chip bg-color">剑指offer</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                                <span class="chip bg-color">链表</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -397,28 +414,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-17
+                    2021-04-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-18
+                    2021-04-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    339
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    1 分
                 </div>
                 
 
@@ -438,235 +455,56 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="4月"><a href="#4月" class="headerlink" title="4月"></a>4月</h2><h3 id="18"><a href="#18" class="headerlink" title="18"></a>18</h3><h4 id="ArrayList的初始化方法"><a href="#ArrayList的初始化方法" class="headerlink" title="ArrayList的初始化方法"></a>ArrayList的初始化方法</h4><ol>
-<li><p>使用Arrays.asList方法</p>
-<pre><code class="line-numbers language-java">ArrayList&lt;Type&gt; obj = new ArrayList&lt;Type&gt;(Arrays.asList(Object o1, Object o2, Object o3, ....so on));
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5 处理后为 1-&gt;2-&gt;5</p>
+<p>示例1</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><pre><code>&#123;1,2,3,3,4,4,5&#125;
 </code></pre>
-</li>
-<li><p>使用Collections.ncopies(通过复制)</p>
-<pre><code class="line-numbers language-java">ArrayList&lt;T&gt; obj = new ArrayList&lt;T&gt;(Collections.nCopies(count,element));//把element复制count次填入A
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><pre><code>&#123;1,2,5&#125;
 </code></pre>
-</li>
-</ol>
-<h4 id="剑指offer"><a href="#剑指offer" class="headerlink" title="剑指offer"></a>剑指offer</h4><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/c451a3fd84b64cb19485dad758a55ebe">和为S的连续正数序列</a></p>
-<h5 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h5><p>小明很喜欢数学,有一天他在做数学作业时,要求计算出9~16的和,他马上就写出了正确答案是100。但是他并不满足于此,他在想究竟有多少种连续的正数序列的和为100(至少包括两个数)。没多久,他就得到另一组连续正数和为100的序列:18,19,20,21,22。现在把问题交给你,你能不能也很快的找出所有和为S的连续正数序列? Good Luck!</p>
-<h5 id="返回值描述"><a href="#返回值描述" class="headerlink" title="返回值描述:"></a>返回值描述:</h5><blockquote>
-<p>输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序</p>
-</blockquote>
-<p>示例</p>
-<h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><pre><code>9
-</code></pre>
-<h5 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h5><pre><code>[[2,3,4],[4,5]]
-</code></pre>
-<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>采用滑动窗口</p>
-<p>知识补充：</p>
-<ol>
-<li>什么是滑动窗口？<br>顾名思义，首先是一个窗口，既然是一个窗口，就需要用窗口的左边界<code>i</code>和右边界<code>j</code>来唯一表示一个窗口，其次，滑动代表，窗口始终从左往右移动，这也表明左边界<code>i</code>和右边界<code>j</code>始终会往后移动，而不会往左移动。<br>这里我用左闭右开区间来表示一个窗口。比如<br><img src="/log/index/284295_1588586066412_7E35C7D253FD76C798B44ABB19E885BF" alt="图片说明"></li>
-<li>滑动窗口的操作</li>
-</ol>
-<ul>
-<li>扩大窗口，<code>j += 1</code></li>
-<li>缩小窗口，<code>i += 1</code><br>算法步骤：</li>
-</ul>
-<ol>
-<li>初始化，<code>i=1,j=1</code>, 表示窗口大小为<code>0</code></li>
-<li>如果窗口中值的和小于目标值sum， 表示需要扩大窗口，<code>j += 1</code></li>
-<li>否则，如果窗口值和大于目标值sum，表示需要缩小窗口，<code>i += 1</code></li>
-<li>否则，等于目标值，存结果，缩小窗口，继续进行步骤<code>2,3,4</code></li>
-</ol>
-<p>这里需要注意一个问题：</p>
-<p>​    什么时候窗口终止呢，这里窗口左边界走到sum的一半即可终止，因为题目要求至少包含2个数</p>
-<h5 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h5><pre><code class="line-numbers language-java">package com.xu.和为S的连续正数序列;
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>双前指针+HashSet</p>
+<p>HashSet检查是否重复， 用prepre.next = pHead.next进行删除</p>
+<p>之所以要使用prepre， 是因为题目要求<code>重复的结点不保留</code>， 使用prepre记录出现重复节点的的前一个节点， 比如{1， 2， 2}， 则prepre就指向1</p>
+<p>使用dummy虚拟节点， 使其指向当前链表的头节点，这样即使原链表所有节点全被删除，也会有一个 dummy 存在，返回 dummy-&gt;next 即可</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre><code class="line-numbers language-java">package com.xu.删除链表中重复的结点;
 
-import java.util.ArrayList;
+import com.xu.entity.ListNode;
 
+import java.util.HashSet;
+
+/*
+ public class ListNode &#123;
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) &#123;
+        this.val = val;
+    &#125;
+&#125;
+*/
 public class Solution &#123;
-    public ArrayList&lt;ArrayList&lt;Integer&gt; &gt; FindContinuousSequence(int sum) &#123;
-        ArrayList&lt;ArrayList&lt;Integer&gt; &gt; ret = new ArrayList&lt;&gt;();
-        int l = 1, r = 2;
-        int tmp = l;
-        while (l &lt;= sum / 2) &#123;
-            if (tmp &lt; sum) &#123;
-                tmp += r;
-                ++r;
-            &#125; else if (tmp &gt; sum) &#123;
-                tmp -= l;
-                ++l;
+    public ListNode deleteDuplication(ListNode pHead) &#123;
+        if (pHead == null || pHead.next == null)&#123;
+            return pHead;
+        &#125;
+        HashSet&lt;Integer&gt; set = new HashSet&lt;&gt;();
+        ListNode prepre, pre, dummy = new ListNode(0);
+        dummy.next = pHead;
+        prepre = dummy;
+        pre = dummy;
+        while (pHead != null) &#123;
+            if (set.contains(pHead.val)) &#123;
+                prepre.next = pHead.next;
+                pre = prepre;
             &#125; else &#123;
-                ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
-                for (int i = l; i &lt; r; ++i) &#123;
-                    list.add(i);
-                &#125;
-                ret.add(list);
-                tmp -= l;
-                ++l;
+                set.add(pHead.val);
+                prepre = pre;
+                pre = pHead;
             &#125;
+            pHead = pHead.next;
         &#125;
-        return ret;
+        return dummy.next;
     &#125;
 &#125;
-</code></pre>
-<h3 id="17"><a href="#17" class="headerlink" title="17"></a>17</h3><h4 id="剑指offer-1"><a href="#剑指offer-1" class="headerlink" title="剑指offer"></a>剑指offer</h4><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/1624bc35a45c42c0bc17d17fa0cba788">滑动窗口的最大值</a></p>
-<pre><code class="line-numbers language-java">import java.util.*;
-public class Solution &#123;
-    private PriorityQueue&lt;Integer&gt; maxHeap= new PriorityQueue&lt;&gt;((o1, o2) -&gt; o2 - o1);
-    private ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
-
-    public ArrayList&lt;Integer&gt; maxInWindows(int [] num, int size) &#123;
-        if (size &gt; num.length || num.length == 0 || size == 0) &#123;
-            return new ArrayList&lt;&gt;();
-        &#125;
-        for (int i = 0; i &lt; size; ++i) &#123;
-            maxHeap.add(num[i]);
-        &#125;
-        for (int i = size; i &lt; num.length; ++i) &#123;
-            list.add(maxHeap.peek());
-            maxHeap.remove(num[i-size]);
-            maxHeap.add(num[i]);
-        &#125;
-        list.add(maxHeap.peek());
-        return list;
-    &#125;
-&#125;
-</code></pre>
-<p>代码内存和耗时都极高， 不过就当是对最大堆的一次练习吧。</p>
-<h4 id="重写compareTo-方法"><a href="#重写compareTo-方法" class="headerlink" title="重写compareTo()方法"></a>重写<strong>compareTo()方法</strong></h4><p>List接口的排序可以通过Collections.sort()来进行<strong>定制排序</strong>。<br>只需要<strong>继承Comparable接口</strong>后，重写<strong>compareTo()方法</strong>。</p>
-<pre><code class="line-numbers language-java">//重写compareTo方法，用age来比较。也可以用别的来比较
-@Override
-public int compareTo(Object o) &#123;
-   //使用当前对象的年龄和其他对象的年龄比较，如果&lt;0返回负数，&gt;0返回正数，=0返回0
-   int z = this.age - ((Student)o).getAge();
-   if(z&lt;0)
-      return -1;  // 返回其他负数也行
-   else if(z == 0)
-      return 0;
-   else
-      return 1;  //返回其他正数也行
-&#125;
-
-
-输出:
-李四,18,561618,168
-王五,19,841681,170
-赵七,20,562595,180
-张三,21,156482,172
-按年龄从小到大排序
-</code></pre>
-<h4 id="Java中private、protected、public和default的区别"><a href="#Java中private、protected、public和default的区别" class="headerlink" title="Java中private、protected、public和default的区别"></a>Java中private、protected、public和default的区别</h4><p><img src="/log/index/image-20210417223405173.png" alt="image-20210417223405173"></p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>c++的set是有序集合，元素不可重复，底层实现默认为红黑树</p>
-<p>java的Set，顾名思义，集合的意思。java的集合和数学的集合一样，满足集合的<strong>无序性，确定性，单一性</strong>。</p>
-<p>注意它俩的有序和无序的区别</p>
-<h3 id="15"><a href="#15" class="headerlink" title="15"></a>15</h3><h4 id="设计一个毕业设计管理系统"><a href="#设计一个毕业设计管理系统" class="headerlink" title="设计一个毕业设计管理系统"></a>设计一个毕业设计管理系统</h4><p><a target="_blank" rel="noopener" href="https://github.com/bwhyman/graduation-process-management">系统要求</a></p>
-<h4 id="基于RuoYi进行二次开发"><a href="#基于RuoYi进行二次开发" class="headerlink" title="基于RuoYi进行二次开发"></a>基于RuoYi进行二次开发</h4><p>1.文档地址：<a target="_blank" rel="noopener" href="http://doc.ruoyi.vip/ruoyi-cloud/">http://doc.ruoyi.vip/ruoyi-cloud/</a></p>
-<p>2.项目演示地址：<a target="_blank" rel="noopener" href="http://cloud.ruoyi.vip/">http://cloud.ruoyi.vip/</a></p>
-<h4 id="先启动一下RuoYi微服务版试下"><a href="#先启动一下RuoYi微服务版试下" class="headerlink" title="先启动一下RuoYi微服务版试下"></a>先启动一下RuoYi微服务版试下</h4><p>RuoYi数据库推荐使用5.7版本， 华为云上面的数据库是5.7， 就使用华为云吧</p>
-<p>配置<code>nacos</code>持久化，修改<code>conf/application.properties</code>文件，增加支持<code>mysql</code>数据源配置</p>
-<pre><code class="line-numbers language-yml"># db mysql
-spring.datasource.platform=mysql
-db.num=1
-db.url.0=jdbc:mysql://114.116.215.89:3306/ry-config?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTC
-db.user=root
-db.password=password
-</code></pre>
-<blockquote>
-<p>提示</p>
-<p>配置文件<code>application.properties</code>是在下载的<code>nacos-server</code>包<code>conf</code>目录下。<br>默认配置单机模式，<code>nacos</code>也集群/多集群部署模式参考 (<a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/docs/deployment.html">Nacos支持三种部署模式 (opens new window)</a>)</p>
-</blockquote>
-<p>配置持久化之后， 配置文件就全部持久化到了114.116.215.89:3306/ry-config， 即华为云的数据库里的ry-config里</p>
-<p>启动nacos</p>
-<ol>
-<li><p>进入命令行模式</p>
-<pre><code class="line-numbers language-shell">cmd G:\Environment\nacos\bin
-</code></pre>
-</li>
-<li><p>启动nacos(以单体模式启动)</p>
-<pre><code class="line-numbers language-shell">startup.cmd -m standalone
-</code></pre>
-</li>
-</ol>
-<p>配置完nacos持久化后别忘了在<a target="_blank" rel="noopener" href="http://localhost:8848/nacos/%E4%B8%8B%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88%E9%85%8D%E7%BD%AE%E6%95%B0%E6%8D%AE%E6%BA%90%E3%80%81redis...%EF%BC%89">http://localhost:8848/nacos/下修改配置文件（配置数据源、redis...）</a></p>
-<p><img src="/log/index/image-20210415190911549.png" alt="image-20210415190911549"></p>
-<p>启动Redis</p>
-<ol>
-<li><p>进入命令行模式</p>
-<pre><code class="line-numbers language-shell">cmd G:\Environment\redis6
-</code></pre>
-</li>
-<li><p>启动Redis</p>
-<pre><code class="line-numbers language-shell">redis-server.exe redis.conf
-</code></pre>
-</li>
-</ol>
-<p>我在redis.conf设置了requirepass， 需要在配置中心的yml文件里配置redis密码</p>
-<p>启动运行基础模块（启动没有先后顺序）</p>
-<ul>
-<li><p>RuoYiGatewayApplication （网关模块 <strong>必须</strong>）</p>
-</li>
-<li><p>RuoYiAuthApplication （认证模块 <strong>必须</strong>）</p>
-</li>
-<li><p>RuoYiSystemApplication （系统模块 <strong>必须</strong>）</p>
-</li>
-<li><p>RuoYiMonitorApplication （监控中心 可选）</p>
-</li>
-<li><p>RuoYiGenApplication （代码生成 可选）</p>
-</li>
-<li><p>RuoYiJobApplication （定时任务 可选）</p>
-</li>
-<li><p>RuoYFileApplication （文件服务 可选）</p>
-</li>
-</ul>
-<p>启动前端</p>
-<pre><code class="line-numbers language-shell">npm run dev
-</code></pre>
-<p>运行成功！！！</p>
-<p><img src="/log/index/image-20210415191523668.png" alt="image-20210415191523668"></p>
-<h3 id="14"><a href="#14" class="headerlink" title="14"></a>14</h3><pre><code class="line-numbers language-java">private Stack&lt;Integer&gt; dataStack = new Stack&lt;&gt;();
-
-stack.peek()函数返回栈顶的元素，但不弹出该栈顶元素。
-
-stack.pop()函数返回栈顶的元素，并且将该栈顶元素出栈。
-</code></pre>
-<pre><code class="line-numbers language-java">//错误代码
-//java.util.EmptyStackException
-while (stack.peek() == popA[popIndex] 
-       &amp;&amp; popIndex &lt; popA.length &amp;&amp; !stack.isEmpty()) &#123;
-        stack.pop();
-        ++popIndex;
-&#125;
-
-//正确代码
-//应先判断是否为空， 再做比较
-while (popIndex &lt; popA.length &amp;&amp; !stack.isEmpty() 
-       &amp;&amp; stack.peek() == popA[popIndex]) &#123;
-        stack.pop();
-        ++popIndex;
-&#125;
-</code></pre>
-<h4 id="Java常用容器类完整图示"><a href="#Java常用容器类完整图示" class="headerlink" title="Java常用容器类完整图示"></a>Java常用容器类完整图示</h4><p><img src="/log/index/20200223223202690.png" alt="img"></p>
-<pre><code class="line-numbers language-yaml">配置集
-
-配置集id
-
-配置分组
-</code></pre>
-<h3 id="13"><a href="#13" class="headerlink" title="13"></a>13</h3><pre><code class="line-numbers language-java">String str;
-str.charAt(i)-&gt;返回第在i个位置的char
-str获取大小是str.length()
-    
-A的ASCII值小于a, 大小写都涉及要 - &#39;A&#39;
-    
-StringBuilder sb = new StringBuilder();//底层是byte[]
-
-String[] strs = s.split(&quot;&quot;);
-split是字符拆分
-</code></pre>
-<pre><code class="line-numbers language-java">#&#123;&#125;取对象属性值
-    
-默认，spring测试环境下直接使用持久化组件产生的持久化操作会回滚。
-    
-FieldStrategy.NEVER，不更新字段。由数据库维护
-
-MP无需手动设置主键值 默认主键生成策略为雪花算法
 </code></pre>
 
                 
@@ -694,7 +532,7 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xustudy.com/log/index.html">https://xustudy.com/log/index.html</a>
+                    <a href="https://xustudy.com/2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/">https://xustudy.com/2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -731,7 +569,15 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%89%91%E6%8C%87offer/">
+                                    <span class="chip bg-color">剑指offer</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                                    <span class="chip bg-color">链表</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -900,7 +746,7 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
         repo: 'xu-214.github.io',
         owner: 'xu-214',
         admin: "xu-214",
-        id: '2021-04-17-09-34-05',
+        id: '2021-04-19-11-58-10',
         proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
@@ -934,13 +780,13 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/log/index.html">
+                <a href="/2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/52.jpg" class="responsive-img" alt="log">
+                        <img src="/medias/featureimages/37.jpg" class="responsive-img" alt="删除链表中重复的结点">
                         
-                        <span class="card-title">log</span>
+                        <span class="card-title">删除链表中重复的结点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -951,17 +797,33 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-19
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            xustudy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%89%91%E6%8C%87offer/">
+                        <span class="chip bg-color">剑指offer</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                        <span class="chip bg-color">链表</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -969,16 +831,16 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/log/index.html">
+                <a href="/2021/04/17/bi-ye-she-ji-guan-li-xi-tong-1-0-0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/52.jpg" class="responsive-img" alt="log">
+                        <img src="/medias/featureimages/60.jpg" class="responsive-img" alt="毕业设计管理系统1.0.0">
                         
-                        <span class="card-title">log</span>
+                        <span class="card-title">毕业设计管理系统1.0.0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -993,13 +855,24 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            xustudy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="post-category">
+                                    项目
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">毕业设计管理系统</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
