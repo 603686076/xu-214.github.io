@@ -6,7 +6,7 @@
   <link href="https://xustudy.com/atom.xml" rel="self"/>
   
   <link href="https://xustudy.com/"/>
-  <updated>2021-04-19T04:05:59.869Z</updated>
+  <updated>2021-04-23T12:05:24.114Z</updated>
   <id>https://xustudy.com/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>post</title>
+    <link href="https://xustudy.com/2021/04/23/post/"/>
+    <id>https://xustudy.com/2021/04/23/post/</id>
+    <published>2021-04-23T12:05:24.000Z</published>
+    <updated>2021-04-23T12:05:24.114Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>居合斩！二分查找</title>
+    <link href="https://xustudy.com/2021/04/23/ju-he-zhan-er-fen-cha-zhao/"/>
+    <id>https://xustudy.com/2021/04/23/ju-he-zhan-er-fen-cha-zhao/</id>
+    <published>2021-04-23T08:56:44.000Z</published>
+    <updated>2021-04-23T12:05:03.847Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;二分查找真的很简单吗？并不简单。看看 Knuth 大佬（发明 KMP</summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="https://xustudy.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="二分查找" scheme="https://xustudy.com/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>删除链表中重复的结点</title>
@@ -490,56 +528,6 @@ CREATE</summary>
     
     
     <category term="Linux" scheme="https://xustudy.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker进阶</title>
-    <link href="https://xustudy.com/2021/03/15/docker-jin-jie/"/>
-    <id>https://xustudy.com/2021/03/15/docker-jin-jie/</id>
-    <published>2021-03-15T10:28:15.000Z</published>
-    <updated>2021-03-16T03:11:43.608Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Docker-Compose&quot;&gt;&lt;a href=&quot;#Docker-Compose&quot; class=&quot;headerlink&quot; title=&quot;Docker Compose&quot;&gt;&lt;/a&gt;Docker Compose&lt;/h1&gt;&lt;h2 id=&quot;1-概述（官方文档）&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="学习记录" scheme="https://xustudy.com/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="Docker" scheme="https://xustudy.com/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo代码高亮问题解决</title>
-    <link href="https://xustudy.com/2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/"/>
-    <id>https://xustudy.com/2021/03/15/hexo-dai-ma-gao-liang-wen-ti-jie-jue/</id>
-    <published>2021-03-15T03:36:30.000Z</published>
-    <updated>2021-03-15T04:45:16.629Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;我的个人博客采用的是闪烁之狐大佬的主题&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="问题解决" scheme="https://xustudy.com/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-    
-    
-    <category term="hexo" scheme="https://xustudy.com/tags/hexo/"/>
     
   </entry>
   

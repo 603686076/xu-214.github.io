@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>post</title>
+      <link href="2021/04/23/post/"/>
+      <url>2021/04/23/post/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>居合斩！二分查找</title>
+      <link href="2021/04/23/ju-he-zhan-er-fen-cha-zhao/"/>
+      <url>2021/04/23/ju-he-zhan-er-fen-cha-zhao/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>二分查找真的很简单吗？并不简单。看看 Knuth 大佬（发明 KMP 算法的那位）怎么说的：</p><blockquote><p>Although the basic idea of binary search is comparatively straightforward, the details can be surprisingly tricky…</p></blockquote><p>这句话可以这样理解：<strong>思路很简单，细节是魔鬼。</strong></p><h3 id="找到一个数"><a href="#找到一个数" class="headerlink" title="找到一个数"></a>找到一个数</h3><pre><code class="line-numbers language-java">private static int binarySearch(int [] array, int target) &#123;    int l = 0, r = array.length-1;    while (l &lt;= r) &#123;        int m = l + (r - l) / 2;        if (array[m] == target) &#123;            return m;        &#125; else if (array[m] &gt; target) &#123;            r = m - 1;        &#125; else if (array[m] &lt; target)&#123;            l = m + 1;        &#125;    &#125;    return -1;&#125;</code></pre><blockquote><p><em>1</em>. 为什么 while 循环的条件中是 &lt;=，而不是 &lt; ？</p><p>答：因为初始化 right 的赋值是 nums.length - 1，即最后一个元素的索引，而不是 nums.length。</p><p>这二者可能出现在不同功能的二分查找中，区别是：前者相当于两端都闭区间 [left, right]，后者相当于左闭右开区间 [left, right)。</p></blockquote><h3 id="如果存在多个，找到左边界"><a href="#如果存在多个，找到左边界" class="headerlink" title="如果存在多个，找到左边界"></a>如果存在多个，找到左边界</h3><p><strong>需要满足数组是非降序数组</strong></p><pre><code class="line-numbers language-java">private static int binarySearchLeft(int [] array, int target) &#123;    int l = 0, r = array.length;    while (l &lt; r) &#123;        int m = l + (r - l) / 2;        if (array[m] &gt;= target) &#123;            r = m;        &#125; else if (array[m] &lt; target) &#123;            l = m + 1;        &#125;    &#125;    return l;&#125;//未找到int find = binarySearchLeft(array, target);if (find == array.length || array[find] != target)    return “未找到”;</code></pre><h3 id="如果存在多个，找到右边界"><a href="#如果存在多个，找到右边界" class="headerlink" title="如果存在多个，找到右边界"></a>如果存在多个，找到右边界</h3><p><strong>需要满足数组是非降序数组</strong></p><pre><code class="line-numbers language-java">private static int binarySearchRight(int [] array, int target) &#123;    int l = 0, r = array.length;    while (l &lt; r) &#123;        int m = l + (r - l) / 2;        if (array[m] &lt;= target) &#123;            l = m + 1;        &#125; else if (array[m] &gt; target) &#123;            r = m;        &#125;    &#125;    return r-1;&#125;//未找到int find = binarySearchRight(array, target);if (find == array.length || array[find] != target)    return “未找到”;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>删除链表中重复的结点</title>
       <link href="2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/"/>
       <url>2021/04/19/shan-chu-lian-biao-zhong-chong-fu-de-jie-dian/</url>

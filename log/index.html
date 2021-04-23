@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-18
+                    2021-04-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    9 分
                 </div>
                 
 
@@ -438,7 +438,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="4月"><a href="#4月" class="headerlink" title="4月"></a>4月</h2><h3 id="18"><a href="#18" class="headerlink" title="18"></a>18</h3><h4 id="ArrayList的初始化方法"><a href="#ArrayList的初始化方法" class="headerlink" title="ArrayList的初始化方法"></a>ArrayList的初始化方法</h4><ol>
+                <h2 id="4月"><a href="#4月" class="headerlink" title="4月"></a>4月</h2><h3 id="22"><a href="#22" class="headerlink" title="22"></a>22</h3><p>在 String 中提供了两个截取字符串的方法，一个是从指定位置截取到字符串结尾，另一个是截取指定范围的内容。下面对这两种方法分别进行介绍。</p>
+<h4 id="1-substring-int-beginIndex-形式"><a href="#1-substring-int-beginIndex-形式" class="headerlink" title="1. substring(int beginIndex) 形式"></a>1. substring(int beginIndex) 形式</h4><p>此方式用于提取从索引位置开始至结尾处的字符串部分。调用时，括号中是需要提取字符串的开始位置，方法的返回值是提取的字符串。例如：</p>
+<pre><code class="line-numbers language-java">String str = &quot;我爱 Java 编程&quot;;
+String result = str.substring(3);
+System.out.println(result);    // 输出：Java 编程
+</code></pre>
+<h4 id="2-substring-int-beginIndex，int-endIndex-形式"><a href="#2-substring-int-beginIndex，int-endIndex-形式" class="headerlink" title="2. substring(int beginIndex，int endIndex) 形式"></a>2. substring(int beginIndex，int endIndex) 形式</h4><p>此方法中的 beginIndex 表示截取的起始索引，截取的字符串中包括起始索引对应的字符；endIndex 表示结束索引，截取的字符串中不包括结束索引对应的字符，如果不指定 endIndex，则表示截取到目标字符串末尾。该方法用于提取位置 beginIndex 和位置 endIndex 位置之间的字符串部分。</p>
+<p>这里需要特别注意的是， 对于开始位置 beginIndex， Java 是基于字符串的首字符索引为 0 处理的，但是对于结束位置 endIndex，Java 是基于字符串的首字符索引为 1 来处理的，如图 1 所示。</p>
+<p><img src="/log/index/3-1Q01010194N42.jpg" alt="img"><br>图1 字符串中的字符索引</p>
+<p>注意：substring() 方法是按字符截取，而不是按字节截取。</p>
+<h4 id="例-1"><a href="#例-1" class="headerlink" title="例 1"></a>例 1</h4><p>创建一个字符串，对它使用 substring() 方法进行截取并输出结果。示例代码如下：</p>
+<pre><code class="line-numbers language-java">public static void main(String[] args) &#123;
+    String day = &quot;Today is Monday&quot;;    //原始字符串
+    System.out.println(&quot;substring(0)结果：&quot;+day.substring(0));
+    System.out.println(&quot;substring(2)结果：&quot;+day.substring(2));
+    System.out.println(&quot;substring(10)结果：&quot;+day.substring(10));
+    System.out.println(&quot;substring(2,10)结果：&quot;+day.substring(2,10));
+    System.out.println(&quot;substring(0,5)结果：&quot;+day.substring(0,5));
+&#125;
+</code></pre>
+<p>输出结果如下所示：</p>
+<pre><code class="line-numbers language-java">substring(0)结果：Today is Monday
+substring(2)结果：day is Monday
+substring(10)结果：onday
+substring(2,10)结果：day is M
+substring(0,5)结果：Today
+</code></pre>
+<h3 id="18"><a href="#18" class="headerlink" title="18"></a>18</h3><h4 id="ArrayList的初始化方法"><a href="#ArrayList的初始化方法" class="headerlink" title="ArrayList的初始化方法"></a>ArrayList的初始化方法</h4><ol>
 <li><p>使用Arrays.asList方法</p>
 <pre><code class="line-numbers language-java">ArrayList&lt;Type&gt; obj = new ArrayList&lt;Type&gt;(Arrays.asList(Object o1, Object o2, Object o3, ....so on));
 </code></pre>
@@ -1232,7 +1259,7 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.3k</span>&nbsp;字
+                class="white-color">23.7k</span>&nbsp;字
             
             
             
