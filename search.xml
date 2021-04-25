@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>矩阵中的路径+Java只有值传递？</title>
+      <link href="2021/04/25/ju-zhen-zhong-de-lu-jing-java-zhi-you-zhi-chuan-di/"/>
+      <url>2021/04/25/ju-zhen-zhong-de-lu-jing-java-zhi-you-zhi-chuan-di/</url>
+      
+        <content type="html"><![CDATA[<h2 id="矩阵中的路径"><a href="#矩阵中的路径" class="headerlink" title="矩阵中的路径"></a><a href="https://www.nowcoder.com/practice/69fe7a584f0a445da1b6652978de5c38?tpId=13&tqId=11218&tab=answerKey&from=cyc_github">矩阵中的路径</a></h2><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="错误题解"><a href="#错误题解" class="headerlink" title="错误题解"></a>错误题解</h3><pre><code class="line-numbers language-java">package com.xu.swordFingerOffer.矩阵中的路径;import java.util.*;public class Solution &#123;    /**     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可     *     *      * @param matrix string字符串      * @param rows int整型      * @param cols int整型      * @param str string字符串      * @return bool布尔型     */    public boolean hasPath (String matrix, int rows, int cols, String str) &#123;        // write code here        char[] array = matrix.toCharArray();        char[] strs = str.toCharArray();        boolean find = false;        boolean[] visited = new boolean[rows*cols];        for (int i = 0; i &lt; rows; i++) &#123;            for (int j = 0; j &lt; cols; j++) &#123;                dfs(i, j, 0, array, strs, visited, find, rows, cols);            &#125;        &#125;        return find;    &#125;    private void dfs (int i, int j, int pos, char[] matrix, char[] str, boolean[] visited, boolean find, int rows, int cols) &#123;        if (i &lt; 0 || i &gt;= rows || j &lt; 0 || j &gt;= cols) &#123;            return;        &#125;        int visiting_pos = i*cols + j;        if (visited[visiting_pos] || find || matrix[visiting_pos] != str[pos]) &#123;            return;        &#125;        if (pos == str.length-1) &#123;            find = true;            return;        &#125;        visited[visiting_pos] = true;//修改当前节点        //递归子节点        dfs(i + 1, j,pos + 1,  matrix, str, visited, find, rows, cols);        dfs(i - 1, j,pos + 1,  matrix, str, visited, find, rows, cols);        dfs(i, j + 1,pos + 1,  matrix, str, visited, find, rows, cols);        dfs(i, j - 1,pos + 1,  matrix, str, visited, find, rows, cols);        visited[visiting_pos] = false;//回溯到当前状态    &#125;&#125;</code></pre><h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><p>Java基本类型是值传递</p><p>定义的boolean find = false;</p><p>在递归函数中没有被改变</p><h3 id="正确题解"><a href="#正确题解" class="headerlink" title="正确题解"></a>正确题解</h3><pre><code class="line-numbers language-java">package com.xu.swordFingerOffer.矩阵中的路径;import java.util.*;public class Solution &#123;    /**     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可     *     *      * @param matrix string字符串      * @param rows int整型      * @param cols int整型      * @param str string字符串      * @return bool布尔型     */    public boolean hasPath (String matrix, int rows, int cols, String str) &#123;        // write code here        char[] array = matrix.toCharArray();        char[] strs = str.toCharArray();        boolean[] visited = new boolean[rows*cols];        for (int i = 0; i &lt; rows; i++) &#123;            for (int j = 0; j &lt; cols; j++) &#123;                if (dfs(i, j, 0, array, strs, visited, rows, cols))                    return true;            &#125;        &#125;        return false;    &#125;    private boolean dfs (int i, int j, int pos, char[] matrix, char[] str, boolean[] visited, int rows, int cols) &#123;        //越界        if (i &lt; 0 || i &gt;= rows || j &lt; 0 || j &gt;= cols) &#123;            return false;        &#125;        int visiting_pos = i*cols + j;        //已拜访过或者不符合条件        if (visited[visiting_pos]|| matrix[visiting_pos] != str[pos]) &#123;            return false;        &#125;        //成功找到        if (pos == str.length-1) &#123;            return true;        &#125;        visited[visiting_pos] = true;//修改当前节点        //递归子节点        if (            dfs(i + 1, j,pos + 1,  matrix, str, visited, rows, cols) ||            dfs(i - 1, j,pos + 1,  matrix, str, visited, rows, cols) ||            dfs(i, j + 1,pos + 1,  matrix, str, visited, rows, cols) ||            dfs(i, j - 1,pos + 1,  matrix, str, visited, rows, cols)        ) return true;        visited[visiting_pos] = false;//回溯到当前状态        return false;    &#125;&#125;</code></pre><h2 id="Java只有值传递？"><a href="#Java只有值传递？" class="headerlink" title="Java只有值传递？"></a>Java只有值传递？</h2><p>Java中只有值传递流派的大致意思是</p><blockquote><p>值传递，不论传递的参数类型是值类型还是引用类型，都会在调用栈上创建一个形参的副本。不同的是，对于值类型来说，复制的就是整个原始值的复制。而对于引用类型来说，由于在调用栈中只存储对象的引用，因此复制的只是这个引用，而不是原始对象。</p></blockquote><p>简单来说， 就是浅拷贝。</p><blockquote><p>浅拷贝：基本类型传递值， 引用类型传递的值是引用。</p></blockquote><p>无论是值传递还是引用传递，其实都是一种求值策略(Evaluation strategy)。在求值策略中，还有一种叫做按共享传递(call by sharing)。其实Java中的参数传递严格意义上说应该是按共享传递。</p><blockquote><p> 按共享传递，是指在调用函数时，传递给函数的是实参的地址的拷贝（如果实参在栈中，则直接拷贝该值）。在函数内部对参数进行操作时，需要先拷贝的地址寻找到具体的值，再进行操作。如果该值在栈中，那么因为是直接拷贝的值，所以函数内部对参数进行操作不会对外部变量产生影响。如果原来拷贝的是原值在堆中的地址，那么需要先根据该地址找到堆中对应的位置，再进行操作。因为传递的是地址的拷贝所以函数内对值的操作对外部变量是可见的。</p></blockquote><p>再看看JVM内存模型</p><h2 id="Java-虚拟机栈"><a href="#Java-虚拟机栈" class="headerlink" title="Java 虚拟机栈"></a>Java 虚拟机栈</h2><p><strong>Java 内存可以粗糙的区分为堆内存（Heap）和栈内存 (Stack),其中栈就是现在说的虚拟机栈，或者说是虚拟机栈中局部变量表部分。</strong> （实际上，Java 虚拟机栈是由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法出口信息。）</p><p><strong>局部变量表主要存放了编译期可知的各种数据类型</strong>（boolean、byte、char、short、int、float、long、double）、<strong>对象引用</strong>（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。</p><p><img src="/2021/04/25/ju-zhen-zhong-de-lu-jing-java-zhi-you-zhi-chuan-di/image-20210425112147763.png" alt="image-20210425112147763"></p><p>所以， Java只有值传递， 大概可以理解为**基本类型传递值， 引用类型传递的值是引用(refrence)**。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 回溯 </tag>
+            
+            <tag> 深搜 </tag>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>居合斩！二分查找</title>
       <link href="2021/04/23/ju-he-zhan-er-fen-cha-zhao/"/>
       <url>2021/04/23/ju-he-zhan-er-fen-cha-zhao/</url>
