@@ -411,7 +411,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    2.9k
                 </div>
                 
 
@@ -461,6 +461,27 @@ left join dept_emp d
 on e.emp_no = d.emp_no;
 </code></pre>
 <p><img src="/log/index/image-20210428181258808.png" alt="image-20210428181258808"></p>
+<pre><code class="line-numbers language-sql">select &lt;select_list&gt;
+from tableA a
+left join tableB b
+on a.key = b.key
+
+select &lt;select_list&gt;
+from tableA a
+left join tableB b
+on a.key = b.key
+where b.key is null
+
+select &lt;select_list&gt;
+from tableA a
+full outer join tableB b
+on a.key = b.key
+
+select &lt;select_list&gt;
+from tableA a
+inner join tableB b
+on a.key = b.key
+</code></pre>
 <h3 id="26"><a href="#26" class="headerlink" title="26"></a>26</h3><pre><code class="line-numbers language-java">1：字符串数字转数字
 
 假设给定一个字符串，String str=&quot;1234&quot;;
