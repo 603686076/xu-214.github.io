@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-22
+                    2021-04-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    12 分
                 </div>
                 
 
@@ -438,7 +438,71 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="4月"><a href="#4月" class="headerlink" title="4月"></a>4月</h2><h3 id="22"><a href="#22" class="headerlink" title="22"></a>22</h3><p>在 String 中提供了两个截取字符串的方法，一个是从指定位置截取到字符串结尾，另一个是截取指定范围的内容。下面对这两种方法分别进行介绍。</p>
+                <h2 id="4月"><a href="#4月" class="headerlink" title="4月"></a>4月</h2><h3 id="28"><a href="#28" class="headerlink" title="28"></a>28</h3><p>请你查找employees里最晚入职员工的所有信息</p>
+<pre><code class="line-numbers language-sql">select * from employees order by hire_date desc limit 0, 1
+</code></pre>
+<p>请你查找各个部门领导薪水详情以及其对应部门编号dept_no，输出结果以salaries.emp_no升序排序，并且请注意输出结果里面dept_no列是最后一列</p>
+<pre><code class="line-numbers language-sql">select s.*,d.dept_no
+from salaries as s , dept_manager as d
+where s.emp_no=d.emp_no
+and s.to_date=&#39;9999-01-01&#39;
+and d.to_date=&#39;9999-01-01&#39;
+order by emp_no;
+</code></pre>
+<p>请你查找所有已经分配部门的员工的last_name和first_name以及dept_no，未分配的部门的员工不显示</p>
+<pre><code class="line-numbers language-sql">select e.last_name, e.first_name, d.dept_no 
+from employees as e, dept_emp as d
+where e.emp_no = d.emp_no
+</code></pre>
+<p>请你查找所有已经分配部门的员工的last_name和first_name以及dept_no，也包括暂时没有分配具体部门的员工</p>
+<pre><code class="line-numbers language-sql">select last_name, first_name, dept_no
+from employees e
+left join dept_emp d
+on e.emp_no = d.emp_no;
+</code></pre>
+<p><img src="/log/index/image-20210428181258808.png" alt="image-20210428181258808"></p>
+<h3 id="26"><a href="#26" class="headerlink" title="26"></a>26</h3><pre><code class="line-numbers language-java">1：字符串数字转数字
+
+假设给定一个字符串，String str=&quot;1234&quot;;
+
+要转为转数字
+
+可以这样：int  a = Integer.valueOf(str);
+
+输出即可System.out.println(a);
+
+2.数字转字符串数字
+
+假设给定一数字，int a=1234；
+
+可以这样：String str = a+&quot;&quot;;或者
+
+String str = String.valueOf(a);
+</code></pre>
+<pre><code class="line-numbers language-java">//在比较两个字符串 S1 和 S2 的大小时，应该比较的是 S1+S2 和 S2+S1 的大小，如果 S1+S2 &lt; S2+S1，那么应该把 S1 排在前面，否则应该把 S2 排在前面。
+Arrays.sort(nums, (s1, s2) -&gt; (s1 + s2).compareTo(s2 + s1));
+</code></pre>
+<pre><code class="line-numbers language-java">//String的用法：
+//java中String是只读的，没有办法进行变换，因此需要使用StringBuilder。
+String.length() //获取字符串的长度
+String.charAt(i) //获取第i个字符的内容
+String.subString(start)   //获取[start,）的字符串
+String.subString(start,end) //获取[start,end）中的字符串
+char[] c = iniString.toCharArray() //将字符串转为char数组来进行改变字符内容
+String.equal() //判断两个字符串是否相等
+
+//StringBuilder的用法：
+除了String中支持的方法外，StringBuilder支持字符的增、删、改。
+stringBuilder.append(&quot;we&quot;);  //添加we在词尾
+stringBuilder.insert(0,&quot;we&quot;);//在0的位置加入后面的内容
+stringBuilder.delete(0,1);  //删除[0,1)的数据
+stringBuilder.deleteCharAt(0);
+stringBuilder.setCharAt(0,&#39;p&#39;); //在某一个独特位置设置字符
+char c = stringBuilder.charAt(i);//查询某个位置上的字符
+System.out.println(stringBuilder);
+new String(stringBuilder);//用stringBuilder来初始化String
+</code></pre>
+<h3 id="22"><a href="#22" class="headerlink" title="22"></a>22</h3><p>在 String 中提供了两个截取字符串的方法，一个是从指定位置截取到字符串结尾，另一个是截取指定范围的内容。下面对这两种方法分别进行介绍。</p>
 <h4 id="1-substring-int-beginIndex-形式"><a href="#1-substring-int-beginIndex-形式" class="headerlink" title="1. substring(int beginIndex) 形式"></a>1. substring(int beginIndex) 形式</h4><p>此方式用于提取从索引位置开始至结尾处的字符串部分。调用时，括号中是需要提取字符串的开始位置，方法的返回值是提取的字符串。例如：</p>
 <pre><code class="line-numbers language-java">String str = &quot;我爱 Java 编程&quot;;
 String result = str.substring(3);
