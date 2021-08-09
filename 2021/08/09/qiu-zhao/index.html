@@ -583,8 +583,7 @@ PriorityQueue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;((v1, v2) -&gt; v2
 * 所以每一个服务都要配置一个自己的线程池
 * 完全使用线程池来控制住所有的请求
 </code></pre>
-<h2 id="项目里哪里用到了什么设计模式"><a href="#项目里哪里用到了什么设计模式" class="headerlink" title="项目里哪里用到了什么设计模式"></a>项目里哪里用到了什么设计模式</h2><p>没有</p>
-<h2 id="Spring是怎么解决循环依赖的？"><a href="#Spring是怎么解决循环依赖的？" class="headerlink" title="Spring是怎么解决循环依赖的？"></a>Spring是怎么解决循环依赖的？</h2><h3 id="什么是循环依赖？"><a href="#什么是循环依赖？" class="headerlink" title="什么是循环依赖？"></a><strong>什么是循环依赖？</strong></h3><p>举个例子，这里有三个类 A、B、C，然后 A 关联 B，B 关联 C，C 又关联 A，这就形成了一个循环依赖。<code>如果是方法调用是不算循环依赖的，循环依赖必须要持有引用</code>。</p>
+<h2 id="项目里哪里用到了什么设计模式"><a href="#项目里哪里用到了什么设计模式" class="headerlink" title="项目里哪里用到了什么设计模式"></a>项目里哪里用到了什么设计模式</h2><h2 id="Spring是怎么解决循环依赖的？"><a href="#Spring是怎么解决循环依赖的？" class="headerlink" title="Spring是怎么解决循环依赖的？"></a>Spring是怎么解决循环依赖的？</h2><h3 id="什么是循环依赖？"><a href="#什么是循环依赖？" class="headerlink" title="什么是循环依赖？"></a><strong>什么是循环依赖？</strong></h3><p>举个例子，这里有三个类 A、B、C，然后 A 关联 B，B 关联 C，C 又关联 A，这就形成了一个循环依赖。<code>如果是方法调用是不算循环依赖的，循环依赖必须要持有引用</code>。</p>
 <p><img src="/2021/08/09/qiu-zhao/image-20210808164013982.png" alt="image-20210808164013982"></p>
 <p>循环依赖发生的场景：</p>
 <ul>
