@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-28
+                    2021-05-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    15 分
                 </div>
                 
 
@@ -438,7 +438,91 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="4月"><a href="#4月" class="headerlink" title="4月"></a>4月</h2><h3 id="28"><a href="#28" class="headerlink" title="28"></a>28</h3><p>请你查找employees里最晚入职员工的所有信息</p>
+                <h2 id="5月"><a href="#5月" class="headerlink" title="5月"></a>5月</h2><h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><h4 id="JWT工具类"><a href="#JWT工具类" class="headerlink" title="JWT工具类"></a>JWT工具类</h4><pre><code class="line-numbers language-java">import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+import java.util.*;
+
+public class JwtUtil &#123;
+    private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
+    public static final long EXPIRATION_TIME = 3600_000_000L; // 1000 hour
+    public static final String SECRET = &quot;ThisIsASecret&quot;;//please change to your own encryption secret.
+    public static final String TOKEN_PREFIX = &quot;Bearer &quot;;
+    public static final String HEADER_STRING = &quot;Authorization&quot;;
+    public static final String USER_NAME = &quot;userName&quot;;
+
+    public static String generateToken(String userId) &#123;
+        HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();
+        //you can put any data in the map
+        map.put(USER_NAME, userId);
+        String jwt = Jwts.builder()
+                .setClaims(map)
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .compact();
+        return jwt;
+    &#125;
+&#125;
+</code></pre>
+<h4 id="MD5加密工具类"><a href="#MD5加密工具类" class="headerlink" title="MD5加密工具类"></a>MD5加密工具类</h4><pre><code class="line-numbers language-java">import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+
+public class MD5Utils &#123;
+
+    public static String getPwd(String pwd) &#123;
+        try &#123;
+            // 创建加密对象
+            MessageDigest digest = MessageDigest.getInstance(&quot;md5&quot;);
+
+            // 调用加密对象的方法，加密的动作已经完成
+            byte[] bs = digest.digest(pwd.getBytes());
+            // 接下来，我们要对加密后的结果，进行优化，按照mysql的优化思路走
+            // mysql的优化思路：
+            // 第一步，将数据全部转换成正数：
+            String hexString = &quot;&quot;;
+            for (byte b : bs) &#123;
+                // 第一步，将数据全部转换成正数：
+                // 解释：为什么采用b&amp;255
+                /*
+                 * b:它本来是一个byte类型的数据(1个字节) 255：是一个int类型的数据(4个字节)
+                 * byte类型的数据与int类型的数据进行运算，会自动类型提升为int类型 eg: b: 1001 1100(原始数据)
+                 * 运算时： b: 0000 0000 0000 0000 0000 0000 1001 1100 255: 0000
+                 * 0000 0000 0000 0000 0000 1111 1111 结果：0000 0000 0000 0000
+                 * 0000 0000 1001 1100 此时的temp是一个int类型的整数
+                 */
+                int temp = b &amp; 255;
+                // 第二步，将所有的数据转换成16进制的形式
+                // 注意：转换的时候注意if正数&gt;=0&amp;&amp;&lt;16，那么如果使用Integer.toHexString()，可能会造成缺少位数
+                // 因此，需要对temp进行判断
+                if (temp &lt; 16 &amp;&amp; temp &gt;= 0) &#123;
+                    // 手动补上一个“0”
+                    hexString = hexString + &quot;0&quot; + Integer.toHexString(temp);
+                &#125; else &#123;
+                    hexString = hexString + Integer.toHexString(temp);
+                &#125;
+            &#125;
+            return hexString;
+        &#125; catch (NoSuchAlgorithmException e) &#123;
+            // TODO Auto-generated catch block
+            e.printStackTrace();    
+        &#125;
+        return &quot;&quot;;
+    &#125;
+
+
+//    public static void main(String[] args) &#123;
+//        String pwd = MD5Utils.getPwd(&quot;234&quot;);
+//        System.out.println(pwd);
+//    &#125;
+
+&#125;
+</code></pre>
+<h2 id="4月"><a href="#4月" class="headerlink" title="4月"></a>4月</h2><h3 id="28"><a href="#28" class="headerlink" title="28"></a>28</h3><p>请你查找employees里最晚入职员工的所有信息</p>
 <pre><code class="line-numbers language-sql">select * from employees order by hire_date desc limit 0, 1
 </code></pre>
 <p>请你查找各个部门领导薪水详情以及其对应部门编号dept_no，输出结果以salaries.emp_no升序排序，并且请注意输出结果里面dept_no列是最后一列</p>
@@ -1344,7 +1428,7 @@ MP无需手动设置主键值 默认主键生成策略为雪花算法
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">32.9k</span>&nbsp;字
+                class="white-color">41.5k</span>&nbsp;字
             
             
             

@@ -417,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-17
+                    2021-05-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -563,6 +563,34 @@
 </ul>
 <h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>就这点功能，不必分模块了吧<br>没加swagger，前后端无法联网联调。并行开发，使用md文档，github分享请求/响应数据结构<br>component包下为原工具类，按单例组件设计<br>entity直接当do层<br>修改application.yml/generatorConfig.xml数据源配置<br>在Maven视图/plugins/mybatis-generator，运行mybatis-generator:generate生成model/mapper<br>每次均创建model覆盖，但仅为新数据表创建mapper</p>
 <p>mybatis-plus全局雪花算法生成ID；注入乐观锁拦截器<br>Jackson序列化时忽略空值属性<br>redis后期看情况加<br>其他自己加</p>
+<h2 id="一些文件"><a href="#一些文件" class="headerlink" title="一些文件"></a>一些文件</h2><h3 id="type-md"><a href="#type-md" class="headerlink" title="type.md"></a>type.md</h3><pre><code class="line-numbers language-markdown">role，角色值，固定，非数据表，减少表数  
+
+ - 1，学生
+ - 2，导师
+ - 4，主任
+ - 9，超级管理员
+
+任务类型，非数据表
+
+ - 1，新闻公告类，无互交的
+ - 2，文件，如果任务要求上传多文件，分解任务
+ - 3，选导师
+ - 4，答辩意见，对应教师。教师写自己小组毕设开题/答辩问题
+
+任务文件命名规范 按字符串数组[]保存在数据库，由前端解析，与后端无关  
+@开头字符串，需要动态解析；其他为预设直接读取；也可手动输入  
+例如。学生姓名-学号-开题答辩记录，\[&quot;@学生姓名&quot;, &quot;@学号&quot;, &quot;开题答辩记录&quot;\]
+
+ - @指导教师
+ - @学生姓名
+ - @学号
+ - @毕设题目
+ - 开题报告
+ - 开题答辩记录
+ - 毕业答辩记录
+ - 期中检查表
+ - 论证报告
+</code></pre>
 <h2 id="基于RuoYi进行二次开发"><a href="#基于RuoYi进行二次开发" class="headerlink" title="基于RuoYi进行二次开发"></a>基于RuoYi进行二次开发</h2><p>1.官方文档地址：<a target="_blank" rel="noopener" href="http://doc.ruoyi.vip/ruoyi-cloud/">http://doc.ruoyi.vip/ruoyi-cloud/</a></p>
 <p>2.项目演示地址：<a target="_blank" rel="noopener" href="http://cloud.ruoyi.vip/">http://cloud.ruoyi.vip/</a></p>
 <h2 id="先启动一下RuoYi微服务版试下"><a href="#先启动一下RuoYi微服务版试下" class="headerlink" title="先启动一下RuoYi微服务版试下"></a>先启动一下RuoYi微服务版试下</h2><p>RuoYi数据库推荐使用5.7版本， 华为云上面的数据库是5.7， 就先使用华为云吧</p>
@@ -628,7 +656,7 @@ npm run dev
 </code></pre>
 <p>运行成功！！！</p>
 <p><img src="/2021/04/17/bi-ye-she-ji-guan-li-xi-tong-1-0-0/image-20210415191523668.png" alt="image-20210415191523668"></p>
-<h3 id><a href="#" class="headerlink" title></a></h3>
+
                 
             </div>
             <hr/>
@@ -1221,7 +1249,7 @@ npm run dev
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">32.9k</span>&nbsp;字
+                class="white-color">41.5k</span>&nbsp;字
             
             
             
