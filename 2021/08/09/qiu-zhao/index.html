@@ -6,7 +6,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta name="baidu-site-verification" content="code-6rAdJG1gYa" />
     <meta name="google-site-verification" content="code-6rAdJG1gYa" />
     <meta charset="utf-8">
-    <meta name="keywords" content="秋招, xustudy">
+    <meta name="keywords" content="QZ, xustudy">
     <meta name="description" content="东北林业大学 | 软件工程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>秋招 | xustudy</title>
+    <title>QZ | xustudy</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -251,7 +251,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'xu';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -264,12 +264,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/41.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">秋招</h1>
+                    <h1 class="description center-align post-title">QZ</h1>
                 </div>
             </div>
         </div>
@@ -417,14 +417,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-09
+                    2021-08-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.6k
+                    6.8k
                 </div>
                 
 
@@ -760,6 +760,17 @@ PriorityQueue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;((v1, v2) -&gt; v2
 <p><img src="/2021/08/09/qiu-zhao/5.png" alt="图片">下单时消息生产者会先生成订单，此时状态为待支付，然后会向延迟队列中发一条消息。达到了延迟时间，消息消费者读取消息之后，会查询该订单的状态是否为待支付。如果是待支付状态，则会更新订单状态为取消状态。如果不是待支付状态，说明该订单已经支付过了，则直接返回。</p>
 <p>还有个关键点，用户完成支付之后，会修改订单状态为已支付。</p>
 <p><img src="/2021/08/09/qiu-zhao/6.png" alt="图片"></p>
+<p><strong>尚硅谷</strong></p>
+<p><img src="/2021/08/09/qiu-zhao/image-20210810143355988.png" alt="image-20210810143355988"></p>
+<p><img src="/2021/08/09/qiu-zhao/image-20210810142909988.png" alt="image-20210810142909988"></p>
+<p><img src="/2021/08/09/qiu-zhao/image-20210810144558527.png" alt="image-20210810144558527"></p>
+<p><img src="/2021/08/09/qiu-zhao/image-20210810145103937.png" alt="image-20210810145103937"></p>
+<h2 id="UDP如何实现可靠传输？"><a href="#UDP如何实现可靠传输？" class="headerlink" title="UDP如何实现可靠传输？"></a>UDP如何实现可靠传输？</h2><p><strong>确认机制</strong></p>
+<p>UDP要想可靠，就要接收方收到UDP之后回复个确认包。</p>
+<p><strong>超时重传</strong></p>
+<p>发送方有个机制，收不到确认包就要重新发送，每个包有递增的序号，接收方发现中间丢了包就要发重传请求。</p>
+<p><strong>滑动窗口</strong></p>
+<p>当网络太差时候频繁丢包，防止越丢包越重传的恶性循环，要有个发送窗口的限制，发送窗口的大小根据网络传输情况调整，调整算法要有一定自适应性</p>
 
                 
             </div>
@@ -1034,9 +1045,9 @@ PriorityQueue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;((v1, v2) -&gt; v2
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="秋招">
+                        <img src="/medias/featureimages/41.jpg" class="responsive-img" alt="QZ">
                         
-                        <span class="card-title">秋招</span>
+                        <span class="card-title">QZ</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1351,7 +1362,7 @@ PriorityQueue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;((v1, v2) -&gt; v2
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.8k</span>&nbsp;字
+                class="white-color">41k</span>&nbsp;字
             
             
             
