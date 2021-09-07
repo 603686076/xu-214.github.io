@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>clbq</title>
+      <link href="2021/09/07/clbq/"/>
+      <url>2021/09/07/clbq/</url>
+      
+        <content type="html"><![CDATA[<h2 id="浏览器访问一个网址时都发生了什么"><a href="#浏览器访问一个网址时都发生了什么" class="headerlink" title="浏览器访问一个网址时都发生了什么"></a>浏览器访问一个网址时都发生了什么</h2><p>1.DNS解析，找到域名对应的IP地址</p><p>2.传输层通过三次握手建立TCP连接</p><p>3.应用层通过HTTP/80或者HTTPS/443端口进行请求传输</p><p>4.网络层通过IP协议将请求封装成IP数据报，选择合适的网间路由和交换节点（维护了一个路由表，将目标ip地址于子网掩码进行与的方式，找到对应的下一跳）</p><p>5.数据链路层将IP数据包封装成帧，在两个交换节点之间进行传输</p><p>6.物理层则是把以比特流的方式在线路上进行传输</p><p>7.请求到达服务器，可能还会经过网关的过滤器、拦截器，对请求进行过滤，拦截</p><p>8.如果有负载均衡，则通过负载均衡算法找到相应的服务器</p><p>9.到达对应服务器后根据请求的请求头，请求体，对静态资源的访问，直接返回静态资源，需要经过控制层的，执行相应的业务逻辑操作，访问数据库，返回数据，返还给前端</p><p>10.前端根据收到的静态资源，数据，进行页面渲染</p><p>11.HTTP1.0是短连接，会通过四次挥手断开连接，HTTP以上可以开启长连接，之后通过ajax异步的进行数据交互</p><p>拓展-网关职责：</p><p><strong>全局性流控</strong></p><p><strong>负载均衡</strong></p><p><strong>动态路由</strong></p><p><strong>访问控制</strong></p><p><strong>权限校验</strong></p><p><strong>限流熔断</strong></p><p><strong>埋点监控</strong></p><p><strong>日志收集统计</strong></p><p><strong>A|B测试</strong></p><p><strong>安全</strong></p><p><strong>黑白名单控制</strong></p><h2 id="数据库表："><a href="#数据库表：" class="headerlink" title="数据库表："></a>数据库表：</h2><h3 id="秒杀服务"><a href="#秒杀服务" class="headerlink" title="秒杀服务"></a>秒杀服务</h3><p>sms_seckill_promotion    秒杀活动</p><p><img src="/2021/09/07/clbq/image-20210818083925347.png" alt="image-20210818083925347"></p><p>sms_seckill_session    秒杀活动场次</p><p><img src="/2021/09/07/clbq/image-20210818083947066.png" alt="image-20210818083947066"></p><p>sms_seckill_sku_relation    秒杀活动商品关联</p><p><img src="/2021/09/07/clbq/image-20210818084006535.png" alt="image-20210818084006535"></p><h3 id="库存服务"><a href="#库存服务" class="headerlink" title="库存服务"></a>库存服务</h3><p>wms_ware_order_task    库存工作单（保存锁库存的订单号，方便回滚）</p><p>wms_ware_order_task_detail    库存工作单</p><p><img src="/2021/09/07/clbq/image-20210820095200158.png" alt="image-20210820095200158"></p><p>wms_ware_sku    商品库存    </p><p><img src="/2021/09/07/clbq/image-20210820095241513.png" alt="image-20210820095241513"></p><h3 id="购物车服务"><a href="#购物车服务" class="headerlink" title="购物车服务"></a>购物车服务</h3><p>直接存放在redis里面</p><p><img src="/2021/09/07/clbq/image-20210820100309576.png" alt="image-20210820100309576"></p><h2 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h2><h2 id="Redis是单线程的，为什么这么快"><a href="#Redis是单线程的，为什么这么快" class="headerlink" title="Redis是单线程的，为什么这么快?"></a>Redis是单线程的，为什么这么快?</h2><p>1.单线程，省去了线程切换的开销</p><p>2.大部分操作在内存上完成</p><p>3.IO多路复用，支持并发</p><h2 id="Redis数据结构及适用场景"><a href="#Redis数据结构及适用场景" class="headerlink" title="Redis数据结构及适用场景"></a>Redis数据结构及适用场景</h2><p>String 计数器、分布式锁、josn对象（不常变化）</p><p>hash 购物车、对象（频繁变化）</p><p>list 消息队列、列表、排行榜(定时计算)</p><p>set 求并、交、差集  好友/关注/粉丝/感兴趣的人集合 随机展示 srandmember随机挑选一些key  黑名单/白名单 sismember检查某个key是否存在</p><p>zset 排行榜(实时计算)</p><h2 id="Myisam和Innodb区别"><a href="#Myisam和Innodb区别" class="headerlink" title="Myisam和Innodb区别"></a>Myisam和Innodb区别</h2><p>事务</p><p>锁力度</p><p>全文检索</p><p>count</p><p>外键</p><p>崩溃后的恢复 </p><h2 id="Myisam和Innodb适用场景"><a href="#Myisam和Innodb适用场景" class="headerlink" title="Myisam和Innodb适用场景"></a>Myisam和Innodb适用场景</h2><p>1). MyISAM管理<strong>非事务</strong>表。它提供高速存储和检索，以及<strong>全文搜索</strong>能力。如果应用中需要执行大量的<strong>SELET</strong>查询，那么MyISAM是更好的选择。<br>2). InnoDB用于<strong>事务</strong>处理应用程序，具有众多特性，包括<strong>ACID事务</strong>支持。如果应用中需要执行大量的<strong>INSEKT或UPDATE</strong>操作，则应该使用InnoDB,这样可以提高多用户并发操作的性能。</p><h2 id="hash索引和B-树索引的区别"><a href="#hash索引和B-树索引的区别" class="headerlink" title="hash索引和B+树索引的区别"></a>hash索引和B+树索引的区别</h2><p>hash索引等值查询效率高</p><p>hash索引不支持范围查询</p><p>hash索引不支持最左前缀匹配</p><p>hash索引不支持模糊查询</p><h2 id="B-树相比B树的优势："><a href="#B-树相比B树的优势：" class="headerlink" title="B+树相比B树的优势："></a><strong>B+树相比B树的优势：</strong></h2><p>　　1.非叶子节点仅存储列值+索引，树呈“矮胖”形，更少的IO<br>　　2.所有查询都要查找到叶子节点，查询性能稳定；<br>　　3.所有叶子节点形成有序链表，便于范围查询。</p><p>B树的范围查找首先二分查找到范围下限，在不断通过中序遍历，知道查找到范围的上限即可。整个过程比较耗时。<br>而B+树的范围查找首先通过二分查找，找到范围下限，然后同过叶子结点的链表顺序遍历，直至找到上限即可，整个过程简单许多，效率也比较高。</p><h2 id="创建订单以及锁定库存怎么保证的原子性"><a href="#创建订单以及锁定库存怎么保证的原子性" class="headerlink" title="创建订单以及锁定库存怎么保证的原子性"></a>创建订单以及锁定库存怎么保证的原子性</h2><p> MQ发消息是发给订单服务，订单服务慢慢消化，只有订单保存成功才远程调用库存服务，然后锁库存，库存锁成功或不成功会返回一个状态码，锁定失败了，抛异常回滚事务</p><h2 id="分布式事务两阶段提交"><a href="#分布式事务两阶段提交" class="headerlink" title="分布式事务两阶段提交"></a>分布式事务两阶段提交</h2><p><img src="/2021/09/07/clbq/image-20210826155957276.png" alt="image-20210826155957276"></p><h2 id="简单介绍一下inner-join的执行流程"><a href="#简单介绍一下inner-join的执行流程" class="headerlink" title="简单介绍一下inner join的执行流程"></a>简单介绍一下inner join的执行流程</h2><p><img src="/2021/09/07/clbq/image-20210826161955806.png" alt="image-20210826161955806"></p><h2 id="Session和Cookie的区别？"><a href="#Session和Cookie的区别？" class="headerlink" title="Session和Cookie的区别？"></a>Session和Cookie的区别？</h2><p>1、数据存储位置：cookie数据存放在客户的浏览器上，session数据放在服务器上。</p><p>2、安全性：cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session。</p><p>3、服务器性能：session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie。</p><p>4、数据大小：单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p><p>5、信息重要程度：可以考虑将登陆信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 秋招 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>QZ</title>
       <link href="2021/08/09/qiu-zhao/"/>
       <url>2021/08/09/qiu-zhao/</url>
